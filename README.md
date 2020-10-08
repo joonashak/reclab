@@ -1,8 +1,6 @@
 # Recover Laboratory Web
 
-## Usage
-
-### Development Environment
+## Development Environment
 
 The development environment is configured with npm and Docker. You will need to have the `npm` and `docker` commands available on your system (tested only on macOS).
 
@@ -10,7 +8,7 @@ The development environment is configured with npm and Docker. You will need to 
 
 All commands below should be run in project root. The npm scripts in subdirectories are meant for internal use by the scripts in root.
 
-#### Start Development Environment
+### Start Development Environment
 
 ```bash
 npm start
@@ -22,7 +20,7 @@ This command brings up the containers in the background. The services are access
 - [http://localhost:3001](http://localhost:3001/) (backend), and,
 - [http://localhost:8080](http://localhost:8080/) (Adminer).
 
-#### Stop Development Environment
+### Stop Development Environment
 
 ```bash
 npm stop
@@ -36,7 +34,7 @@ npm run restart
 
 Note that changes are hot-realoaded only from the `/cms/src` and `/web/src` directories. If you make changes outside of these locations, you will need to restart the containers.
 
-#### View Logging Output
+### View Logging Output
 
 View all logs:
 
