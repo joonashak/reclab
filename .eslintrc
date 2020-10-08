@@ -1,0 +1,16 @@
+{
+  "parser": "babel-eslint",
+  "rules": {
+    "react/jsx-filename-extension": [2, { "extensions": [".jsx", ".tsx"] }],
+    "import/extensions": ["error", { "tsx": "never" } ]
+  },
+  "extends": ["airbnb", "plugin:cypress/recommended"],
+  "settings": {
+    "import/no-unresolved": 2,
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  }
+}
