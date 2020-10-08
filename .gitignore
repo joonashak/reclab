@@ -1,0 +1,11 @@
+# General
+node_modules
+
+# CMS
+/cms/dist
+/cms/pg_data
+
+# Web
+/web/.vercel
+/web/.cache
+/web/public
