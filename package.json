@@ -1,0 +1,19 @@
+{
+  "name": "reclab",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "docker-compose up"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joonashak/reclab.git"
+  },
+  "author": "Joonas Häkkinen <hakkijoo@gmail.com>",
+  "license": "EUPL-1.2",
+  "bugs": {
+    "url": "https://github.com/joonashak/reclab/issues"
+  },
+  "homepage": "https://github.com/joonashak/reclab#readme"
+}

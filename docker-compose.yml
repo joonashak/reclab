@@ -1,8 +1,8 @@
 version: "3.2"
 
 services:
-  app:
-    build: .
+  cms:
+    build: ./cms/
     ports:
       - 3001:3001
     container_name: reclab-cms
@@ -12,9 +12,23 @@ services:
       - DATABASE_URL=postgres://postgres:postgres@db:5432/postgres
       - JWT_SECRET=asd
     volumes:
-      - ./src:/usr/src/app/src
+      - ./cms/src:/usr/src/app/src
     depends_on:
       - db
+
+  web:
+    build: ./web/
+    ports:
+      - 3000:3000
+      - 30011:30011
+    container_name: reclab-web
+    environment:
+      - CMS_URL=http://cms:3001
+      - INTERNAL_STATUS_PORT=30011
+    volumes:
+      - ./web/src:/usr/src/app/src
+    depends_on:
+      - cms
 
   db:
     image: postgres:12
@@ -36,27 +50,3 @@ services:
       - 8080:8080
     depends_on:
       - db
-
-  test-app:
-    build:
-      context: .
-      dockerfile: Dockerfile.test
-    ports:
-      - 3001:3001
-    container_name: reclab-cms-test
-    environment:
-      - NODE_ENV=test
-      - PORT=3001
-      - DATABASE_URL=postgres://postgres:postgres@test-db:5432/postgres
-      - JWT_SECRET=asd
-    depends_on:
-      - test-db
-
-  test-db:
-    image: postgres:12
-    restart: unless-stopped
-    container_name: reclab-db-test
-    environment:
-      - POSTGRES_PASSWORD=postgres
-    ports:
-      - 5432:5432

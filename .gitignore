@@ -2,8 +2,8 @@
 node_modules
 
 # CMS
+pg_data
 /cms/dist
-/cms/pg_data
 
 # Web
 /web/.vercel
