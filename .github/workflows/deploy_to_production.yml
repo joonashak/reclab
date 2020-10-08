@@ -1,0 +1,28 @@
+name: Production Deployment (Release)
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  deploy:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Publish to Dockerhub
+        uses: docker/build-push-action@v1
+        with:
+          username: joonashak
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          repository: joonashak/reclab-cms
+          tags: latest
+          tag_with_ref: true
+          dockerfile: ./Dockerfile.ci
+      - name: Deploy to Heroku
+        uses: akhileshns/heroku-deploy@v3.4.6
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: ${{secrets.HEROKU_PRODUCTION_NAME}}
+          heroku_email: ${{secrets.HEROKU_EMAIL}}

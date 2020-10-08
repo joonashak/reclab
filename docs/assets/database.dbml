@@ -1,0 +1,51 @@
+Project reclab_cms {
+  database_type: 'PostgreSQL'
+}
+
+Table user {
+  id UUID [pk]
+  username TEXT [not null, unique]
+  passwordHash TEXT [not null]
+  displayName TEXT
+}
+
+Table page {
+  id UUID [pk]
+  title TEXT [not null, default: '']
+  content TEXT [not null, default: '']
+  createdAt TIMESTAMPZ [not null, default: 'NOW()']
+  updatedAt TIMESTAMPZ [not null, default: 'NOW()']
+  authorId UUID [ref: > user.id, not null]
+  editorId UUID [ref: > user.id, not null]
+  language LANGUAGE [not null]
+  isPublic BOOL [not null, default: false]
+  path TEXT
+}
+
+Table translation {
+  originPageId UUID [ref: > page.id, not null]
+  targetPageId UUID [ref: > page.id, not null]
+  
+  indexes {
+    (originPageId, targetPageId) [pk]
+  }
+}
+
+Table menuItem {
+  id UUID [pk]
+  title TEXT [not null]
+  order INT [not null]
+  path TEXT
+  pageId UUID [ref: > page.id]
+  language LANGUAGE [not null]
+  parentId UUID [ref: > menuItem.id]
+  
+  indexes {
+    (order, language) [unique]
+  }
+}
+
+enum LANGUAGE {
+  fi
+  en
+}
