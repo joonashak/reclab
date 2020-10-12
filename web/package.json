@@ -34,13 +34,10 @@
     "gatsby-plugin-eslint": "^2.0.8",
     "prettier": "2.0.5"
   },
-  "keywords": [
-    "gatsby"
-  ],
   "license": "EUPL-1.2",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop -p 3000 -H 0.0.0.0",
+    "develop": "gatsby develop -H 0.0.0.0",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx}\"",
     "start": "npm run develop; exit 0",
     "serve": "gatsby serve",

@@ -2,7 +2,6 @@
   "name": "reclab",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "start": "docker-compose up -d",
     "stop": "docker-compose down",

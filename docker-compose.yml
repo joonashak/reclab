@@ -23,6 +23,7 @@ services:
       - 30011:30011
     container_name: reclab-web
     environment:
+      - PORT=3000
       - CMS_URL=http://cms:3001
       - INTERNAL_STATUS_PORT=30011
     volumes:
@@ -50,3 +51,46 @@ services:
       - 8080:8080
     depends_on:
       - db
+
+  # Duplicate containers to have a testing environment run simultaneously.
+  cms-test:
+    build: ./cms/
+    ports:
+      - 3003:3003
+    container_name: reclab-cms-test
+    environment:
+      - NODE_ENV=development
+      - PORT=3003
+      - DATABASE_URL=postgres://postgres:postgres@db-test:5432/postgres
+      - JWT_SECRET=asd
+    volumes:
+      - ./cms/src:/usr/src/app/src
+    depends_on:
+      - db-test
+
+  web-test:
+    build: ./web/
+    ports:
+      - 3002:3002
+      - 30012:30012
+    container_name: reclab-web-test
+    environment:
+      - PORT=3002
+      - CMS_URL=http://cms-test:3003
+      - INTERNAL_STATUS_PORT=30012
+    volumes:
+      - ./web/src:/usr/src/app/src
+    depends_on:
+      - cms-test
+    # Use reset endpoint here to ensure the frontend is built correctly from the get-go.
+    command: /usr/src/app/wait-for-cms.sh http://cms-test:3003/seeder/reset npm start
+
+  db-test:
+    image: postgres:12
+    restart: unless-stopped
+    container_name: reclab-db-test
+    environment:
+      - PGDATA=/data
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 5433:5432

@@ -8,4 +8,4 @@ RUN npm ci
 COPY . .
 
 # Start via Gatsby in development mode.
-CMD /usr/src/app/wait-for-cms.sh cms npm start
+CMD /usr/src/app/wait-for-cms.sh http://cms:3001/page npm start

@@ -2,11 +2,11 @@
 
 set -e
   
-host="$1"
+addr="$1"
 shift
 cmd="$@"
   
-until curl -f http://$host:3001/page -c '\q'; do
+until curl -f $addr -c '\q'; do
   >&2 echo "CMS is unavailable - sleeping"
   sleep 1
 done
