@@ -9,3 +9,7 @@ pg_data
 /web/.vercel
 /web/.cache
 /web/public
+
+# E2E
+/e2e/cypress/screenshots
+/e2e/cypress/videos
