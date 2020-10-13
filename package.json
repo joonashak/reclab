@@ -9,7 +9,10 @@
     "logs": "docker-compose logs -f",
     "logs:cms": "npm run logs -- cms",
     "logs:web": "npm run logs -- web",
-    "logs:db": "npm run logs -- db"
+    "logs:db": "npm run logs -- db",
+    "test": "npm run test:e2e",
+    "test:e2e": "cd e2e && npm run cypress:run",
+    "test:open": "cd e2e && npm run cypress:open"
   },
   "repository": {
     "type": "git",
