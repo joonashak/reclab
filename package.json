@@ -12,7 +12,8 @@
     "logs:db": "npm run logs -- db",
     "test": "npm run test:e2e",
     "test:e2e": "cd e2e && npm run cypress:run",
-    "test:open": "cd e2e && npm run cypress:open"
+    "test:open": "cd e2e && npm run cypress:open",
+    "init": "cd e2e && npm ci"
   },
   "repository": {
     "type": "git",
