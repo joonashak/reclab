@@ -7,7 +7,7 @@ services:
       - 3003:3003
     container_name: reclab-cms-ci
     environment:
-      - NODE_ENV=development
+      - NODE_ENV=test
       - PORT=3003
       - DATABASE_URL=postgres://postgres:postgres@db-ci:5432/postgres
       - JWT_SECRET=asd

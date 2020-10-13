@@ -12,7 +12,7 @@ describe('/page', () => {
 
   it('/ (GET)', () => {
     return request(app.getHttpServer())
-      .get('/pagee')
+      .get('/page')
       .expect(200)
       .expect(apiPages);
   });
