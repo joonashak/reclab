@@ -25,6 +25,7 @@ const Menu = ({ page }) => (
   >
     {(data) => (
       <div>
+        {/* eslint-disable-next-line */}
         <Link to={`/${page.translations[0].language}${page.translations[0].path}`}>test</Link>
         {data.allMenu.nodes.map((menuItem) => (
           <span key={menuItem.id}>{menuItem.title}</span>
