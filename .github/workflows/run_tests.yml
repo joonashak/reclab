@@ -18,6 +18,6 @@ jobs:
       - run: npm run init
       - run: npm start
       - run: docker ps -a
-      - run: curl http://localhost:3002
+      - run: ip route show
       - run: curl http://web-test:3002
       - run: npm test
