@@ -10,9 +10,10 @@
     "logs:cms": "npm run logs -- cms",
     "logs:web": "npm run logs -- web",
     "logs:db": "npm run logs -- db",
-    "test": "npm run test:lint && npm run test:e2e",
+    "test": "npm run test:lint && npm run test:cms && npm run test:e2e",
     "test:e2e": "cd e2e && npm run cypress:run",
     "test:open": "cd e2e && npm run cypress:open",
+    "test:cms": "docker-compose exec cms-test npm test",
     "test:ci": "./run-tests-ci.sh",
     "test:lint": "cd cms && npm run lint && cd ../web && npm run lint",
     "init": "cd e2e && npm ci && cd ../cms && npm ci && cd ../web && npm ci"

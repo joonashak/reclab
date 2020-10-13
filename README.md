@@ -48,6 +48,32 @@ View logs by service (frontend/backend/database, respectively):
 npm run logs:<cms|web|db>
 ```
 
+## Testing
+
+In CI, all tests are run in containers. While this can be achieved locally with the `npm run test:ci` command, the development environment is designed to allow for running test unintrusively while coding.
+
+Make sure the development environment is running before using the commands below.
+
+### Run All Tests
+
+```bash
+npm test
+```
+
+### Check Linting
+
+```bash
+npm run test:lint
+```
+
+### Open Cypress
+
+For use when writing tests.
+
+```bash
+npm run test:open
+```
+
 ## Deployment Pipeline
 
 The pipeline is set up for trunk-based development with pull requests and releases used as deployment triggers.
