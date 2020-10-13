@@ -15,9 +15,4 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 14.8
-      - run: npm run init
-      - run: npm start
-      - run: docker ps -a
-      - run: ip route show
-      - run: curl http://web-test:3002
-      - run: npm test
+      - run: npm run test:ci

@@ -1,0 +1,54 @@
+version: "3.2"
+
+services:
+  cms-ci:
+    build: ./cms/
+    ports:
+      - 3003:3003
+    container_name: reclab-cms-ci
+    environment:
+      - NODE_ENV=development
+      - PORT=3003
+      - DATABASE_URL=postgres://postgres:postgres@db-ci:5432/postgres
+      - JWT_SECRET=asd
+    volumes:
+      - ./cms/src:/usr/src/app/src
+    depends_on:
+      - db-ci
+
+  web-ci:
+    build: ./web/
+    ports:
+      - 3002:3002
+      - 30012:30012
+    container_name: reclab-web-ci
+    environment:
+      - PORT=3002
+      - CMS_URL=http://cms-ci:3003
+      - INTERNAL_STATUS_PORT=30012
+    volumes:
+      - ./web/src:/usr/src/app/src
+    depends_on:
+      - cms-ci
+    # Use reset endpoint here to ensure the frontend is built correctly from the get-go.
+    command: /usr/src/app/wait-for-cms.sh http://cms-ci:3003/seeder/reset npm start
+
+  db-ci:
+    image: postgres:12
+    restart: unless-stopped
+    container_name: reclab-db-ci
+    environment:
+      - PGDATA=/data
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 5433:5432
+
+  e2e-ci:
+    build: ./e2e/
+    container_name: reclab-e2e-ci
+    environment:
+      - CYPRESS_BASE_URL=http://web-ci:3002/
+    volumes:
+      - ./e2e/cypress:/e2e/cypress
+    depends_on:
+      - cms-ci

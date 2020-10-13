@@ -11,8 +11,8 @@ services:
       - PORT=3001
       - DATABASE_URL=postgres://postgres:postgres@db:5432/postgres
       - JWT_SECRET=asd
-#    volumes:
-#      - ./cms/src:/usr/src/app/src
+    volumes:
+      - ./cms/src:/usr/src/app/src
     depends_on:
       - db
 
@@ -26,8 +26,8 @@ services:
       - PORT=3000
       - CMS_URL=http://cms:3001
       - INTERNAL_STATUS_PORT=30011
-#    volumes:
-#      - ./web/src:/usr/src/app/src
+    volumes:
+      - ./web/src:/usr/src/app/src
     depends_on:
       - cms
 
@@ -38,8 +38,8 @@ services:
     environment:
       - PGDATA=/data
       - POSTGRES_PASSWORD=postgres
-#    volumes:
-#     - ./pg_data:/data
+    volumes:
+      - ./pg_data:/data
     ports:
       - 5432:5432
 
@@ -63,8 +63,8 @@ services:
       - PORT=3003
       - DATABASE_URL=postgres://postgres:postgres@db-test:5432/postgres
       - JWT_SECRET=asd
-#    volumes:
-#      - ./cms/src:/usr/src/app/src
+    volumes:
+      - ./cms/src:/usr/src/app/src
     depends_on:
       - db-test
 
@@ -78,8 +78,8 @@ services:
       - PORT=3002
       - CMS_URL=http://cms-test:3003
       - INTERNAL_STATUS_PORT=30012
-#    volumes:
-#      - ./web/src:/usr/src/app/src
+    volumes:
+      - ./web/src:/usr/src/app/src
     depends_on:
       - cms-test
     # Use reset endpoint here to ensure the frontend is built correctly from the get-go.
