@@ -17,7 +17,7 @@ jobs:
           node-version: 14.8
       - run: npm run init
       - run: npm start
-      - run: npm docker ps -a
+      - run: docker ps -a
       - run: curl http://localhost:3002
       - run: curl http://web-test:3002
       - run: npm test
