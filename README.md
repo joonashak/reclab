@@ -96,7 +96,11 @@ The pipeline is set up for trunk-based development with pull requests and releas
 
 1. Push changes to `trunk` branch. Github runs tests for the new `HEAD`.
 2. Create a pull request to merge changes from `trunk` to `main`. The merge can be completed once all tests have passed. This triggers deployment to staging.
-3. Publish a new release to deploy to production. A Docker image is also created and published [here](https://hub.docker.com/repository/docker/joonashak/reclab-cms) for use in integration tests, etc.
+3. Publish a new release to deploy to production.
+
+## Propagating Content Changes to Static Frontend
+
+Gatsby is used to populate the site with CMS data at build time. To achieve convenient re-deployments upon content changes, a webhook must be set-up for the CMS backend to be able to trigger re-deployment. The project is configured for Vercel static site hosting.
 
 ## License
 
