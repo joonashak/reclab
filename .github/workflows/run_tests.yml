@@ -6,7 +6,7 @@ on:
 
 jobs:
   test:
-    name: End-to-End Tests
+    name: Tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -15,6 +15,5 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 14.8
-      - run: npm run init
-      - run: npm start
-      - run: npm test
+      - name: Run All Tests
+        run: npm run test:ci

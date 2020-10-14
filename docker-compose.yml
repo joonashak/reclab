@@ -59,12 +59,13 @@ services:
       - 3003:3003
     container_name: reclab-cms-test
     environment:
-      - NODE_ENV=development
+      - NODE_ENV=test
       - PORT=3003
       - DATABASE_URL=postgres://postgres:postgres@db-test:5432/postgres
       - JWT_SECRET=asd
     volumes:
       - ./cms/src:/usr/src/app/src
+      - ./cms/test:/usr/src/app/test
     depends_on:
       - db-test
 

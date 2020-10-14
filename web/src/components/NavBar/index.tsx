@@ -30,7 +30,7 @@ const NavBar = ({ page }) => {
   useEffect(() => {
     console.log('navbar did mount');
     return () => console.log('navbar did unmount');
-  }, [])
+  }, []);
 
   return (
     <AppBar position="sticky">

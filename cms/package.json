@@ -18,12 +18,7 @@
     "start:prod": "node dist/main",
     "lint": "eslint \"{src,test}/**/*.ts\"",
     "lint:fix": "eslint \"{src,test}/**/*.ts\" --fix",
-    "test": "docker-compose build test-app; docker-compose run test-app; docker-compose down",
-    "test:watch": "jest --watch",
-    "test:cov": "jest --coverage",
-    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --runInBand --config ./test/jest-e2e.json",
-    "docker:build": "docker-compose build app"
+    "test": "jest --runInBand --config ./test/jest-e2e.json"
   },
   "dependencies": {
     "@nestjs/common": "^7.4.2",
