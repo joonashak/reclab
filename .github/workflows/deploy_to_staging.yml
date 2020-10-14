@@ -6,15 +6,24 @@ on:
 
 jobs:
   deploy:
-    name: Deploy to Staging (CMS)
+    name: Deploy to Staging
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Deploy to Heroku
+      - name: Deploy CMS to Heroku
         uses: akhileshns/heroku-deploy@v3.4.6
         with:
           appdir: cms
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: ${{secrets.HEROKU_STAGING_NAME}}
           heroku_email: ${{secrets.HEROKU_EMAIL}}
+      - name: Deploy Frontend to Vercel
+        uses: amondnet/vercel-action@v19
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID}} 
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}}
+          alias-domains: |
+            reclab-staging.vercel.app
+          working-directory: ./web
