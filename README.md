@@ -1,5 +1,15 @@
 # Recover Laboratory Web
 
+## Installation
+
+As some commands, such as development mode tests, are run on the host machine instead of a container, you will need to install the dependecies first.
+
+### Install Dependencies
+
+```bash
+npm run init
+```
+
 ## Development Environment
 
 The development environment is configured with npm and Docker. You will need to have the `npm` and `docker` commands available on your system (tested only on macOS).
