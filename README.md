@@ -60,6 +60,12 @@ Make sure the development environment is running before using the commands below
 npm test
 ```
 
+### Run Only CMS Integration Tests
+
+```bash
+npm run test:cms
+```
+
 ### Check Linting
 
 ```bash
