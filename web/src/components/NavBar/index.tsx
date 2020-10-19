@@ -47,7 +47,7 @@ const NavBar = ({ page }) => {
           Recover Laboratory
         </Typography>
         <Menu page={page} />
-        <LanguageSelect />
+        <LanguageSelect page={page} />
         <Button color="inherit">Login</Button>
       </Toolbar>
     </AppBar>

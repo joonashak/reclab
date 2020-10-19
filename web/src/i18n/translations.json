@@ -1,11 +1,19 @@
 {
   "en": {
     "translation": {
+      "languages": {
+        "fi": "Suomi",
+        "en": "English"
+      },
       "test": "hello"
     }
   },
   "fi": {
     "translation": {
+      "languages": {
+        "fi": "Suomi",
+        "en": "English"
+      },
       "test": "mo"
     }
   }
