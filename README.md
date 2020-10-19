@@ -14,7 +14,9 @@ npm run init
 
 The development environment is configured with npm and Docker. You will need to have the `npm` and `docker` commands available on your system (tested only on macOS).
 
-> _**Note:**_ Gatsby's hot-reload does not currently work properly when running in a Docker container. In average, it fails on every other change.
+> _**Note on hot-reload:**_ Gatsby's hot-reload does not currently work properly when running in a Docker container. In average, it fails on every other change.
+
+> _**Note on updating content:**_ Upon making changes it is currently necessary to restart the frontend container to have Gatsby rebuild with new static content. Use `npm run restart` for this.
 
 All commands below should be run in project root. The npm scripts in subdirectories are meant for internal use by the scripts in root.
 
@@ -88,6 +90,22 @@ For use when writing tests.
 
 ```bash
 npm run test:open
+```
+
+## Maintenance
+
+### Build All Containers
+
+```bash
+npm run build
+```
+
+### Build Specific Container
+
+Use this, for example, when you update CMS content or dependencies (frontend/backend, respectively):
+
+```bash
+npm run logs:<cms|web>
 ```
 
 ## Deployment Pipeline

@@ -16,7 +16,10 @@
     "test:cms": "docker-compose exec cms-test npm test",
     "test:ci": "./run-tests-ci.sh",
     "test:lint": "cd cms && npm run lint && cd ../web && npm run lint",
-    "init": "cd e2e && npm ci && cd ../cms && npm ci && cd ../web && npm ci"
+    "init": "cd e2e && npm ci && cd ../cms && npm ci && cd ../web && npm ci",
+    "build": "docker-compose build; docker-compose -f docker-compose-ci.yml build",
+    "build:cms": "docker-compose build cms cms-test; docker-compose -f docker-compose-ci.yml build cms-ci",
+    "build:web": "docker-compose build web web-test; docker-compose -f docker-compose-ci.yml build web-ci"
   },
   "repository": {
     "type": "git",
