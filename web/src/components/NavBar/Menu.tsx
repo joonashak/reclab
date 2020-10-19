@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
-import { Container, Drawer, IconButton } from '@material-ui/core';
+import {
+  Container, Drawer, IconButton, List,
+} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
+import MenuItem from './MenuItem';
+import { makePath } from '../../util/snippets';
 
 const query = graphql`
   query {
@@ -16,18 +20,14 @@ const query = graphql`
           order
           id: alternative_id
         }
+        page {
+          language
+          path
+        }
       }
     }
   }
 `;
-
-/**
-      <div>
-        {data.allMenu.nodes.map((menuItem) => (
-          <span key={menuItem.id}>{menuItem.title}</span>
-        ))}
-      </div>
- */
 
 const Menu = () => {
   const [isOpen, setOpen] = useState(false);
@@ -47,7 +47,15 @@ const Menu = () => {
           </IconButton>
           <Drawer anchor="top" open={isOpen} onClose={toggle}>
             <Container maxWidth="md">
-              menu
+              <List>
+                {data.allMenu.nodes.map(({ id, title, page }) => (
+                  <MenuItem
+                    key={id}
+                    text={title}
+                    to={page ? makePath(page.language, page.path) : '/'}
+                  />
+                ))}
+              </List>
             </Container>
           </Drawer>
         </>
