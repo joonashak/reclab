@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import MenuWithData from './MenuWithData';
@@ -10,6 +10,7 @@ const query = graphql`
         order
         title
         language
+        path
         id: alternative_id
         parent: alternative_parent {
           id: alternative_id
@@ -28,6 +29,7 @@ const Menu = ({ page }) => (
       const menuItems = data.allMenu.nodes.filter(
         (menuItem) => menuItem.language === page.language,
       );
+
       return <MenuWithData menuItems={menuItems} />;
     }}
   </StaticQuery>

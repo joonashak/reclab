@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import {
   Container, Drawer, IconButton, List,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import MenuItem from './MenuItem';
-import { makePath } from '../../../util/snippets';
 
 const MenuWithData = ({ menuItems }) => {
   const [isOpen, setOpen] = useState(false);
@@ -23,11 +23,10 @@ const MenuWithData = ({ menuItems }) => {
       <Drawer anchor="top" open={isOpen} onClose={toggle}>
         <Container maxWidth="md">
           <List>
-            {menuItems.map(({ id, title, page }) => (
+            {menuItems.map((menuItem) => (
               <MenuItem
-                key={id}
-                text={title}
-                to={page ? makePath(page.language, page.path) : '/'}
+                key={menuItem.id}
+                menuItem={menuItem}
               />
             ))}
           </List>
@@ -35,6 +34,17 @@ const MenuWithData = ({ menuItems }) => {
       </Drawer>
     </>
   );
+};
+
+MenuWithData.propTypes = {
+  menuItems: PropTypes.arrayOf(PropTypes.shape({
+    path: PropTypes.oneOf([PropTypes.string, null]),
+    title: PropTypes.string.isRequired,
+    language: PropTypes.string.isRequired,
+    page: PropTypes.shape({
+      path: PropTypes.string.isRequired,
+    }),
+  })).isRequired,
 };
 
 export default MenuWithData;
