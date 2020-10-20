@@ -3,12 +3,10 @@ import PropTypes from 'prop-types';
 import {
   AppBar,
   Button,
-  IconButton,
   makeStyles,
   Toolbar,
   Typography,
 } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
 import Menu from './Menu';
 import LanguageSelect from '../LanguageSelect';
 
@@ -35,19 +33,11 @@ const NavBar = ({ page }) => {
   return (
     <AppBar position="sticky">
       <Toolbar>
-        <IconButton
-          edge="start"
-          className={classes.menuButton}
-          color="inherit"
-          aria-label="menu"
-        >
-          <MenuIcon />
-        </IconButton>
+        <Menu page={page} />
         <Typography variant="h6" className={classes.title}>
           Recover Laboratory
         </Typography>
-        <Menu page={page} />
-        <LanguageSelect />
+        <LanguageSelect page={page} />
         <Button color="inherit">Login</Button>
       </Toolbar>
     </AppBar>

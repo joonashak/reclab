@@ -10,7 +10,7 @@ export class MenuService {
     private readonly menuItemRepository: Repository<MenuItem>,
   ) {}
 
-  async findAll(): Promise<MenuItem[]> {
+  findAll(): Promise<MenuItem[]> {
     return this.menuItemRepository.find({ relations: ['parent'] });
   }
 }
