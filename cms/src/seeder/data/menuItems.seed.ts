@@ -1,4 +1,4 @@
-import pagesSeed from "./pages.seed";
+import pagesSeed from './pages.seed';
 
 export default [
   {
@@ -7,7 +7,7 @@ export default [
     order: 0,
     path: null,
     language: 'en',
-    page: pagesSeed[0]
+    page: pagesSeed[0],
   },
   {
     id: 'f68b04d7-a753-4865-ac2e-429e8b1d6d9f',
@@ -15,7 +15,7 @@ export default [
     order: 1,
     path: null,
     language: 'en',
-    page: pagesSeed[1]
+    page: pagesSeed[1],
   },
   {
     id: '26315387-b87b-4bf1-8554-5eb3183d4860',
@@ -23,7 +23,7 @@ export default [
     order: 0,
     path: null,
     language: 'fi',
-    page: pagesSeed[2]
+    page: pagesSeed[2],
   },
   {
     id: '6d54b2b6-b957-4133-a660-c9b030f4b1d0',
@@ -31,7 +31,14 @@ export default [
     order: 1,
     path: null,
     language: 'fi',
-    page: pagesSeed[3]
+    page: pagesSeed[3],
+  },
+  {
+    id: '1bdd8526-c23b-4f08-a42a-4ee60cce82b4',
+    title: 'Just A Header',
+    order: 2,
+    path: null,
+    language: 'fi',
   },
   {
     id: '0efd204d-1a0e-4b4a-ba46-676d4b5f0f64',
@@ -41,7 +48,7 @@ export default [
     language: 'fi',
     route: null,
     parent: {
-      id: '6d54b2b6-b957-4133-a660-c9b030f4b1d0',
+      id: '1bdd8526-c23b-4f08-a42a-4ee60cce82b4',
     },
   },
 ];
