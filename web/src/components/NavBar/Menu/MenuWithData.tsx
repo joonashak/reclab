@@ -4,6 +4,7 @@ import {
   Container, Drawer, IconButton, List,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
+import { sortBy } from 'lodash';
 import MenuItem from './MenuItem';
 import MenuCategory from './MenuCategory';
 
@@ -24,11 +25,12 @@ const MenuWithData = ({ menuItems }) => {
       <Drawer anchor="top" open={isOpen} onClose={toggle}>
         <Container maxWidth="md">
           <List>
-            {menuItems.map((menuItem) => (menuItem.children.length ? (
-              <MenuCategory key={menuItem.id} menuItem={menuItem} />
-            ) : (
-              <MenuItem key={menuItem.id} menuItem={menuItem} />
-            )))}
+            {sortBy(menuItems, ['order'])
+              .map((menuItem) => (menuItem.children.length ? (
+                <MenuCategory key={menuItem.id} menuItem={menuItem} />
+              ) : (
+                <MenuItem key={menuItem.id} menuItem={menuItem} />
+              )))}
           </List>
         </Container>
       </Drawer>
