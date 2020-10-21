@@ -22,7 +22,7 @@ const MenuItem = ({ menuItem }) => {
 
 MenuItem.propTypes = {
   menuItem: PropTypes.shape({
-    path: PropTypes.oneOf([PropTypes.string, null]),
+    path: PropTypes.string,
     title: PropTypes.string.isRequired,
     language: PropTypes.string.isRequired,
     page: PropTypes.shape({
