@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes, { InferProps } from 'prop-types';
 import { Typography } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
@@ -6,7 +6,10 @@ import PageWrapper from '../PageWrapper';
 
 const Page = ({ pageContext }: InferProps<typeof Page.propTypes>) => {
   const { t, i18n } = useTranslation();
-  i18n.changeLanguage(pageContext.data.language);
+
+  useEffect(() => {
+    i18n.changeLanguage(pageContext.data.language);
+  }, []);
 
   return (
     <PageWrapper page={pageContext.data}>
