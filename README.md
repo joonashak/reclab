@@ -106,6 +106,14 @@ Use this, for example, when you update CMS content or dependencies (frontend/bac
 npm run logs:<cms|web>
 ```
 
+### Generate Migrations
+
+Migrations are generated automatically by TypeORM and saved at `cms/migrations` with the suffix `<NAME>`. The development environment synchronizes the database schema with the code automatically to help development.
+
+```bash
+npm run migrations:generate -- <NAME>
+```
+
 ## Deployment Pipeline
 
 The pipeline is set up for trunk-based development with pull requests and releases used as deployment triggers.

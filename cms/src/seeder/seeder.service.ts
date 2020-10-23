@@ -29,6 +29,10 @@ export class SeederService {
   async clear(): Promise<void> {
     protect();
     await this.connection.dropDatabase();
+  }
+
+  async init(): Promise<void> {
+    protect();
     await this.connection.synchronize();
   }
 
