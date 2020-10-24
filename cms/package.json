@@ -11,7 +11,7 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
-    "heroku-postbuild": "npm run typeorm -- migration:run",
+    "heroku-postbuild": "npm run typeorm -- migration:run && npm run build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "npm run start:dev; exit 0",
     "start:dev": "docker-compose up db adminer app; exit 0",
