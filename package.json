@@ -19,7 +19,11 @@
     "init": "cd e2e && npm ci && cd ../cms && npm ci && cd ../web && npm ci",
     "build": "docker-compose build; docker-compose -f docker-compose-ci.yml build",
     "build:cms": "docker-compose build cms cms-test; docker-compose -f docker-compose-ci.yml build cms-ci",
-    "build:web": "docker-compose build web web-test; docker-compose -f docker-compose-ci.yml build web-ci"
+    "build:web": "docker-compose build web web-test; docker-compose -f docker-compose-ci.yml build web-ci",
+    "typeorm": "docker exec -ti reclab-cms-test npx ts-node node_modules/typeorm/cli.js",
+    "migrations:run": "npm run typeorm -- migration:run",
+    "migrations:revert": "npm run typeorm -- migration:revert",
+    "migrations:generate": "curl http://localhost:3003/seeder/clear && npm run migrations:run && npm run typeorm -- migration:generate -d migrations -n"
   },
   "repository": {
     "type": "git",

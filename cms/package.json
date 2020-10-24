@@ -11,6 +11,7 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
+    "heroku-postbuild": "npm run typeorm -- migration:run",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "npm run start:dev; exit 0",
     "start:dev": "docker-compose up db adminer app; exit 0",
@@ -18,7 +19,8 @@
     "start:prod": "node dist/main",
     "lint": "eslint \"{src,test}/**/*.ts\"",
     "lint:fix": "eslint \"{src,test}/**/*.ts\" --fix",
-    "test": "jest --runInBand --config ./test/jest-e2e.json"
+    "test": "jest --runInBand --config ./test/jest-e2e.json",
+    "typeorm": "npx ts-node node_modules/typeorm/cli.js"
   },
   "dependencies": {
     "@nestjs/common": "^7.4.2",
