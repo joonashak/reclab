@@ -8,4 +8,7 @@ module.exports = {
   logging: process.env.NODE_ENV === 'development',
   entities: ['src/**/*.entity.ts'],
   migrations: ['migrations/*.ts'],
+  extra: {
+    ssl: process.env.NODE_ENV === 'production',
+  }
 };
