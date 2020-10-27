@@ -10,11 +10,11 @@ describe('/page', () => {
     app = await initializeApp();
   });
 
-  it('/ (GET)', () => {
-    return request(app.getHttpServer())
-      .get('/page')
-      .expect(200)
-      .expect(apiPages);
+  it('/ (GET)', async () => {
+    const res = await request(app.getHttpServer()).get('/page');
+
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual(expect.arrayContaining(apiPages));
   });
 
   afterEach(async () => {
