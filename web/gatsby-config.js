@@ -48,6 +48,11 @@ module.exports = {
             method: 'get',
             name: 'Menu',
           },
+          {
+            url: `${process.env.CMS_URL}/settings`,
+            method: 'get',
+            name: 'Settings',
+          },
         ],
       },
     },
