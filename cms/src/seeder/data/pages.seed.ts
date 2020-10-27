@@ -73,8 +73,21 @@ const justPages = [
     editor: null,
     path: '/private',
   },
+  {
+    id: '10b5cd43-ed7e-4c54-b70e-f33677276ddb',
+    title: 'Frontpage',
+    content: 'Hello, this is the frontpage.',
+    createdAt: '2020-09-13T17:31:46.550Z',
+    updatedAt: '2020-09-14T19:32:46.550Z',
+    language: 'en',
+    isPublic: true,
+    author: usersSeed[0],
+    editor: null,
+    path: '/',
+  },
 ];
 
+// Add translation relations here.
 const relationMap = [
   {
     a: 'b69ed738-5e02-47f4-8180-a1dd4611b7f7',

@@ -5,6 +5,7 @@ import { AuthModule } from './auth/auth.module';
 import { PagesModule } from './pages/pages.module';
 import { SeederModule } from './seeder/seeder.module';
 import { MenuModule } from './menu/menu.module';
+import { SettingsModule } from './settings/settings.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { MenuModule } from './menu/menu.module';
     PagesModule,
     SeederModule,
     MenuModule,
+    SettingsModule,
   ],
 })
 export class AppModule {}

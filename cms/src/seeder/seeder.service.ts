@@ -7,6 +7,8 @@ import pagesSeed from './data/pages.seed';
 import usersSeed from './data/users.seed';
 import { MenuItem } from '../menu/menuItem.entity';
 import menuItemsSeed from './data/menuItems.seed';
+import { Settings } from '../settings/settings.entity';
+import settingsSeed from './data/settings.seed';
 
 const protect = () => {
   if (process.env.NODE_ENV === 'production') {
@@ -24,6 +26,8 @@ export class SeederService {
     private readonly userRepository: Repository<User>,
     @InjectRepository(MenuItem)
     private readonly menuItemRepository: Repository<MenuItem>,
+    @InjectRepository(Settings)
+    private readonly settingsRepository: Repository<Settings>,
   ) {}
 
   async clear(): Promise<void> {
@@ -41,5 +45,6 @@ export class SeederService {
     await this.userRepository.save(usersSeed);
     await this.pageRepository.save(pagesSeed);
     await this.menuItemRepository.save(menuItemsSeed);
+    await this.settingsRepository.save(settingsSeed);
   }
 }

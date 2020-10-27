@@ -45,6 +45,11 @@ Table menuItem {
   }
 }
 
+Table settings {
+  frontpage UUID [ref: > page.id]
+  title TEXT [not null]
+}
+
 enum LANGUAGE {
   fi
   en
