@@ -32,5 +32,6 @@ export const apiMenu = menuItemsSeed.map(item =>
 
 export const apiSettings = (() => {
   const { frontpage, ...rest } = settingsSeed;
-  return { ...rest, frontpage: { path: frontpage.path } };
+  const { id, path } = frontpage;
+  return { ...rest, frontpage: { id, path } };
 })();

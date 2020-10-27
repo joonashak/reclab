@@ -17,7 +17,7 @@ export class SettingsService {
   async findAll(): Promise<Settings> {
     const settings = await this.settingsRepository.createQueryBuilder('settings')
       .leftJoin('settings.frontpage', 'frontpage')
-      .addSelect('frontpage.path')
+      .addSelect(['frontpage.path', 'frontpage.id'])
       .getMany();
 
     if (settings.length !== 1) {
