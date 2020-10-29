@@ -103,7 +103,15 @@ npm run build
 Use this, for example, when you update CMS content or dependencies (frontend/backend, respectively):
 
 ```bash
-npm run logs:<cms|web>
+npm run build:<cms|web>
+```
+
+### Convenience Commands for Rebuilding
+
+Use this convenience command to stop, rebuild and start again all of specific containers.
+
+```bash
+npm run rebuild[:<cms|web>]
 ```
 
 ### Generate Migrations

@@ -28,13 +28,37 @@ exports.createSchemaCustomization = ({ actions }) => {
       alternative_parent: Menu
       page: Page
     }
+
+    type Frontpage {
+      alternative_id: ID!
+      path: String!
+    }
+
+    type Settings implements Node @dontInfer {
+      title: String!
+      frontpage: Frontpage!
+    }
   `);
 };
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
-  const result = await graphql(`
+  const settingsData = await graphql(`
+    query {
+      allSettings {
+        nodes {
+          title
+          frontpage {
+            id: alternative_id
+            path
+          }
+        }
+      }
+    }
+  `);
+
+  const pages = await graphql(`
     query {
       allPage(filter: { id: { ne: "dummy" } }) {
         nodes {
@@ -52,7 +76,7 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `);
 
-  result.data.allPage.nodes.forEach((page) => {
+  pages.data.allPage.nodes.forEach((page) => {
     createPage({
       path: `/${page.language}${page.path}`,
       component: path.resolve('./src/templates/Page.tsx'),
@@ -60,5 +84,18 @@ exports.createPages = async ({ graphql, actions }) => {
         data: page,
       },
     });
+
+    // Create frontpage.
+    const frontpageId = settingsData.data.allSettings.nodes[0].frontpage.id;
+
+    if (page.id === frontpageId) {
+      createPage({
+        path: '/',
+        component: path.resolve('./src/templates/Page.tsx'),
+        context: {
+          data: page,
+        },
+      });
+    }
   });
 };
