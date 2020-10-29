@@ -23,7 +23,10 @@
     "typeorm": "docker exec -ti reclab-cms-test npx ts-node node_modules/typeorm/cli.js",
     "migrations:run": "npm run typeorm -- migration:run",
     "migrations:revert": "npm run typeorm -- migration:revert",
-    "migrations:generate": "curl http://localhost:3003/seeder/clear && npm run migrations:run && npm run typeorm -- migration:generate -d migrations -n"
+    "migrations:generate": "curl http://localhost:3003/seeder/clear && npm run migrations:run && npm run typeorm -- migration:generate -d migrations -n",
+    "rebuild": "npm stop && npm run build && npm start",
+    "rebuild:cms": "npm stop && npm run build:cms && npm start",
+    "rebuild:web": "npm stop && npm run build:web && npm start"
   },
   "repository": {
     "type": "git",
