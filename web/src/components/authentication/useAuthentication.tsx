@@ -1,20 +1,24 @@
-import React, { useContext, createContext, useState } from 'react';
+import React, {
+  useContext, createContext, useState, useEffect,
+} from 'react';
 import PropTypes from 'prop-types';
-
-type State = {
-  username: string,
-  token: string,
-}
-
-const defaultState: State = {
-  username: null,
-  token: null,
-};
+import jwt from 'jsonwebtoken';
+import tokenStore from './tokenStore';
 
 const AuthenticationContext = createContext([[], () => {}]);
 
 const AuthenticationProvider = ({ children }) => {
-  const [state, setState] = useState<any>(defaultState);
+  const [state, setState] = useState<any>(null);
+
+  useEffect(() => {
+    (async () => {
+      const token = await tokenStore.getToken();
+
+      if (token) {
+        setState(token);
+      }
+    })();
+  }, []);
 
   return (
     <AuthenticationContext.Provider value={[state, setState]}>
@@ -32,13 +36,16 @@ export { AuthenticationProvider };
 export default () => {
   const [state, setState] = useContext<any>(AuthenticationContext);
 
-  const setUsername = (username: string) => setState((prev: State) => ({ ...prev, username }));
-  const setToken = (token: string) => setState((prev: State) => ({ ...prev, token }));
+  const setToken = (token: string) => {
+    tokenStore.setToken(token);
+    setState(token);
+  };
+
+  const getUsername = () => jwt.decode(state).payload;
 
   return {
-    username: state.username,
-    setUsername,
-    token: state.token,
+    token: state,
     setToken,
+    getUsername,
   };
 };
