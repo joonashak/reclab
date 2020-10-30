@@ -4,6 +4,7 @@ import React, {
 import PropTypes from 'prop-types';
 import jwt from 'jsonwebtoken';
 import tokenStore from './tokenStore';
+import Login from './Login';
 
 const AuthenticationContext = createContext([[], () => {}]);
 
@@ -14,15 +15,14 @@ const AuthenticationProvider = ({ children }) => {
     (async () => {
       const token = await tokenStore.getToken();
 
-      if (token) {
-        setState(token);
-      }
+      // Use undefined to signify 'no token found' to prevent login prompt FOUC.
+      setState(token || undefined);
     })();
   }, []);
 
   return (
     <AuthenticationContext.Provider value={[state, setState]}>
-      {children}
+      {state === undefined ? <Login /> : children}
     </AuthenticationContext.Provider>
   );
 };
