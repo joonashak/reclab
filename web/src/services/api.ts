@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = process.env.CMS_URL;
+const baseUrl = process.env.GATSBY_CMS_URL;
 const makeUrl = (path: string): string => `${baseUrl}/${path.replace(/^\/+/, '')}`;
 
 const get = async (path) => axios.get(makeUrl(path));

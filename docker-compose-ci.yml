@@ -11,6 +11,7 @@ services:
       - PORT=3003
       - DATABASE_URL=postgres://postgres:postgres@db-ci:5432/postgres
       - JWT_SECRET=asd
+      - FRONTEND_URL=http://web-ci:3002
     volumes:
       - ./cms/src:/usr/src/app/src
     depends_on:
@@ -26,6 +27,7 @@ services:
       - PORT=3002
       - CMS_URL=http://cms-ci:3003
       - INTERNAL_STATUS_PORT=30012
+      - GATSBY_CMS_URL=http://cms-ci:3003
     volumes:
       - ./web/src:/usr/src/app/src
     depends_on:

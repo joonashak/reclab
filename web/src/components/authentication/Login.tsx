@@ -11,6 +11,8 @@ import ControlledTextField from '../controls/ControlledTextField';
 export default () => {
   const formControl = useForm({ mode: 'onBlur' });
   const { handleSubmit, errors, register } = formControl;
+  // FIXME:
+  // eslint-disable-next-line
   const { setToken } = useAuthentication();
 
   const submit = async (data) => {
@@ -35,7 +37,8 @@ export default () => {
     <>
       <Grid item xs={12}>
         <Typography variant="body1" gutterBottom>
-          Enter your credentials to log in.
+          Enter your credentials to log in. CMS URL:
+          {process.env.GATSBY_CMS_URL}
         </Typography>
         <Typography variant="body2" style={{ fontStyle: 'italic' }}>
           (This app does not allow public registrations.)
