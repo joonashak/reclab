@@ -27,3 +27,4 @@ jobs:
           alias-domains: |
             reclab-web.vercel.app
           working-directory: ./web
+          vercel-args: '-b CMS_URL=https://reclab-cms.herokuapp.com -b GATSBY_CMS_URL=https://reclab-cms.herokuapp.com'
