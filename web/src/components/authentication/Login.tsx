@@ -11,8 +11,6 @@ import ControlledTextField from '../controls/ControlledTextField';
 export default () => {
   const formControl = useForm({ mode: 'onBlur' });
   const { handleSubmit, errors, register } = formControl;
-  // FIXME:
-  // eslint-disable-next-line
   const { setToken } = useAuthentication();
 
   const submit = async (data) => {
@@ -28,8 +26,8 @@ export default () => {
       return;
     }
 
-    // setLoggedIn(true);
-    console.log(res);
+    const { data: { accessToken } } = res;
+    setToken(accessToken);
     console.log('You were logged in!');
   };
 
