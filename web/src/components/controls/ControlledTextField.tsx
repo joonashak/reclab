@@ -1,11 +1,10 @@
-// FIXME:
-/* eslint-disable */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Controller } from 'react-hook-form';
 import { TextField } from '@material-ui/core';
 
-export default ({
-  formControl, name, children
+const ControlledTextField = ({
+  formControl, name, children, type,
 }) => {
   const { control, errors } = formControl;
 
@@ -21,8 +20,26 @@ export default ({
       variant="filled"
       fullWidth
       data-cy={`input-${name}`}
+      type={type}
     >
       {children}
     </Controller>
   );
 };
+
+ControlledTextField.propTypes = {
+  name: PropTypes.string.isRequired,
+  children: PropTypes.node,
+  type: PropTypes.oneOf(['text', 'username', 'password']),
+  formControl: PropTypes.shape({
+    control: PropTypes.shape({}),
+    errors: PropTypes.shape({}),
+  }).isRequired,
+};
+
+ControlledTextField.defaultProps = {
+  type: 'text',
+  children: null,
+};
+
+export default ControlledTextField;
