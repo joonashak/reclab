@@ -25,6 +25,6 @@ jobs:
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID}} 
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}}
           alias-domains: |
-            reclab-web.vercel.app
+            reclab.vercel.app
           working-directory: ./web
-          vercel-args: '-b CMS_URL=https://reclab-cms.herokuapp.com -b GATSBY_CMS_URL=https://reclab-cms.herokuapp.com'
+          vercel-args: '--prod'
