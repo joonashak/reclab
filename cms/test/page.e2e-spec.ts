@@ -14,7 +14,7 @@ describe('/page', () => {
     const res = await request(app.getHttpServer()).get('/page');
 
     expect(res.status).toBe(200);
-    expect(res.body).toEqual(expect.arrayContaining(apiPages));
+    expect(res.body).toEqual(expect.arrayContaining(apiPages.filter(p => p.isPublic)));
   });
 
   afterEach(async () => {
