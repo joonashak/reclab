@@ -35,7 +35,7 @@ export class Page {
 
   @ManyToOne(type => User, { nullable: false, eager: true })
   @JoinColumn()
-  author: User;
+  author: Partial<User>;
 
   @ManyToOne(type => User, { eager: true })
   @JoinColumn()

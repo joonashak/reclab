@@ -25,6 +25,11 @@ export class PagesService {
       .createQueryBuilder('page')
       .leftJoinAndSelect('page.translations', 'translations')
       .select(['page', 'translations.language', 'translations.path'])
+      .where('page.isPublic = true')
       .getMany();
+  }
+
+  async create(page: Partial<Page>): Promise<Page> {
+    return this.pagesRepository.save(page);
   }
 }
