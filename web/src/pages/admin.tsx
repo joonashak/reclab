@@ -1,10 +1,13 @@
 import React from 'react';
-import AdminNavBar from '../components/admin/AdminNavBar';
+import { Router } from '@reach/router';
 import { AuthenticationProvider } from '../components/authentication/useAuthentication';
+import Route from '../components/Route';
+import Admin from '../components/Admin';
 
 export default () => (
   <AuthenticationProvider>
-    <AdminNavBar />
-    admin
+    <Router basepath="/admin">
+      <Route path="/" default component={<Admin />} />
+    </Router>
   </AuthenticationProvider>
 );
