@@ -4,7 +4,7 @@ import { Controller } from 'react-hook-form';
 import { TextField } from '@material-ui/core';
 
 const ControlledTextField = ({
-  formControl, name, children, type, label, rules, multiline,
+  formControl, name, children, type, label, rules, multiline, autoComplete,
 }) => {
   const { control, errors } = formControl;
 
@@ -24,6 +24,7 @@ const ControlledTextField = ({
       label={label}
       rules={rules}
       multiline={multiline}
+      autoComplete={autoComplete}
     >
       {children}
     </Controller>
@@ -41,6 +42,7 @@ ControlledTextField.propTypes = {
   label: PropTypes.string,
   rules: PropTypes.shape({}),
   multiline: PropTypes.bool,
+  autoComplete: PropTypes.string,
 };
 
 ControlledTextField.defaultProps = {
@@ -49,6 +51,7 @@ ControlledTextField.defaultProps = {
   label: null,
   multiline: false,
   rules: null,
+  autoComplete: null,
 };
 
 export default ControlledTextField;

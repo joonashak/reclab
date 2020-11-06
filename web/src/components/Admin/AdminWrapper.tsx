@@ -11,6 +11,8 @@ const AdminWrapper = ({ children }) => (
 
 AdminWrapper.propTypes = {
   children: PropTypes.node.isRequired,
+  // eslint-disable-next-line react/no-unused-prop-types
+  path: PropTypes.string.isRequired,
 };
 
 export default AdminWrapper;

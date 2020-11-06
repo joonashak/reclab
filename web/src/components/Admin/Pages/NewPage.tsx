@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 import {
   Button, Grid, Typography, FormControlLabel, Checkbox,
@@ -9,7 +10,7 @@ import ControlledTextField from '../../controls/ControlledTextField';
 import ControlledSelect from '../../controls/ControlledSelect';
 import usePages from './usePages';
 
-export default () => {
+const NewPage = () => {
   const { addPage } = usePages();
   const formControl = useForm({ mode: 'onBlur' });
   const { handleSubmit, errors, register } = formControl;
@@ -91,3 +92,10 @@ export default () => {
     </>
   );
 };
+
+NewPage.propTypes = {
+  // eslint-disable-next-line react/no-unused-prop-types
+  path: PropTypes.string.isRequired,
+};
+
+export default NewPage;
