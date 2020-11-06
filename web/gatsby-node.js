@@ -102,12 +102,11 @@ exports.createPages = async ({ graphql, actions }) => {
 
 exports.onCreatePage = async ({ page, actions }) => {
   const { createPage } = actions;
-  // Only update the `/app` page.
+
+  // Enable direct navigation to client-side routes.
   if (page.path.match(/^\/admin/)) {
-    // page.matchPath is a special key that's used for matching pages
-    // with corresponding routes only on the client.
+    /* eslint no-param-reassign: 0 */
     page.matchPath = '/admin/*';
-    // Update the page.
     createPage(page);
   }
 };
