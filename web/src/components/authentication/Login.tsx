@@ -35,8 +35,7 @@ export default () => {
     <>
       <Grid item xs={12}>
         <Typography variant="body1" gutterBottom>
-          Enter your credentials to log in. CMS URL:
-          {process.env.GATSBY_CMS_URL}
+          Enter your credentials to log in.
         </Typography>
         <Typography variant="body2" style={{ fontStyle: 'italic' }}>
           (This app does not allow public registrations.)

@@ -15,7 +15,7 @@ const AuthenticationProvider = ({ children }) => {
     (async () => {
       const token = await tokenStore.getToken();
 
-      // Use undefined to signify 'no token found' to prevent login prompt FOUC.
+      // Use undefined to signify 'no token found' to prevent login prompt flash.
       setState(token || undefined);
     })();
   }, []);

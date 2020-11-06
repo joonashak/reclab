@@ -11,6 +11,7 @@ const PagesProvider = ({ children, token }) => {
 
   useEffect(() => {
     (async () => {
+      console.log('pages query run');
       setState(await pageService.getAll(token));
     })();
   }, []);
@@ -24,7 +25,11 @@ const PagesProvider = ({ children, token }) => {
 
 PagesProvider.propTypes = {
   children: PropTypes.node.isRequired,
-  token: PropTypes.string.isRequired,
+  token: PropTypes.string,
+};
+
+PagesProvider.defaultProps = {
+  token: '',
 };
 
 export { PagesProvider };
