@@ -4,10 +4,13 @@ import {
   Button, Grid, Typography, FormControlLabel, Checkbox,
 } from '@material-ui/core';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
+import { navigate } from 'gatsby';
 import ControlledTextField from '../../controls/ControlledTextField';
 import ControlledSelect from '../../controls/ControlledSelect';
+import usePages from './usePages';
 
 export default () => {
+  const { addPage } = usePages();
   const formControl = useForm({ mode: 'onBlur' });
   const { handleSubmit, errors, register } = formControl;
 
@@ -15,15 +18,13 @@ export default () => {
     if (Object.keys(errors).length > 0) {
       return;
     }
-    // const res = await login(username, password);
-    console.log(data);
-    /*
-    if (res.error) {
-      console.log(`Failed: ${res.error.response.data.message}`, 'error');
 
-      return;
+    try {
+      await addPage(data);
+      navigate('/admin/pages');
+    } catch (error) {
+      console.log(error);
     }
-    */
   };
 
   return (
