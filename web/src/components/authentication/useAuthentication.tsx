@@ -15,14 +15,14 @@ const AuthenticationProvider = ({ children }) => {
     (async () => {
       const token = await tokenStore.getToken();
 
-      // Use undefined to signify 'no token found' to prevent login prompt FOUC.
-      setState(token || undefined);
+      // Use '' to signify 'no token found' to prevent login prompt flash.
+      setState(token || '');
     })();
   }, []);
 
   return (
     <AuthenticationContext.Provider value={[state, setState]}>
-      {state === undefined ? <Login /> : children}
+      {state === '' ? <Login /> : children}
     </AuthenticationContext.Provider>
   );
 };

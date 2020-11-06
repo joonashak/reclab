@@ -10,7 +10,7 @@ export default () => (
     <Router>
       <AdminWrapper path="/admin">
         <Admin path="/" default />
-        <Pages path="/pages" />
+        <Pages path="/pages/*" />
       </AdminWrapper>
     </Router>
   </AuthenticationProvider>

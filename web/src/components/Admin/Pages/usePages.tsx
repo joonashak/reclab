@@ -3,17 +3,24 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import pageService from '../../../services/pageService';
+import useAuthentication from '../../authentication/useAuthentication';
 
 const PagesContext = createContext([[], () => {}]);
 
-const PagesProvider = ({ children, token }) => {
+const PagesProvider = ({ children }) => {
   const [state, setState] = useState<any>([]);
+  const { token } = useAuthentication();
 
   useEffect(() => {
+    if (!token) {
+      return;
+    }
+
     (async () => {
+      console.log('pages query run');
       setState(await pageService.getAll(token));
     })();
-  }, []);
+  }, [token]);
 
   return (
     <PagesContext.Provider value={[state, setState]}>
@@ -24,18 +31,22 @@ const PagesProvider = ({ children, token }) => {
 
 PagesProvider.propTypes = {
   children: PropTypes.node.isRequired,
-  token: PropTypes.string.isRequired,
 };
 
 export { PagesProvider };
 
 export default () => {
   const [state, setState] = useContext<any>(PagesContext);
+  const { token } = useAuthentication();
 
-  const setPages = (pages) => setState(pages);
+  const addPage = async (page): Promise<any> => {
+    const { data } = await pageService.create(page, token);
+    setState((prev) => prev.concat(data));
+    return data;
+  };
 
   return {
     pages: state,
-    setPages,
+    addPage,
   };
 };

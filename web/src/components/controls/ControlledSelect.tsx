@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Controller } from 'react-hook-form';
-import { TextField } from '@material-ui/core';
+import { MenuItem, TextField } from '@material-ui/core';
 
-const ControlledTextField = ({
-  formControl, name, children, type, label, rules, multiline,
+const ControlledSelect = ({
+  formControl, name, options, type, label, rules,
 }) => {
   const { control, errors } = formControl;
 
@@ -23,32 +23,39 @@ const ControlledTextField = ({
       type={type}
       label={label}
       rules={rules}
-      multiline={multiline}
+      select
     >
-      {children}
+      {options.map((option) => (
+        <MenuItem
+          key={option.key}
+          value={option.value}
+        >
+          {option.label}
+        </MenuItem>
+      ))}
     </Controller>
   );
 };
 
-ControlledTextField.propTypes = {
+ControlledSelect.propTypes = {
   name: PropTypes.string.isRequired,
-  children: PropTypes.node,
   type: PropTypes.oneOf(['text', 'username', 'password']),
   formControl: PropTypes.shape({
     control: PropTypes.shape({}),
     errors: PropTypes.shape({}),
   }).isRequired,
   label: PropTypes.string,
-  rules: PropTypes.shape({}),
-  multiline: PropTypes.bool,
+  rules: PropTypes.shape({}).isRequired,
+  options: PropTypes.arrayOf(PropTypes.shape({
+    value: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    key: PropTypes.string.isRequired,
+  })).isRequired,
 };
 
-ControlledTextField.defaultProps = {
+ControlledSelect.defaultProps = {
   type: 'text',
-  children: null,
   label: null,
-  multiline: false,
-  rules: null,
 };
 
-export default ControlledTextField;
+export default ControlledSelect;
