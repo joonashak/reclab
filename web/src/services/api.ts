@@ -3,14 +3,27 @@ import axios from 'axios';
 const baseUrl = process.env.GATSBY_CMS_URL;
 const makeUrl = (path: string): string => `${baseUrl}/${path.replace(/^\/+/, '')}`;
 
-const get = async (path) => axios.get(makeUrl(path));
+const config = (token: string) => (token ? { headers: { Authorization: `Bearer ${token}` } } : {});
 
-const post = async (path, data) => axios.post(makeUrl(path), data);
+const get = async (path: string, token = null) => axios.get(makeUrl(path), config(token));
 
-const put = async (path, data) => axios.put(makeUrl(path), data);
+const post = async (path: string, data, token = null) => axios.post(
+  makeUrl(path),
+  data,
+  config(token),
+);
 
-const remove = async (path) => axios.delete(makeUrl(path));
+const put = async (path: string, data, token = null) => axios.put(
+  makeUrl(path),
+  data,
+  config(token),
+);
+
+const remove = async (path: string, token = null) => axios.delete(makeUrl(path), config(token));
 
 export default {
-  get, post, put, remove,
+  get,
+  post,
+  put,
+  remove,
 };
