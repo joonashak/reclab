@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import {
-  Button, Grid, Typography, FormControlLabel, Checkbox, MenuItem,
+  Button, Grid, Typography, FormControlLabel, Checkbox,
 } from '@material-ui/core';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import ControlledTextField from '../../controls/ControlledTextField';
