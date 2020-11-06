@@ -1,11 +1,13 @@
 import React from 'react';
+import { Router } from '@reach/router';
 import { AuthenticationProvider } from '../components/authentication/useAuthentication';
+import Route from '../components/Route';
+import Admin from '../components/Admin';
 
 export default () => (
   <AuthenticationProvider>
-    {
-      // Mount provider here so that it does not unnecessarily bloat public views!
-    }
-    admin
+    <Router basepath="/admin">
+      <Route path="/" default component={<Admin />} />
+    </Router>
   </AuthenticationProvider>
 );
