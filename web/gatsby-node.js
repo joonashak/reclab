@@ -1,4 +1,5 @@
 const path = require('path');
+const axios = require('axios');
 
 exports.createSchemaCustomization = ({ actions }) => {
   actions.createTypes(`
@@ -8,7 +9,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     }
 
     type Page implements Node @dontInfer {
-      alternative_id: ID!
+      id: ID!
       title: String!
       content: String!
       createdAt: Date
@@ -41,6 +42,30 @@ exports.createSchemaCustomization = ({ actions }) => {
   `);
 };
 
+exports.sourceNodes = async ({
+  actions,
+  createContentDigest,
+  createNodeId,
+}) => {
+  const { createNode } = actions;
+
+  const result = await axios.get('http://localhost:3001/page');
+  console.log(result.data);
+  result.data.forEach((page) => {
+    const { id, ...rest } = page;
+    createNode({
+      id: createNodeId(`${id}`),
+      ...rest,
+      internal: {
+        type: 'Page',
+        content: JSON.stringify(page.content),
+        mediaType: 'text/markdown',
+        contentDigest: createContentDigest(page.content),
+      },
+    });
+  });
+};
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
@@ -62,7 +87,7 @@ exports.createPages = async ({ graphql, actions }) => {
     query {
       allPage(filter: { id: { ne: "dummy" } }) {
         nodes {
-          id: alternative_id
+          id
           title
           content
           path
@@ -77,6 +102,7 @@ exports.createPages = async ({ graphql, actions }) => {
   `);
 
   pages.data.allPage.nodes.forEach((page) => {
+    console.log('creating page', page);
     createPage({
       path: `/${page.language}${page.path}`,
       component: path.resolve('./src/templates/Page.tsx'),
@@ -89,6 +115,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const frontpageId = settingsData.data.allSettings.nodes[0].frontpage.id;
 
     if (page.id === frontpageId) {
+      console.log('creating frontpage');
       createPage({
         path: '/',
         component: path.resolve('./src/templates/Page.tsx'),
