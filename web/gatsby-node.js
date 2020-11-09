@@ -8,7 +8,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       path: String!
     }
 
-    type Page implements Node @dontInfer {
+    type Page implements Node {
       id: ID!
       title: String!
       content: String!
@@ -58,10 +58,11 @@ exports.sourceNodes = async ({
       ...rest,
       internal: {
         type: 'Page',
-        content: JSON.stringify(page.content),
+        content: page.content,
         mediaType: 'text/markdown',
         contentDigest: createContentDigest(page.content),
       },
+      content: JSON.stringify(page.content),
     });
   });
 };
@@ -95,6 +96,9 @@ exports.createPages = async ({ graphql, actions }) => {
           translations {
             path
             language
+          }
+          internal {
+            content
           }
         }
       }
