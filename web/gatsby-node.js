@@ -8,6 +8,10 @@ exports.createSchemaCustomization = ({ actions }) => {
       path: String!
     }
 
+    type ChildMdx {
+      body: String!
+    }
+
     type Page implements Node {
       id: ID!
       title: String!
@@ -18,6 +22,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       language: String!
       path: String
       translations: [Translation]
+      childMdx: ChildMdx
     }
 
     type Menu implements Node {
@@ -47,7 +52,7 @@ exports.sourceNodes = async ({
   createContentDigest,
 }) => {
   const { createNode } = actions;
-  const result = await axios.get('http://localhost:3001/page');
+  const result = await axios.get(`${process.env.CMS_URL}/page`);
 
   result.data.forEach((page) => {
     createNode({
@@ -113,6 +118,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const frontpageId = settingsData.data.allSettings.nodes[0].frontpage.id;
 
     if (page.id === frontpageId) {
+      console.log('creating frontpage');
       createPage({
         path: '/',
         component: path.resolve('./src/templates/Page.tsx'),

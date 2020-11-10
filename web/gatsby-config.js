@@ -39,13 +39,6 @@ module.exports = {
       resolve: 'gatsby-source-apiserver',
       options: {
         entitiesArray: [
-          /*
-          {
-            url: `${process.env.CMS_URL}/page`,
-            method: 'get',
-            name: 'Page',
-          },
-          */
           {
             url: `${process.env.CMS_URL}/menu`,
             method: 'get',
