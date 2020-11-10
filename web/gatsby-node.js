@@ -1,4 +1,5 @@
 const path = require('path');
+const axios = require('axios');
 
 exports.createSchemaCustomization = ({ actions }) => {
   actions.createTypes(`
@@ -7,8 +8,12 @@ exports.createSchemaCustomization = ({ actions }) => {
       path: String!
     }
 
-    type Page implements Node @dontInfer {
-      alternative_id: ID!
+    type ChildMdx {
+      body: String!
+    }
+
+    type Page implements Node {
+      id: ID!
       title: String!
       content: String!
       createdAt: Date
@@ -17,6 +22,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       language: String!
       path: String
       translations: [Translation]
+      childMdx: ChildMdx
     }
 
     type Menu implements Node {
@@ -41,6 +47,26 @@ exports.createSchemaCustomization = ({ actions }) => {
   `);
 };
 
+exports.sourceNodes = async ({
+  actions,
+  createContentDigest,
+}) => {
+  const { createNode } = actions;
+  const result = await axios.get(`${process.env.CMS_URL}/page`);
+
+  result.data.forEach((page) => {
+    createNode({
+      ...page,
+      internal: {
+        type: 'Page',
+        content: page.content,
+        mediaType: 'text/markdown',
+        contentDigest: createContentDigest(page.content),
+      },
+    });
+  });
+};
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
@@ -62,7 +88,7 @@ exports.createPages = async ({ graphql, actions }) => {
     query {
       allPage(filter: { id: { ne: "dummy" } }) {
         nodes {
-          id: alternative_id
+          id
           title
           content
           path
@@ -70,6 +96,9 @@ exports.createPages = async ({ graphql, actions }) => {
           translations {
             path
             language
+          }
+          childMdx {
+            body
           }
         }
       }
@@ -89,6 +118,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const frontpageId = settingsData.data.allSettings.nodes[0].frontpage.id;
 
     if (page.id === frontpageId) {
+      console.log('creating frontpage');
       createPage({
         path: '/',
         component: path.resolve('./src/templates/Page.tsx'),

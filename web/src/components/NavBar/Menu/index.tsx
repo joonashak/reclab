@@ -5,7 +5,7 @@ import MenuWithData from './MenuWithData';
 
 const query = graphql`
   query {
-    allMenu {
+    allMenu(filter: { id: { ne: "dummy" } }) {
       nodes {
         order
         title
