@@ -3,7 +3,9 @@ import PropTypes, { InferProps } from 'prop-types';
 import { Typography } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { MDXProvider } from '@mdx-js/react';
 import PageWrapper from '../PageWrapper';
+import Testing from '../components/Testing';
 
 const Page = ({ pageContext }: InferProps<typeof Page.propTypes>) => {
   const { t, i18n } = useTranslation();
@@ -23,9 +25,11 @@ const Page = ({ pageContext }: InferProps<typeof Page.propTypes>) => {
       </p>
       <Typography variant="h3">{pageContext.data.title}</Typography>
       <Typography>{pageContext.data.content}</Typography>
-      <MDXRenderer>
-        {pageContext.data.childMdx.body}
-      </MDXRenderer>
+      <MDXProvider components={{ Testing }}>
+        <MDXRenderer>
+          {pageContext.data.childMdx.body}
+        </MDXRenderer>
+      </MDXProvider>
     </PageWrapper>
   );
 };
