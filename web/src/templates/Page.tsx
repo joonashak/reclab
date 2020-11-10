@@ -46,7 +46,9 @@ const Page = ({ pageContext }: InferProps<typeof Page.propTypes>) => {
           {pageContext.data.childMdx.body}
         </MDXRenderer>
       </MDXProvider>
-      <Img fixed={image.file.childImageSharp.fixed} />
+      {image.file && (
+        <Img fixed={image.file.childImageSharp.fixed} />
+      )}
     </PageWrapper>
   );
 };
