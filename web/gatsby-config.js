@@ -18,13 +18,6 @@ const staticPlugins = [
       ],
     },
   },
-  {
-    resolve: 'gatsby-source-filesystem',
-    options: {
-      name: 'images',
-      path: `${__dirname}/src/images`,
-    },
-  },
   /*
   {
     resolve: 'gatsby-plugin-manifest',
@@ -75,6 +68,13 @@ const imagePlugins = [
   'gatsby-transformer-sharp',
   'gatsby-plugin-sharp',
   'gatsby-remark-images',
+  {
+    resolve: 'gatsby-source-filesystem',
+    options: {
+      name: 'images',
+      path: `${__dirname}/src/images`,
+    },
+  },
   {
     resolve: 'gatsby-source-cloudinary',
     options: {
