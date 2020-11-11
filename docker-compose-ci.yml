@@ -28,6 +28,7 @@ services:
       - CMS_URL=http://cms-ci:3003
       - INTERNAL_STATUS_PORT=30012
       - GATSBY_CMS_URL=http://cms-ci:3003
+      - CHOKIDAR_USEPOLLING=1
     volumes:
       - ./web/src:/usr/src/app/src
     depends_on:
