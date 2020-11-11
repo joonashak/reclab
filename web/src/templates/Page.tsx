@@ -4,11 +4,27 @@ import { Typography } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
+import { graphql, useStaticQuery } from 'gatsby';
+import Img from 'gatsby-image';
 import PageWrapper from '../PageWrapper';
 import Testing from '../components/Testing';
 
+const query = graphql`
+  query {
+    file(childImageSharp: {fixed: {originalName: {eq: "meme.jpg"}}}) {
+      relativePath
+      childImageSharp {
+        fixed {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+  }
+`;
+
 const Page = ({ pageContext }: InferProps<typeof Page.propTypes>) => {
   const { t, i18n } = useTranslation();
+  const image = useStaticQuery(query);
 
   useEffect(() => {
     i18n.changeLanguage(pageContext.data.language);
@@ -30,6 +46,9 @@ const Page = ({ pageContext }: InferProps<typeof Page.propTypes>) => {
           {pageContext.data.childMdx.body}
         </MDXRenderer>
       </MDXProvider>
+      {image.file && (
+        <Img fixed={image.file.childImageSharp.fixed} />
+      )}
     </PageWrapper>
   );
 };
