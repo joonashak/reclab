@@ -11,7 +11,7 @@ import Testing from '../components/Testing';
 
 const query = graphql`
   query {
-    file(childImageSharp: {fixed: {originalName: {eq: "meme.png"}}}) {
+    file(childImageSharp: {fixed: {originalName: {eq: "meme.jpg"}}}) {
       relativePath
       childImageSharp {
         fixed {
