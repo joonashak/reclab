@@ -7,6 +7,7 @@ describe("My First Test", () => {
   });
 
   it("Login", () => {
+    indexedDB.deleteDatabase("localforage");
     cy.visit("/admin");
     cy.get('#username').type('admin')
     cy.get('#password').type('1234')
