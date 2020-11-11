@@ -1,6 +1,7 @@
 import { Link } from 'gatsby-theme-material-ui';
 import Headings from './Headings';
 import Blockquote from './Blockquote';
+import Image from './Image';
 
 // Shortcodes for use with <MDXProvider>.
 export default {
@@ -12,4 +13,5 @@ export default {
   h6: Headings.H6,
   Link,
   Blockquote,
+  Image,
 };

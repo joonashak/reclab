@@ -3,7 +3,7 @@
 describe("My First Test", () => {
   it("Does not do much!", () => {
     cy.visit("/");
-    cy.contains("Recover Laboratory is a Finnish multi-art company");
+    cy.contains("frontpage");
   });
 
   it("Login", () => {
