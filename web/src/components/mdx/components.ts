@@ -1,4 +1,5 @@
 import { Link } from 'gatsby-theme-material-ui';
+import YouTube from 'react-youtube';
 import Headings from './Headings';
 import Blockquote from './Blockquote';
 import Image from './Image';
@@ -15,4 +16,5 @@ export default {
   Link,
   Blockquote,
   Image: process.env.CI ? MockImage : Image,
+  YouTube,
 };

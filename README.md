@@ -10,6 +10,20 @@ As some commands, such as development mode tests, are run on the host machine in
 npm run init
 ```
 
+## Configuration
+
+Images used in CMS-stored content are stored in Cloudinary. Currently this is not mocked for development or tests. The development environment can be used without configuring Cloudinary credentials but this means that images in the content will not be displayed.
+
+To configure Cloudinary for use in development mode, use the following `.env` file in project root:
+
+```bash
+CLOUDINARY_CLOUD_NAME=
+CLOUDINARY_API_KEY=
+CLOUDINARY_API_SECRET=
+```
+
+Images are currently not tested in the end-to-end tests.
+
 ## Development Environment
 
 The development environment is configured with npm and Docker. You will need to have the `npm` and `docker` commands available on your system (tested only on macOS).
