@@ -1,6 +1,6 @@
 # General
 node_modules
-.env.*
+.env*
 
 # CMS
 pg_data

@@ -5,6 +5,8 @@ require('dotenv').config({
 const staticPlugins = [
   'gatsby-plugin-react-helmet',
   'gatsby-theme-material-ui',
+  'gatsby-plugin-sharp',
+  'gatsby-transformer-sharp',
   {
     resolve: 'gatsby-plugin-mdx',
     options: {
@@ -65,8 +67,6 @@ const staticPlugins = [
 
 // These fail if Cloudinary credentials are not supplied (testing/CI).
 const imagePlugins = [
-  'gatsby-transformer-sharp',
-  'gatsby-plugin-sharp',
   'gatsby-remark-images',
   {
     resolve: 'gatsby-source-filesystem',
