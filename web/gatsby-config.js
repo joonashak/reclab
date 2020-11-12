@@ -4,17 +4,23 @@ require('dotenv').config({
 
 const staticPlugins = [
   'gatsby-plugin-react-helmet',
-  'gatsby-transformer-sharp',
-  'gatsby-plugin-sharp',
   'gatsby-theme-material-ui',
-  'gatsby-plugin-mdx',
+  'gatsby-plugin-sharp',
+  'gatsby-transformer-sharp',
   {
-    resolve: 'gatsby-source-filesystem',
+    resolve: 'gatsby-plugin-mdx',
     options: {
-      name: 'images',
-      path: `${__dirname}/src/images`,
+      gatsbyRemarkPlugins: [
+        {
+          resolve: 'gatsby-remark-images',
+          options: {
+            maxWidth: 1200,
+          },
+        },
+      ],
     },
   },
+  /*
   {
     resolve: 'gatsby-plugin-manifest',
     options: {
@@ -27,6 +33,7 @@ const staticPlugins = [
       icon: 'src/images/gatsby-icon.png', // This path is relative to the root of the site.
     },
   },
+  */
   {
     resolve: 'gatsby-source-apiserver',
     options: {
@@ -58,7 +65,16 @@ const staticPlugins = [
   },
 ];
 
+// These fail if Cloudinary credentials are not supplied (testing/CI).
 const imagePlugins = [
+  'gatsby-remark-images',
+  {
+    resolve: 'gatsby-source-filesystem',
+    options: {
+      name: 'images',
+      path: `${__dirname}/src/images`,
+    },
+  },
   {
     resolve: 'gatsby-source-cloudinary',
     options: {
@@ -75,6 +91,7 @@ const imagePlugins = [
       name: 'imagesFromCdn',
     },
   },
+  /*
   {
     resolve: 'gatsby-transformer-cloudinary',
     options: {
@@ -83,6 +100,7 @@ const imagePlugins = [
       apiSecret: process.env.CLOUDINARY_API_SECRET,
     },
   },
+  */
 ];
 
 const plugins = process.env.CLOUDINARY_CLOUD_NAME
@@ -91,10 +109,10 @@ const plugins = process.env.CLOUDINARY_CLOUD_NAME
 
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Default Starter',
+    title: 'Recover Laboratory',
     description:
-      'Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.',
-    author: '@gatsbyjs',
+      'Recover Laboratory is a  Finnish multi-art company led by Miradonna Sirkka, Sofi Häkkinen and Inna Huttunen.',
+    author: 'Recover Laboratory',
     languages: ['fi', 'en'],
   },
   plugins,

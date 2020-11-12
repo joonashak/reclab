@@ -29,6 +29,8 @@ services:
       - CMS_URL=http://cms:3001
       - GATSBY_CMS_URL=http://localhost:3001
       - INTERNAL_STATUS_PORT=30011
+    env_file:
+      - .env
     volumes:
       - ./web/src:/usr/src/app/src
     depends_on:
