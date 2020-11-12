@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
   AppBar,
-  Button,
   makeStyles,
   Toolbar,
   Typography,
@@ -38,7 +37,6 @@ const NavBar = ({ page }) => {
           Recover Laboratory
         </Typography>
         <LanguageSelect page={page} />
-        <Button color="inherit">Login</Button>
       </Toolbar>
     </AppBar>
   );

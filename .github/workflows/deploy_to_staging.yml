@@ -27,3 +27,4 @@ jobs:
           alias-domains: |
             reclab-staging.vercel.app
           working-directory: ./web
+          vercel-args: '-f' # Makes it possible to update content by rerunning the workflow.
