@@ -1,12 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Container, ThemeProvider } from '@material-ui/core';
 import NavBar from './NavBar/index';
+import theme from '../themes/theme';
 
 const Layout = ({ page, children }) => (
-  <div>
+  <ThemeProvider theme={theme}>
     <NavBar page={page} />
-    {children}
-  </div>
+    <Container>
+      {children}
+    </Container>
+  </ThemeProvider>
 );
 
 Layout.propTypes = {

@@ -24,24 +24,35 @@ const LanguageSelect = ({ page }) => {
   const { t, i18n } = useTranslation();
   const { language } = i18n;
 
+  const getTranslation = (lang: string) => page.translations.find(
+    (translation) => translation.language === lang,
+  );
+
   const onChange = (event) => {
     const newLanguage = event.target.value;
-    const { translations } = page;
-    const { path } = translations.find(
-      (translation) => translation.language === newLanguage,
-    );
+    const { path } = getTranslation(newLanguage);
 
     navigate(makePath(newLanguage, path));
   };
 
+  const isDisabled = (lang: string): boolean => {
+    const translation = getTranslation(lang);
+
+    if (page.language === lang) {
+      return false;
+    }
+
+    return !translation;
+  };
+
   return (
     <StyledTextField id="language-select" value={language} select onChange={onChange}>
-      <MenuItem value="fi">
+      <MenuItem value="fi" disabled={isDisabled('fi')}>
         <ListItemIcon>
           <StyledFlag countryCode="fi" svg title={t('languages.fi')} />
         </ListItemIcon>
       </MenuItem>
-      <MenuItem value="en">
+      <MenuItem value="en" disabled={isDisabled('en')}>
         <ListItemIcon>
           <StyledFlag countryCode="gb" svg title={t('languages.en')} />
         </ListItemIcon>
@@ -52,6 +63,7 @@ const LanguageSelect = ({ page }) => {
 
 LanguageSelect.propTypes = {
   page: PropTypes.shape({
+    language: PropTypes.string.isRequired,
     translations: PropTypes.arrayOf(PropTypes.shape({
       language: PropTypes.string.isRequired,
       path: PropTypes.string.isRequired,
