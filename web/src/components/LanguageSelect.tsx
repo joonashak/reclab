@@ -6,23 +6,27 @@ import {
 import { useTranslation } from 'react-i18next';
 import { navigate } from 'gatsby';
 import CountryFlag from 'react-country-flag';
-import styled from 'styled-components';
+import { makeStyles, createStyles } from '@material-ui/core/styles';
 import { makePath } from '../util/snippets';
 
-const StyledTextField = styled(TextField)`
-  .MuiInput-underline:before, .MuiInput-underline:hover:before {
-    border: none;
-  }
-`;
-
-const StyledFlag = styled(CountryFlag)`
-  width: 2em !important;
-  height: 2em !important;
-`;
+const useStyles = makeStyles(() => createStyles({
+  root: {
+    border: 'none',
+  },
+  underline: {
+    '&&&:before': {
+      borderBottom: 'none',
+    },
+    '&&:after': {
+      borderBottom: 'none',
+    },
+  },
+}));
 
 const LanguageSelect = ({ page }) => {
   const { t, i18n } = useTranslation();
   const { language } = i18n;
+  const classes = useStyles();
 
   const getTranslation = (lang: string) => page.translations.find(
     (translation) => translation.language === lang,
@@ -46,18 +50,25 @@ const LanguageSelect = ({ page }) => {
   };
 
   return (
-    <StyledTextField id="language-select" value={language} select onChange={onChange}>
+    <TextField
+      id="language-select"
+      value={language}
+      select
+      onChange={onChange}
+      className={classes.root}
+      InputProps={{ classes }}
+    >
       <MenuItem value="fi" disabled={isDisabled('fi')}>
         <ListItemIcon>
-          <StyledFlag countryCode="fi" svg title={t('languages.fi')} />
+          <CountryFlag countryCode="fi" svg title={t('languages.fi')} />
         </ListItemIcon>
       </MenuItem>
       <MenuItem value="en" disabled={isDisabled('en')}>
         <ListItemIcon>
-          <StyledFlag countryCode="gb" svg title={t('languages.en')} />
+          <CountryFlag countryCode="gb" svg title={t('languages.en')} />
         </ListItemIcon>
       </MenuItem>
-    </StyledTextField>
+    </TextField>
   );
 };
 
