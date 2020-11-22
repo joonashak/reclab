@@ -64,7 +64,7 @@ const LanguageSelect = ({ page }) => {
       select
       onChange={onChange}
       className={classes.root}
-      InputProps={{ classes }}
+      InputProps={{ classes: { underline: classes.underline } }}
     >
       <MenuItem value="fi" disabled={isDisabled('fi')}>
         <ListItemIcon className={classes.icon}>
