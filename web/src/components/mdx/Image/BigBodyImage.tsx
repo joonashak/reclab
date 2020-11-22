@@ -17,8 +17,8 @@ const BigBodyImage = ({ fluid, fixed }) => {
 };
 
 BigBodyImage.propTypes = {
-  fixed: PropTypes.string,
-  fluid: PropTypes.string,
+  fixed: PropTypes.shape({}),
+  fluid: PropTypes.shape({}),
 };
 
 BigBodyImage.defaultProps = {
