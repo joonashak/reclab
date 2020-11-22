@@ -12,6 +12,7 @@ import { makePath } from '../util/snippets';
 const useStyles = makeStyles(() => createStyles({
   root: {
     border: 'none',
+    marginRight: -17,
   },
   underline: {
     '&&&:before': {
@@ -20,6 +21,13 @@ const useStyles = makeStyles(() => createStyles({
     '&&:after': {
       borderBottom: 'none',
     },
+  },
+  icon: {
+    minWidth: 0,
+  },
+  flag: {
+    width: '2em !important',
+    height: '2em !important',
   },
 }));
 
@@ -59,13 +67,13 @@ const LanguageSelect = ({ page }) => {
       InputProps={{ classes }}
     >
       <MenuItem value="fi" disabled={isDisabled('fi')}>
-        <ListItemIcon>
-          <CountryFlag countryCode="fi" svg title={t('languages.fi')} />
+        <ListItemIcon className={classes.icon}>
+          <CountryFlag countryCode="fi" svg title={t('languages.fi')} className={classes.flag} />
         </ListItemIcon>
       </MenuItem>
       <MenuItem value="en" disabled={isDisabled('en')}>
-        <ListItemIcon>
-          <CountryFlag countryCode="gb" svg title={t('languages.en')} />
+        <ListItemIcon className={classes.icon}>
+          <CountryFlag countryCode="gb" svg title={t('languages.en')} className={classes.flag} />
         </ListItemIcon>
       </MenuItem>
     </TextField>
