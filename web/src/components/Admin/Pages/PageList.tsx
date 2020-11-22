@@ -4,6 +4,7 @@ import {
   Button, Grid, List, ListItem, ListItemText,
 } from '@material-ui/core';
 import { navigate } from 'gatsby';
+import { Link } from 'gatsby-theme-material-ui';
 import usePages from './usePages';
 import { makePath } from '../../../util/snippets';
 
@@ -27,7 +28,11 @@ const PageList = () => {
             <ListItem key={page.id}>
               <ListItemText
                 primary={page.title}
-                secondary={makePath(page.language, page.path)}
+                secondary={(
+                  <Link to={makePath(page.language, page.path)}>
+                    {makePath(page.language, page.path)}
+                  </Link>
+              )}
               />
             </ListItem>
           ))}

@@ -1,9 +1,9 @@
 import { Link } from 'gatsby-theme-material-ui';
-import YouTube from 'react-youtube';
 import Headings from './Headings';
 import Blockquote from './Blockquote';
 import Image from './Image';
 import MockImage from '../test/MockImage';
+import YouTube from './YouTube';
 
 // Shortcodes for use with <MDXProvider>.
 export default {
