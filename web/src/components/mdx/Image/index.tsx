@@ -2,7 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
+import BigBodyImage from './BigBodyImage';
 
+/**
+ * Load the specified image with GraphQL and pass it on to another image component
+ * that takes care of styling etc.
+ */
 const Image = ({ src, fixed }) => {
   const images = useStaticQuery(graphql`
     query {
@@ -30,12 +35,12 @@ const Image = ({ src, fixed }) => {
 
   return fixed
     ? <Img fixed={image.childImageSharp.fixed} />
-    : <Img fluid={image.childImageSharp.fluid} />;
+    : <BigBodyImage fluid={image.childImageSharp.fluid} />;
 };
 
 Image.propTypes = {
   src: PropTypes.string.isRequired,
-  fixed: PropTypes.string,
+  fixed: PropTypes.bool,
 };
 
 Image.defaultProps = {
