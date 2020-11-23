@@ -15,7 +15,11 @@ export class PagesService {
   }
 
   async findAll(): Promise<Page[]> {
-    return this.pagesRepository.find();
+    return this.pagesRepository
+      .createQueryBuilder('page')
+      .leftJoinAndSelect('page.translations', 'translations')
+      .select(['page', 'translations.language', 'translations.path'])
+      .getMany();
   }
 
   async findAllPublic(): Promise<Page[]> {
