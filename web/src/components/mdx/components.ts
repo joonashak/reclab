@@ -6,6 +6,7 @@ import Image from './Image';
 import MockImage from '../test/MockImage';
 import YouTube from './YouTube';
 import Center from './Center';
+import PersonCard from './PersonCard';
 
 // Shortcodes for use with <MDXProvider>.
 export default {
@@ -21,4 +22,5 @@ export default {
   Image: process.env.CI ? MockImage : Image,
   YouTube,
   Center,
+  PersonCard,
 };
