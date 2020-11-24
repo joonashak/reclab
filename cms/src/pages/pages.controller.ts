@@ -15,6 +15,7 @@ import { REQUEST } from '@nestjs/core';
 import { User } from '../users/user.entity';
 import UserDecorator from '../users/user.decorator';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { CreatePageDto } from './dto/create-page.dto';
 
 @Controller('page')
 export class PagesController {
@@ -39,7 +40,7 @@ export class PagesController {
   @UseGuards(JwtAuthGuard)
   @Post()
   create(
-    @Body() page: Partial<Page>,
+    @Body() page: CreatePageDto,
     @UserDecorator() user: User,
   ): Promise<Page> {
     page.createdAt = new Date();

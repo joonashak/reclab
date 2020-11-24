@@ -14,7 +14,7 @@ import { SettingsModule } from './settings/settings.module';
       url: process.env.DATABASE_URL,
       autoLoadEntities: true,
       synchronize: process.env.NODE_ENV === 'development',
-      logging: process.env.NODE_ENV === 'development',
+      // logging: process.env.NODE_ENV === 'development',
     }),
     UsersModule,
     AuthModule,
