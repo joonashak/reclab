@@ -24,7 +24,7 @@ const NewPage = () => {
     }
 
     const { translation, ...rest } = data;
-    const translationIds = [translation];
+    const translationIds = translation === '' ? [] : [translation];
 
     try {
       await addPage({ ...rest, translationIds });
