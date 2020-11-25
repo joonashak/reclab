@@ -45,7 +45,7 @@ ControlledSelect.propTypes = {
     errors: PropTypes.shape({}),
   }).isRequired,
   label: PropTypes.string,
-  rules: PropTypes.shape({}).isRequired,
+  rules: PropTypes.shape({}),
   options: PropTypes.arrayOf(PropTypes.shape({
     value: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
@@ -56,6 +56,7 @@ ControlledSelect.propTypes = {
 ControlledSelect.defaultProps = {
   type: 'text',
   label: null,
+  rules: null,
 };
 
 export default ControlledSelect;

@@ -11,17 +11,23 @@ import ControlledSelect from '../../controls/ControlledSelect';
 import usePages from './usePages';
 
 const NewPage = () => {
-  const { addPage } = usePages();
+  const { addPage, pages } = usePages();
   const formControl = useForm({ mode: 'onBlur' });
-  const { handleSubmit, errors, register } = formControl;
+  const {
+    handleSubmit, errors, register, watch,
+  } = formControl;
+  const language = watch('language');
 
   const submit = async (data) => {
     if (Object.keys(errors).length > 0) {
       return;
     }
 
+    const { translation, ...rest } = data;
+    const translationIds = translation === '' ? [] : [translation];
+
     try {
-      await addPage(data);
+      await addPage({ ...rest, translationIds });
       navigate('/admin/pages');
     } catch (error) {
       console.log(error);
@@ -61,6 +67,15 @@ const NewPage = () => {
             { value: 'fi', label: 'Finnish', key: 'new-page-lang-fi' },
             { value: 'en', label: 'English', key: 'new-page-lang-en' },
           ]}
+        />
+      </Grid>
+      <Grid item xs={12} md={6}>
+        <ControlledSelect
+          formControl={formControl}
+          name="translation"
+          label="Translation"
+          options={pages.filter((page) => page.language !== language)
+            .map((page) => ({ value: page.id, label: page.title, key: `translation-sel-${page.id}` }))}
         />
       </Grid>
       <Grid item xs={12}>
