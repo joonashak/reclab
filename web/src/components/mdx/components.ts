@@ -9,6 +9,7 @@ import Center from './Center';
 import PersonCard from './PersonCard';
 import Ingress from './Ingress';
 import InfoTable from './InfoTable';
+import Gallery from './Gallery';
 
 // Shortcodes for use with <MDXProvider>.
 export default {
@@ -27,4 +28,5 @@ export default {
   PersonCard,
   Ingress,
   InfoTable,
+  Gallery,
 };
