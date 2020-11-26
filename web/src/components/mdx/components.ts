@@ -8,6 +8,7 @@ import YouTube from './YouTube';
 import Center from './Center';
 import PersonCard from './PersonCard';
 import Ingress from './Ingress';
+import InfoTable from './InfoTable';
 
 // Shortcodes for use with <MDXProvider>.
 export default {
@@ -25,4 +26,5 @@ export default {
   Center,
   PersonCard,
   Ingress,
+  InfoTable,
 };
