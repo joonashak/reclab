@@ -74,7 +74,7 @@ const NewPage = () => {
           formControl={formControl}
           name="translation"
           label="Translation"
-          options={pages.filter((page) => page.language !== language)
+          options={pages.filter((page) => page.language !== language && !page.translations.length)
             .map((page) => ({ value: page.id, label: page.title, key: `translation-sel-${page.id}` }))}
         />
       </Grid>
