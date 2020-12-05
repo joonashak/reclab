@@ -12,10 +12,6 @@ const theme = createMuiTheme({
 
   typography: {
     fontSize: 18,
-    body1: {
-      textAlign: 'justify',
-      marginBottom: '2rem',
-    },
   },
 });
 
