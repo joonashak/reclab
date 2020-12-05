@@ -7,7 +7,16 @@ const theme = createMuiTheme({
     primary: amber,
     secondary: purple,
   },
+
   spacing: 16,
+
+  typography: {
+    fontSize: 18,
+    body1: {
+      textAlign: 'justify',
+      marginBottom: '2rem',
+    },
+  },
 });
 
 export default responsiveFontSizes(theme);
