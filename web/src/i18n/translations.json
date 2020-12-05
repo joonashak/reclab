@@ -2,8 +2,8 @@
   "en": {
     "translation": {
       "languages": {
-        "fi": "Suomi",
-        "en": "English"
+        "fi": "Näytä suomeksi",
+        "en": "View in English"
       },
       "test": "hello"
     }
@@ -11,8 +11,8 @@
   "fi": {
     "translation": {
       "languages": {
-        "fi": "Suomi",
-        "en": "English"
+        "fi": "Näytä suomeksi",
+        "en": "View in English"
       },
       "test": "mo"
     }
