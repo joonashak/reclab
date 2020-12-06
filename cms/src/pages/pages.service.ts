@@ -20,6 +20,10 @@ export class PagesService {
       .getOne();
   }
 
+  async findMany(ids: string[]): Promise<Page[]> {
+    return Promise.all(ids.map(id => this.findOne(id)));
+  }
+
   async findAll(): Promise<Page[]> {
     return this.pagesRepository
       .createQueryBuilder('page')
@@ -43,9 +47,7 @@ export class PagesService {
     const { translationIds, ...newPage } = page;
 
     // Load translations.
-    const translations = await Promise.all(
-      translationIds.map(id => this.findOne(id)),
-    );
+    const translations = await this.findMany(translationIds);
 
     const result = await this.pagesRepository.save({
       ...newPage,
