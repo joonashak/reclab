@@ -1,35 +1,13 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
 import {
   Button, Grid, Typography, FormControlLabel, Checkbox,
 } from '@material-ui/core';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
-import { login } from '../../services/loginService';
-import useAuthentication from './useAuthentication';
-import ControlledTextField from '../controls/ControlledTextField';
+import { func, shape } from 'prop-types';
+import ControlledTextField from '../../controls/ControlledTextField';
 
-export default () => {
-  const formControl = useForm({ mode: 'onBlur' });
-  const { handleSubmit, errors, register } = formControl;
-  const { setToken } = useAuthentication();
-
-  const submit = async (data) => {
-    if (Object.keys(errors).length > 0) {
-      return;
-    }
-    const { username, password } = data;
-    const res = await login(username, password);
-
-    if (res.error) {
-      console.log(`Login failed: ${res.error.response.data.message}`, 'error');
-
-      return;
-    }
-
-    const { data: { accessToken } } = res;
-    setToken(accessToken);
-    console.log('You were logged in!');
-  };
+const LoginForm = ({ formControl, onSubmit }) => {
+  const { handleSubmit, register } = formControl;
 
   return (
     <>
@@ -69,7 +47,7 @@ export default () => {
       <Grid item xs={12}>
         <Button
           type="submit"
-          onClick={handleSubmit(submit)}
+          onClick={handleSubmit(onSubmit)}
           variant="contained"
           color="primary"
           startIcon={<LockOpenIcon />}
@@ -81,3 +59,13 @@ export default () => {
     </>
   );
 };
+
+LoginForm.propTypes = {
+  formControl: shape({
+    handleSubmit: func.isRequired,
+    register: func.isRequired,
+  }).isRequired,
+  onSubmit: func.isRequired,
+};
+
+export default LoginForm;
