@@ -67,9 +67,12 @@ export default () => {
 
   const getUsername = () => jwt.decode(state).payload;
 
+  const logout = () => setToken('');
+
   return {
     token: state,
     setToken,
     getUsername,
+    logout,
   };
 };
