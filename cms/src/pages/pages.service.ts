@@ -16,7 +16,7 @@ export class PagesService {
     return this.pagesRepository
       .createQueryBuilder('page')
       .leftJoinAndSelect('page.translations', 'translations')
-      .select(['page', 'translations.language', 'translations.path'])
+      .select(['page', 'translations.language', 'translations.path', 'translations.id', 'translations.title'])
       .where({ id })
       .getOne();
   }
@@ -29,7 +29,7 @@ export class PagesService {
     return this.pagesRepository
       .createQueryBuilder('page')
       .leftJoinAndSelect('page.translations', 'translations')
-      .select(['page', 'translations.language', 'translations.path'])
+      .select(['page', 'translations.language', 'translations.path', 'translations.id', 'translations.title'])
       .getMany();
   }
 
@@ -37,7 +37,7 @@ export class PagesService {
     return this.pagesRepository
       .createQueryBuilder('page')
       .leftJoinAndSelect('page.translations', 'translations')
-      .select(['page', 'translations.language', 'translations.path'])
+      .select(['page', 'translations.language', 'translations.path', 'translations.id', 'translations.title'])
       .where('page.isPublic = true')
       .getMany();
   }
