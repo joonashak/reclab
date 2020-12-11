@@ -8,10 +8,14 @@ import settingsSeed from '../../src/seeder/data/settings.seed';
 
 export const apiPages = pagesSeed.map(page => {
   const { author, editor, translations, ...rest } = page;
-  const cleanTranslations = translations.map(({ language, path, ...rest }) => ({
-    language,
-    path,
-  }));
+  const cleanTranslations = translations.map(
+    ({ language, path, id, title, ...rest }) => ({
+      language,
+      path,
+      id,
+      title,
+    }),
+  );
   return { ...rest, translations: cleanTranslations };
 });
 
