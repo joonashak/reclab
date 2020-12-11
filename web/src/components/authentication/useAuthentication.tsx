@@ -5,24 +5,48 @@ import PropTypes from 'prop-types';
 import jwt from 'jsonwebtoken';
 import tokenStore from './tokenStore';
 import Login from './Login';
+import { validateToken } from '../../services/loginService';
+import LoadingModal from '../Admin/LoadingModal';
 
 const AuthenticationContext = createContext([[], () => {}]);
 
 const AuthenticationProvider = ({ children }) => {
   const [state, setState] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+  const [showLogin, setShowLogin] = useState(false);
 
   useEffect(() => {
     (async () => {
       const token = await tokenStore.getToken();
 
-      // Use '' to signify 'no token found' to prevent login prompt flash.
-      setState(token || '');
+      setState(token);
+
+      // Show login prompt immediately if no token found.
+      if (!token) {
+        setShowLogin(true);
+      }
+
+      // Validate token against backend.
+      if (token && !await validateToken(token)) {
+        setShowLogin(true);
+        tokenStore.setToken('');
+      }
+
+      setLoading(false);
     })();
   }, []);
 
+  if (showLogin) {
+    return <Login />;
+  }
+
+  if (loading) {
+    return <LoadingModal />;
+  }
+
   return (
     <AuthenticationContext.Provider value={[state, setState]}>
-      {state === '' ? <Login /> : children}
+      {children}
     </AuthenticationContext.Provider>
   );
 };
