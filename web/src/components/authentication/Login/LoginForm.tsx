@@ -37,6 +37,7 @@ const LoginForm = ({ formControl, onSubmit }) => {
         color="primary"
         startIcon={<LockOpenIcon />}
         fullWidth
+        data-cy="submit-login"
       >
         Log In
       </Button>

@@ -11,6 +11,6 @@ describe("My First Test", () => {
     cy.visit("/admin");
     cy.get('#username').type('admin')
     cy.get('#password').type('1234')
-    cy.get(':nth-child(5) > .MuiButtonBase-root').click()
+    cy.get('[data-cy="submit-login"]').click()
   });
 });
