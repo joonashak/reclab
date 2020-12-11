@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { login } from '../../../services/loginService';
 import useAuthentication from '../useAuthentication';
-import LoginForm from './LoginForm';
+import LoginView from './LoginView';
 
 export default () => {
   const formControl = useForm({ mode: 'onBlur' });
@@ -27,5 +27,5 @@ export default () => {
     console.log('You were logged in!');
   };
 
-  return <LoginForm formControl={formControl} onSubmit={onSubmit} />;
+  return <LoginView formControl={formControl} onSubmit={onSubmit} />;
 };

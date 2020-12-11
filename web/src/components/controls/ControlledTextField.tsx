@@ -1,11 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Controller } from 'react-hook-form';
-import { TextField } from '@material-ui/core';
+import { TextField, makeStyles } from '@material-ui/core';
+import { createStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(() => createStyles({
+  root: {
+    minHeight: '5.5rem',
+    marginBottom: '0 !important',
+  },
+}));
 
 const ControlledTextField = ({
   formControl, name, children, type, label, rules, multiline, autoComplete,
 }) => {
+  const classes = useStyles();
   const { control, errors } = formControl;
 
   return (
@@ -25,6 +34,7 @@ const ControlledTextField = ({
       rules={rules}
       multiline={multiline}
       autoComplete={autoComplete}
+      className={classes.root}
     >
       {children}
     </Controller>
