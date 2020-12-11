@@ -5,10 +5,14 @@ import { navigate } from 'gatsby';
 import usePages from './usePages';
 import PageForm from './PageForm';
 
-const NewPage = () => {
-  const { addPage } = usePages();
+const EditPage = ({ pageId }) => {
+  const { addPage, findPage } = usePages();
 
-  const formControl = useForm({ mode: 'onBlur' });
+  const defaultValues = pageId
+    ? { ...findPage(pageId) }
+    : {};
+
+  const formControl = useForm({ mode: 'onBlur', defaultValues });
   const { errors } = formControl;
 
   const onSubmit = async (data) => {
@@ -32,9 +36,14 @@ const NewPage = () => {
   );
 };
 
-NewPage.propTypes = {
+EditPage.propTypes = {
   // eslint-disable-next-line react/no-unused-prop-types
   path: PropTypes.string.isRequired,
+  pageId: PropTypes.string,
 };
 
-export default NewPage;
+EditPage.defaultProps = {
+  pageId: null,
+};
+
+export default EditPage;
