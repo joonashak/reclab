@@ -2,11 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
 import { createStyles, makeStyles } from '@material-ui/core';
+import { Theme } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(() => createStyles({
+const useStyles = makeStyles((theme: Theme) => createStyles({
   root: {
-    width: '80%',
-    margin: '2rem auto',
+    width: '100%',
+    margin: '2rem 0',
+    [theme.breakpoints.down('xs')]: {
+      width: '100vw',
+      marginLeft: -32,
+    },
   },
 }));
 

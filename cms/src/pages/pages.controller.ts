@@ -4,6 +4,7 @@ import {
   Get,
   Inject,
   Param,
+  Patch,
   Post,
   Request,
   UseGuards,
@@ -46,5 +47,13 @@ export class PagesController {
     page.createdAt = new Date();
     page.author = { id: user.id };
     return this.pagesService.create(page);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Patch()
+  update(
+    @Body() page: CreatePageDto,
+  ): Promise<Page> {
+    return this.pagesService.update(page);
   }
 }

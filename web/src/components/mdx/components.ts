@@ -1,5 +1,4 @@
 import { Link } from 'gatsby-theme-material-ui';
-import { Typography } from '@material-ui/core';
 import Headings from './Headings';
 import Blockquote from './Blockquote';
 import Image from './Image';
@@ -10,10 +9,11 @@ import PersonCard from './PersonCard';
 import Ingress from './Ingress';
 import InfoTable from './InfoTable';
 import Gallery from './Gallery';
+import Paragraph from './Paragraph';
 
 // Shortcodes for use with <MDXProvider>.
 export default {
-  p: Typography,
+  p: Paragraph,
   h1: Headings.H1,
   h2: Headings.H2,
   h3: Headings.H3,

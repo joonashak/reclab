@@ -7,7 +7,7 @@ import {
   Typography,
 } from '@material-ui/core';
 import Menu from './Menu';
-import LanguageSelect from '../LanguageSelect';
+import LanguageButton from './LanguageButton';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,7 +36,7 @@ const NavBar = ({ page }) => {
         <Typography variant="h6" className={classes.title}>
           Recover Laboratory
         </Typography>
-        <LanguageSelect page={page} />
+        <LanguageButton page={page} />
       </Toolbar>
     </AppBar>
   );

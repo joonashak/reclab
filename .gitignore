@@ -3,7 +3,7 @@ node_modules
 .env*
 
 # CMS
-pg_data
+pg_data*
 /cms/dist
 
 # Web

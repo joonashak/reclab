@@ -10,7 +10,13 @@ const create = async (page: any, token: string): Promise<any> => {
   return res;
 };
 
+const update = async (page: any, token: string): Promise<any> => {
+  const res = await api.patch('/page', page, token);
+  return res;
+};
+
 export default {
   getAll,
   create,
+  update,
 };

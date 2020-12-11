@@ -6,9 +6,18 @@ import usePages from './usePages';
 import PageForm from './PageForm';
 import { getTranslationOptions } from './common';
 
-const NewPage = () => {
-  const { addPage, pages } = usePages();
-  const formControl = useForm({ mode: 'onBlur' });
+const EditPage = ({ pageId }) => {
+  const { updatePage, findPage, pages } = usePages();
+
+  const { translations, ...page } = findPage(pageId);
+  const defaultValues = pageId
+    ? {
+      ...page,
+      translation: translations.length ? translations[0].id : '',
+    }
+    : {};
+
+  const formControl = useForm({ mode: 'onBlur', defaultValues });
   const { errors, watch } = formControl;
   const language = watch('language');
 
@@ -21,14 +30,15 @@ const NewPage = () => {
     const translationIds = translation === '' ? [] : [translation];
 
     try {
-      await addPage({ ...rest, translationIds });
+      await updatePage({ ...rest, id: pageId, translationIds });
       navigate('/admin/pages');
     } catch (error) {
       console.log(error);
     }
   };
 
-  const translationOptions = getTranslationOptions(pages, language);
+  const defaultId = translations.length ? translations[0].id : null;
+  const translationOptions = getTranslationOptions(pages, language, defaultId);
 
   return (
     <PageForm
@@ -39,9 +49,14 @@ const NewPage = () => {
   );
 };
 
-NewPage.propTypes = {
+EditPage.propTypes = {
   // eslint-disable-next-line react/no-unused-prop-types
   path: PropTypes.string.isRequired,
+  pageId: PropTypes.string,
 };
 
-export default NewPage;
+EditPage.defaultProps = {
+  pageId: null,
+};
+
+export default EditPage;
