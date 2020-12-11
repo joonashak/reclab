@@ -4,11 +4,13 @@ import React, {
 import PropTypes from 'prop-types';
 import pageService from '../../../services/pageService';
 import useAuthentication from '../../authentication/useAuthentication';
+import LoadingModal from '../LoadingModal';
 
 const PagesContext = createContext([[], () => {}]);
 
 const PagesProvider = ({ children }) => {
   const [state, setState] = useState<any>([]);
+  const [loading, setLoading] = useState(true);
   const { token } = useAuthentication();
 
   useEffect(() => {
@@ -19,10 +21,13 @@ const PagesProvider = ({ children }) => {
     (async () => {
       console.log('pages query run');
       setState(await pageService.getAll(token));
+      setLoading(false);
     })();
   }, [token]);
 
-  return (
+  return loading ? (
+    <LoadingModal />
+  ) : (
     <PagesContext.Provider value={[state, setState]}>
       {children}
     </PagesContext.Provider>
