@@ -10,6 +10,7 @@ import LoginForm from './LoginForm';
 const useStyles = makeStyles((theme: Theme) => createStyles({
   root: {
     width: '100vw',
+    maxWidth: 600,
     height: '100vh',
     display: 'flex',
     flexDirection: 'column',
@@ -33,6 +34,9 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     marginLeft: '-1rem',
     color: theme.palette.secondary.main,
     fontSize: '3rem',
+    [theme.breakpoints.up('md')]: {
+      fontSize: '5rem',
+    },
   },
 }));
 
