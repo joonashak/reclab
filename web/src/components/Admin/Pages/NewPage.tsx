@@ -4,12 +4,13 @@ import { useForm } from 'react-hook-form';
 import { navigate } from 'gatsby';
 import usePages from './usePages';
 import PageForm from './PageForm';
+import { getTranslationOptions } from './common';
 
 const NewPage = () => {
-  const { addPage } = usePages();
-
+  const { addPage, pages } = usePages();
   const formControl = useForm({ mode: 'onBlur' });
-  const { errors } = formControl;
+  const { errors, watch } = formControl;
+  const language = watch('language');
 
   const onSubmit = async (data) => {
     if (Object.keys(errors).length > 0) {
@@ -27,8 +28,14 @@ const NewPage = () => {
     }
   };
 
+  const translationOptions = getTranslationOptions(pages, language);
+
   return (
-    <PageForm formControl={formControl} onSubmit={onSubmit} />
+    <PageForm
+      formControl={formControl}
+      onSubmit={onSubmit}
+      translationOptions={translationOptions}
+    />
   );
 };
 

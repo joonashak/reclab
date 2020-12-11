@@ -4,16 +4,22 @@ import { useForm } from 'react-hook-form';
 import { navigate } from 'gatsby';
 import usePages from './usePages';
 import PageForm from './PageForm';
+import { getTranslationOptions } from './common';
 
 const EditPage = ({ pageId }) => {
-  const { addPage, findPage } = usePages();
+  const { updatePage, findPage, pages } = usePages();
 
+  const { translations, ...page } = findPage(pageId);
   const defaultValues = pageId
-    ? { ...findPage(pageId) }
+    ? {
+      ...page,
+      translation: translations.length ? translations[0].id : '',
+    }
     : {};
 
   const formControl = useForm({ mode: 'onBlur', defaultValues });
-  const { errors } = formControl;
+  const { errors, watch } = formControl;
+  const language = watch('language');
 
   const onSubmit = async (data) => {
     if (Object.keys(errors).length > 0) {
@@ -24,15 +30,22 @@ const EditPage = ({ pageId }) => {
     const translationIds = translation === '' ? [] : [translation];
 
     try {
-      await addPage({ ...rest, translationIds });
+      await updatePage({ ...rest, id: pageId, translationIds });
       navigate('/admin/pages');
     } catch (error) {
       console.log(error);
     }
   };
 
+  const defaultId = translations.length ? translations[0].id : null;
+  const translationOptions = getTranslationOptions(pages, language, defaultId);
+
   return (
-    <PageForm formControl={formControl} onSubmit={onSubmit} />
+    <PageForm
+      formControl={formControl}
+      onSubmit={onSubmit}
+      translationOptions={translationOptions}
+    />
   );
 };
 

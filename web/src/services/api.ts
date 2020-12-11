@@ -13,7 +13,7 @@ const post = async (path: string, data, token = null) => axios.post(
   config(token),
 );
 
-const put = async (path: string, data, token = null) => axios.put(
+const patch = async (path: string, data, token = null) => axios.patch(
   makeUrl(path),
   data,
   config(token),
@@ -24,6 +24,6 @@ const remove = async (path: string, token = null) => axios.delete(makeUrl(path),
 export default {
   get,
   post,
-  put,
+  patch,
   remove,
 };

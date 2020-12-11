@@ -1,20 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import {
+  arrayOf, func, shape, string,
+} from 'prop-types';
 import {
   Button, Grid, Typography, FormControlLabel, Checkbox,
 } from '@material-ui/core';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import ControlledTextField from '../../controls/ControlledTextField';
 import ControlledSelect from '../../controls/ControlledSelect';
-import usePages from './usePages';
 
-const PageForm = ({ formControl, onSubmit }) => {
-  const { pages } = usePages();
+const PageForm = ({ formControl, onSubmit, translationOptions }) => {
   const {
-    handleSubmit, errors, register, watch,
+    handleSubmit, register, watch,
   } = formControl;
 
-  const language = watch('language');
   const isPublic = watch('isPublic');
 
   return (
@@ -57,8 +56,7 @@ const PageForm = ({ formControl, onSubmit }) => {
           formControl={formControl}
           name="translation"
           label="Translation"
-          options={pages.filter((page) => page.language !== language && !page.translations.length)
-            .map((page) => ({ value: page.id, label: page.title, key: `translation-sel-${page.id}` }))}
+          options={translationOptions}
         />
       </Grid>
       <Grid item xs={12}>
@@ -92,13 +90,19 @@ const PageForm = ({ formControl, onSubmit }) => {
 };
 
 PageForm.propTypes = {
-  // eslint-disable-next-line react/no-unused-prop-types
-  path: PropTypes.string.isRequired,
-  pageId: PropTypes.string,
-};
-
-PageForm.defaultProps = {
-  pageId: null,
+  formControl: shape({
+    handleSubmit: func.isRequired,
+    watch: func.isRequired,
+    register: func.isRequired,
+  }).isRequired,
+  onSubmit: func.isRequired,
+  translationOptions: arrayOf(
+    shape({
+      value: string.isRequired,
+      label: string.isRequired,
+      key: string.isRequired,
+    }),
+  ).isRequired,
 };
 
 export default PageForm;

@@ -50,11 +50,17 @@ export default () => {
     return data;
   };
 
+  const updatePage = async (newPage): Promise<any> => {
+    const { data } = await pageService.update(newPage, token);
+    setState((prev) => prev.filter((page) => page.id !== newPage.id).concat(data));
+  };
+
   const findPage = (id: string) => state.find((page) => page.id === id);
 
   return {
     pages: state,
     addPage,
     findPage,
+    updatePage,
   };
 };
