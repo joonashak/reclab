@@ -71,7 +71,7 @@ export class PagesService {
     return result;
   }
 
-  async update(page: CreatePageDto): Promise<any> {
+  async update(page: CreatePageDto): Promise<Page> {
     const { id, translationIds, ...newPage } = page;
 
     newPage.updatedAt = new Date();
@@ -80,7 +80,7 @@ export class PagesService {
     delete newPage.author;
     delete newPage.createdAt;
 
-    const result = await this.pagesRepository
+    await this.pagesRepository
       .createQueryBuilder('page')
       .update(Page)
       .set({ ...newPage })
@@ -118,6 +118,6 @@ export class PagesService {
       );
     });
 
-    return result;
+    return this.findOne(id);
   }
 }
