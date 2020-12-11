@@ -12,14 +12,18 @@ import usePages from './usePages';
 
 const NewPage = ({ pageId }) => {
   const { addPage, findPage, pages } = usePages();
+
   const defaultValues = pageId
     ? { ...findPage(pageId) }
     : {};
+
   const formControl = useForm({ mode: 'onBlur', defaultValues });
   const {
     handleSubmit, errors, register, watch,
   } = formControl;
+
   const language = watch('language');
+  const isPublic = watch('isPublic');
 
   const submit = async (data) => {
     if (Object.keys(errors).length > 0) {
@@ -83,7 +87,7 @@ const NewPage = ({ pageId }) => {
       </Grid>
       <Grid item xs={12}>
         <FormControlLabel
-          control={<Checkbox name="isPublic" inputRef={register} />}
+          control={<Checkbox name="isPublic" inputRef={register} checked={isPublic} />}
           label="Page is public."
         />
       </Grid>
