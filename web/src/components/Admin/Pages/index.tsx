@@ -10,6 +10,7 @@ const Pages = () => (
     <Router>
       <PageList path="/" default />
       <NewPage path="/new" />
+      <NewPage path="/edit/:pageId" />
     </Router>
   </PagesProvider>
 );

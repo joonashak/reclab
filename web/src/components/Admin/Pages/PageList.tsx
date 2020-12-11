@@ -27,7 +27,11 @@ const PageList = () => {
           {pages.map((page) => (
             <ListItem key={page.id}>
               <ListItemText
-                primary={page.title}
+                primary={(
+                  <Link to={`/admin/pages/edit/${page.id}`}>
+                    {page.title}
+                  </Link>
+                )}
                 secondary={(
                   <Link to={makePath(page.language, page.path)}>
                     {makePath(page.language, page.path)}

@@ -45,8 +45,11 @@ export default () => {
     return data;
   };
 
+  const findPage = (id: string) => state.find((page) => page.id === id);
+
   return {
     pages: state,
     addPage,
+    findPage,
   };
 };

@@ -10,9 +10,12 @@ import ControlledTextField from '../../controls/ControlledTextField';
 import ControlledSelect from '../../controls/ControlledSelect';
 import usePages from './usePages';
 
-const NewPage = () => {
-  const { addPage, pages } = usePages();
-  const formControl = useForm({ mode: 'onBlur' });
+const NewPage = ({ pageId }) => {
+  const { addPage, findPage, pages } = usePages();
+  const defaultValues = pageId
+    ? { ...findPage(pageId) }
+    : {};
+  const formControl = useForm({ mode: 'onBlur', defaultValues });
   const {
     handleSubmit, errors, register, watch,
   } = formControl;
@@ -111,6 +114,11 @@ const NewPage = () => {
 NewPage.propTypes = {
   // eslint-disable-next-line react/no-unused-prop-types
   path: PropTypes.string.isRequired,
+  pageId: PropTypes.string,
+};
+
+NewPage.defaultProps = {
+  pageId: null,
 };
 
 export default NewPage;
