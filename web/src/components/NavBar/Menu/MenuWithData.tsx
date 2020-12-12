@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import { arrayOf, shape, string } from 'prop-types';
 import {
   Container, Drawer, IconButton, List,
 } from '@material-ui/core';
@@ -39,13 +39,13 @@ const MenuWithData = ({ menuItems }) => {
 };
 
 MenuWithData.propTypes = {
-  menuItems: PropTypes.arrayOf(
-    PropTypes.shape({
-      path: PropTypes.string,
-      title: PropTypes.string.isRequired,
-      language: PropTypes.string.isRequired,
-      page: PropTypes.shape({
-        path: PropTypes.string.isRequired,
+  menuItems: arrayOf(
+    shape({
+      path: string,
+      title: string.isRequired,
+      language: string.isRequired,
+      page: shape({
+        path: string.isRequired,
       }),
     }),
   ).isRequired,

@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { shape, string, arrayOf } from 'prop-types';
 import {
   Accordion, AccordionDetails, AccordionSummary, List,
 } from '@material-ui/core';
@@ -25,9 +25,9 @@ const MenuCategory = ({ menuItem }) => {
 };
 
 MenuCategory.propTypes = {
-  menuItem: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    children: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  menuItem: shape({
+    title: string.isRequired,
+    children: arrayOf(shape({})).isRequired,
   }).isRequired,
 };
 

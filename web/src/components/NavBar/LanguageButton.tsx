@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { shape, arrayOf, string } from 'prop-types';
 import { IconButton, makeStyles, createStyles } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import CountryFlag from 'react-country-flag';
@@ -63,10 +63,10 @@ const LanguageButton = ({ page }) => {
 };
 
 LanguageButton.propTypes = {
-  page: PropTypes.shape({
-    translations: PropTypes.arrayOf(PropTypes.shape({
-      language: PropTypes.string.isRequired,
-      path: PropTypes.string.isRequired,
+  page: shape({
+    translations: arrayOf(shape({
+      language: string.isRequired,
+      path: string.isRequired,
     })),
   }).isRequired,
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { shape } from 'prop-types';
 import Img from 'gatsby-image';
 import { createStyles, makeStyles } from '@material-ui/core';
 import { Theme } from '@material-ui/core/styles';
@@ -22,8 +22,8 @@ const BigBodyImage = ({ fluid, fixed }) => {
 };
 
 BigBodyImage.propTypes = {
-  fixed: PropTypes.shape({}),
-  fluid: PropTypes.shape({}),
+  fixed: shape({}),
+  fluid: shape({}),
 };
 
 BigBodyImage.defaultProps = {

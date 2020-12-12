@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { arrayOf, string } from 'prop-types';
 import { GridList, GridListTile } from '@material-ui/core';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 import Image from './Image';
@@ -30,7 +30,7 @@ const Gallery = ({ images }) => {
 };
 
 Gallery.propTypes = {
-  images: PropTypes.arrayOf(PropTypes.string).isRequired,
+  images: arrayOf(string).isRequired,
 };
 
 export default Gallery;

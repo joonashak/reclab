@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { shape, string } from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import MenuWithData from './MenuWithData';
 
@@ -44,8 +44,8 @@ const Menu = ({ page }) => (
 );
 
 Menu.propTypes = {
-  page: PropTypes.shape({
-    language: PropTypes.string.isRequired,
+  page: shape({
+    language: string.isRequired,
   }).isRequired,
 };
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { string } from 'prop-types';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import deepPurple from '@material-ui/core/colors/deepPurple';
 
@@ -43,8 +43,8 @@ const Blockquote = ({ quote, author }) => {
 };
 
 Blockquote.propTypes = {
-  quote: PropTypes.string.isRequired,
-  author: PropTypes.string,
+  quote: string.isRequired,
+  author: string,
 };
 
 Blockquote.defaultProps = {

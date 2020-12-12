@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
+import { shape, string } from 'prop-types';
 import {
   AppBar,
   makeStyles,
@@ -43,8 +43,8 @@ const NavBar = ({ page }) => {
 };
 
 NavBar.propTypes = {
-  page: PropTypes.shape({
-    language: PropTypes.string.isRequired,
+  page: shape({
+    language: string.isRequired,
   }).isRequired,
 };
 

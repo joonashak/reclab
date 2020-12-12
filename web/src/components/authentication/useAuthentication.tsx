@@ -1,7 +1,7 @@
 import React, {
   useContext, createContext, useState, useEffect,
 } from 'react';
-import PropTypes from 'prop-types';
+import { node } from 'prop-types';
 import jwt from 'jsonwebtoken';
 import { navigate } from 'gatsby';
 import tokenStore from './tokenStore';
@@ -48,7 +48,7 @@ const AuthenticationProvider = ({ children }) => {
 };
 
 AuthenticationProvider.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: node.isRequired,
 };
 
 export { AuthenticationProvider };

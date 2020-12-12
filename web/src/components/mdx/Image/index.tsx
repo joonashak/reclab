@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { string, bool } from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import BigBodyImage from './BigBodyImage';
@@ -39,8 +39,8 @@ const Image = ({ src, fixed }) => {
 };
 
 Image.propTypes = {
-  src: PropTypes.string.isRequired,
-  fixed: PropTypes.bool,
+  src: string.isRequired,
+  fixed: bool,
 };
 
 Image.defaultProps = {

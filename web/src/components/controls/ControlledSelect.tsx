@@ -1,5 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import {
+  arrayOf, oneOf, shape, string,
+} from 'prop-types';
 import { Controller } from 'react-hook-form';
 import { MenuItem, TextField } from '@material-ui/core';
 
@@ -38,18 +40,18 @@ const ControlledSelect = ({
 };
 
 ControlledSelect.propTypes = {
-  name: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(['text', 'username', 'password']),
-  formControl: PropTypes.shape({
-    control: PropTypes.shape({}),
-    errors: PropTypes.shape({}),
+  name: string.isRequired,
+  type: oneOf(['text', 'username', 'password']),
+  formControl: shape({
+    control: shape({}),
+    errors: shape({}),
   }).isRequired,
-  label: PropTypes.string,
-  rules: PropTypes.shape({}),
-  options: PropTypes.arrayOf(PropTypes.shape({
-    value: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-    key: PropTypes.string.isRequired,
+  label: string,
+  rules: shape({}),
+  options: arrayOf(shape({
+    value: string.isRequired,
+    label: string.isRequired,
+    key: string.isRequired,
   })).isRequired,
 };
 

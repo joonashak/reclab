@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { node } from 'prop-types';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 
@@ -20,7 +20,7 @@ const Paragraph = ({ children }) => {
 };
 
 Paragraph.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: node.isRequired,
 };
 
 export default Paragraph;
