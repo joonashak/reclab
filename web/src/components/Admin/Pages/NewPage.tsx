@@ -2,6 +2,7 @@ import React from 'react';
 import { string } from 'prop-types';
 import { useForm } from 'react-hook-form';
 import { navigate } from 'gatsby';
+import { Helmet } from 'react-helmet';
 import usePages from './usePages';
 import PageForm from './PageForm';
 import { getTranslationOptions } from './common';
@@ -32,11 +33,16 @@ const NewPage = () => {
   const translationOptions = getTranslationOptions(pages, language);
 
   return (
-    <PageForm
-      formControl={formControl}
-      onSubmit={onSubmit}
-      translationOptions={translationOptions}
-    />
+    <>
+      <Helmet>
+        <title>New Page</title>
+      </Helmet>
+      <PageForm
+        formControl={formControl}
+        onSubmit={onSubmit}
+        translationOptions={translationOptions}
+      />
+    </>
   );
 };
 

@@ -5,6 +5,7 @@ import {
 } from '@material-ui/core';
 import { Theme, createStyles } from '@material-ui/core/styles';
 import NotInterestedIcon from '@material-ui/icons/NotInterested';
+import { Helmet } from 'react-helmet';
 import LoginForm from './LoginForm';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
@@ -63,18 +64,23 @@ const LoginView = ({ formControl, onSubmit }) => {
   const classes = useStyles();
 
   return (
-    <Modal open className={classes.modal}>
-      <Paper className={classes.container}>
-        <Typography variant="h3" className={classes.heading}>
-          <NotInterestedIcon className={classes.icon} />
-          Admin Only!
-        </Typography>
-        <Typography variant="body1" gutterBottom>
-          Enter your credentials to log in.
-        </Typography>
-        <LoginForm formControl={formControl} onSubmit={onSubmit} />
-      </Paper>
-    </Modal>
+    <>
+      <Helmet>
+        <title>Login</title>
+      </Helmet>
+      <Modal open className={classes.modal}>
+        <Paper className={classes.container}>
+          <Typography variant="h3" className={classes.heading}>
+            <NotInterestedIcon className={classes.icon} />
+            Admin Only!
+          </Typography>
+          <Typography variant="body1" gutterBottom>
+            Enter your credentials to log in.
+          </Typography>
+          <LoginForm formControl={formControl} onSubmit={onSubmit} />
+        </Paper>
+      </Modal>
+    </>
   );
 };
 

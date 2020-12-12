@@ -1,8 +1,12 @@
 import React from 'react';
 import { string, bool } from 'prop-types';
+import { Helmet } from 'react-helmet';
 
 const Admin = () => (
   <>
+    <Helmet>
+      <title>Admin</title>
+    </Helmet>
     admin
   </>
 );

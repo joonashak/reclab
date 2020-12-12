@@ -5,6 +5,7 @@ import {
 } from '@material-ui/core';
 import { navigate } from 'gatsby';
 import { Link } from 'gatsby-theme-material-ui';
+import { Helmet } from 'react-helmet';
 import usePages from './usePages';
 import { makePath } from '../../../util/snippets';
 import ADMIN_ROUTES from '../routes';
@@ -14,6 +15,9 @@ const PageList = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Pages</title>
+      </Helmet>
       <Grid item xs={12}>
         <Button
           color="primary"
