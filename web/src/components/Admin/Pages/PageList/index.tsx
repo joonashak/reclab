@@ -1,14 +1,11 @@
 import React from 'react';
 import { string, bool } from 'prop-types';
-import {
-  Button, Grid, List, ListItem, ListItemText,
-} from '@material-ui/core';
+import { Button, Grid, List } from '@material-ui/core';
 import { navigate } from 'gatsby';
-import { Link } from 'gatsby-theme-material-ui';
 import { Helmet } from 'react-helmet';
-import usePages from './usePages';
-import { makePath } from '../../../util/snippets';
-import ADMIN_ROUTES from '../routes';
+import usePages from '../usePages';
+import ADMIN_ROUTES from '../../routes';
+import PageListItem from './PageListItem';
 
 const PageList = () => {
   const { pages } = usePages();
@@ -29,22 +26,7 @@ const PageList = () => {
       </Grid>
       <Grid item xs={12}>
         <List>
-          {pages.map((page) => (
-            <ListItem key={page.id}>
-              <ListItemText
-                primary={(
-                  <Link to={`${ADMIN_ROUTES.EDIT_PAGE}/${page.id}`}>
-                    {page.title}
-                  </Link>
-                )}
-                secondary={(
-                  <Link to={makePath(page.language, page.path)}>
-                    {makePath(page.language, page.path)}
-                  </Link>
-              )}
-              />
-            </ListItem>
-          ))}
+          {pages.map((page) => <PageListItem key={page.id} page={page} />)}
         </List>
       </Grid>
     </div>
