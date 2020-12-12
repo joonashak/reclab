@@ -1,34 +1,54 @@
 import React, {
   useContext, createContext, useState, useEffect,
 } from 'react';
-import PropTypes from 'prop-types';
+import { node } from 'prop-types';
 import jwt from 'jsonwebtoken';
+import { navigate } from 'gatsby';
 import tokenStore from './tokenStore';
-import Login from './Login';
+import loginService from '../../services/loginService';
+import LoadingModal from '../Admin/LoadingModal';
+import ADMIN_ROUTES from '../Admin/routes';
 
 const AuthenticationContext = createContext([[], () => {}]);
 
 const AuthenticationProvider = ({ children }) => {
   const [state, setState] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
       const token = await tokenStore.getToken();
 
-      // Use '' to signify 'no token found' to prevent login prompt flash.
-      setState(token || '');
+      setState(token);
+
+      // Show login prompt immediately if no token found.
+      if (!token) {
+        navigate(ADMIN_ROUTES.LOGIN);
+      }
+
+      // Validate token against backend.
+      if (token && !await loginService.validateToken(token)) {
+        tokenStore.setToken('');
+        navigate(ADMIN_ROUTES.LOGIN);
+      }
+
+      setLoading(false);
     })();
   }, []);
 
+  if (loading) {
+    return <LoadingModal />;
+  }
+
   return (
     <AuthenticationContext.Provider value={[state, setState]}>
-      {state === '' ? <Login /> : children}
+      {children}
     </AuthenticationContext.Provider>
   );
 };
 
 AuthenticationProvider.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: node.isRequired,
 };
 
 export { AuthenticationProvider };
@@ -36,16 +56,25 @@ export { AuthenticationProvider };
 export default () => {
   const [state, setState] = useContext<any>(AuthenticationContext);
 
-  const setToken = (token: string) => {
-    tokenStore.setToken(token);
+  const setToken = async (token: string) => {
+    await tokenStore.setToken(token);
     setState(token);
   };
+
+  const login = async (username: string, password: string): Promise<void> => {
+    const result = await loginService.login(username, password);
+    const { data: { accessToken } } = result;
+    await setToken(accessToken);
+  };
+
+  const logout = () => setToken('');
 
   const getUsername = () => jwt.decode(state).payload;
 
   return {
     token: state,
-    setToken,
     getUsername,
+    logout,
+    login,
   };
 };

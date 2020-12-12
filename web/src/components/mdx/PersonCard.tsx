@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { string, node } from 'prop-types';
 import { Card, CardContent, CardHeader } from '@material-ui/core';
 import Image from './Image/index';
 
@@ -16,10 +16,10 @@ const PersonCard = ({
 );
 
 PersonCard.propTypes = {
-  name: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
+  name: string.isRequired,
+  image: string.isRequired,
+  title: string.isRequired,
+  children: node.isRequired,
 };
 
 export default PersonCard;

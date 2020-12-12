@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import PropTypes, { InferProps } from 'prop-types';
+import { InferProps, shape, string } from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
@@ -25,10 +25,10 @@ const Page = ({ pageContext }: InferProps<typeof Page.propTypes>) => {
 };
 
 Page.propTypes = {
-  pageContext: PropTypes.shape({
-    data: PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      content: PropTypes.string.isRequired,
+  pageContext: shape({
+    data: shape({
+      title: string.isRequired,
+      content: string.isRequired,
     }).isRequired,
   }).isRequired,
 };

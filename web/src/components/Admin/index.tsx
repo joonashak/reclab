@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { string, bool } from 'prop-types';
 
 const Admin = () => (
   <>
@@ -9,9 +9,9 @@ const Admin = () => (
 
 Admin.propTypes = {
   // eslint-disable-next-line react/no-unused-prop-types
-  path: PropTypes.string.isRequired,
+  path: string.isRequired,
   // eslint-disable-next-line react/no-unused-prop-types
-  default: PropTypes.bool,
+  default: bool,
 };
 
 Admin.defaultProps = {

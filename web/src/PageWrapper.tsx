@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { node, shape, string } from 'prop-types';
 import Layout from './components/Layout';
 
 const PageWrapper = ({ page, children }) => (
@@ -7,9 +7,9 @@ const PageWrapper = ({ page, children }) => (
 );
 
 PageWrapper.propTypes = {
-  children: PropTypes.node.isRequired,
-  page: PropTypes.shape({
-    language: PropTypes.string.isRequired,
+  children: node.isRequired,
+  page: shape({
+    language: string.isRequired,
   }).isRequired,
 };
 

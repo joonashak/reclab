@@ -1,5 +1,5 @@
 import { Router } from '@reach/router';
-import PropTypes from 'prop-types';
+import { string } from 'prop-types';
 import React from 'react';
 import NewPage from './NewPage';
 import PageList from './PageList';
@@ -18,7 +18,7 @@ const Pages = () => (
 
 Pages.propTypes = {
   // eslint-disable-next-line react/no-unused-prop-types
-  path: PropTypes.string.isRequired,
+  path: string.isRequired,
 };
 
 export default Pages;

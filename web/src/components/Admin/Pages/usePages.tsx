@@ -1,7 +1,7 @@
 import React, {
   useContext, createContext, useState, useEffect,
 } from 'react';
-import PropTypes from 'prop-types';
+import { node } from 'prop-types';
 import pageService from '../../../services/pageService';
 import useAuthentication from '../../authentication/useAuthentication';
 import LoadingModal from '../LoadingModal';
@@ -35,7 +35,7 @@ const PagesProvider = ({ children }) => {
 };
 
 PagesProvider.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: node.isRequired,
 };
 
 export { PagesProvider };

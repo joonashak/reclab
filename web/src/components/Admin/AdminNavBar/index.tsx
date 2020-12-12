@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {
   AppBar,
-  Button,
   Container,
   Drawer,
   IconButton,
@@ -14,6 +13,7 @@ import {
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'gatsby-theme-material-ui';
+import LogoutButton from './LogoutButton';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -56,7 +56,7 @@ export default () => {
         <Typography variant="h6" className={classes.title}>
           Admin
         </Typography>
-        <Button color="inherit">Logout</Button>
+        <LogoutButton />
       </Toolbar>
     </AppBar>
   );

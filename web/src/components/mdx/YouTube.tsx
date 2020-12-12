@@ -1,6 +1,6 @@
 import React from 'react';
+import { string } from 'prop-types';
 import ReactYouTube from 'react-youtube';
-import PropTypes from 'prop-types';
 import { createStyles, makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles(() => createStyles({
@@ -36,7 +36,7 @@ const YouTube = ({ videoId }) => {
 };
 
 YouTube.propTypes = {
-  videoId: PropTypes.string.isRequired,
+  videoId: string.isRequired,
 };
 
 export default YouTube;

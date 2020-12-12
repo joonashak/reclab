@@ -1,10 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { string } from 'prop-types';
 import { useForm } from 'react-hook-form';
 import { navigate } from 'gatsby';
 import usePages from './usePages';
 import PageForm from './PageForm';
 import { getTranslationOptions } from './common';
+import ADMIN_ROUTES from '../routes';
 
 const EditPage = ({ pageId }) => {
   const { updatePage, findPage, pages } = usePages();
@@ -31,7 +32,7 @@ const EditPage = ({ pageId }) => {
 
     try {
       await updatePage({ ...rest, id: pageId, translationIds });
-      navigate('/admin/pages');
+      navigate(ADMIN_ROUTES.PAGES);
     } catch (error) {
       console.log(error);
     }
@@ -51,8 +52,8 @@ const EditPage = ({ pageId }) => {
 
 EditPage.propTypes = {
   // eslint-disable-next-line react/no-unused-prop-types
-  path: PropTypes.string.isRequired,
-  pageId: PropTypes.string,
+  path: string.isRequired,
+  pageId: string,
 };
 
 EditPage.defaultProps = {

@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { node, string } from 'prop-types';
 import AdminNavBar from './AdminNavBar';
 
 const AdminWrapper = ({ children }) => (
@@ -10,9 +10,9 @@ const AdminWrapper = ({ children }) => (
 );
 
 AdminWrapper.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: node.isRequired,
   // eslint-disable-next-line react/no-unused-prop-types
-  path: PropTypes.string.isRequired,
+  path: string.isRequired,
 };
 
 export default AdminWrapper;

@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { node, shape, string } from 'prop-types';
 import { Container, ThemeProvider } from '@material-ui/core';
 import NavBar from './NavBar/index';
 import theme from '../themes/theme';
@@ -14,9 +14,9 @@ const Layout = ({ page, children }) => (
 );
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-  page: PropTypes.shape({
-    language: PropTypes.string.isRequired,
+  children: node.isRequired,
+  page: shape({
+    language: string.isRequired,
   }).isRequired,
 };
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { shape, string } from 'prop-types';
 import { ListItem, ListItemText } from '@material-ui/core';
 import { Link } from 'gatsby-theme-material-ui';
 import { makePath } from '../../../util/snippets';
@@ -21,12 +21,12 @@ const MenuItem = ({ menuItem }) => {
 };
 
 MenuItem.propTypes = {
-  menuItem: PropTypes.shape({
-    path: PropTypes.string,
-    title: PropTypes.string.isRequired,
-    language: PropTypes.string.isRequired,
-    page: PropTypes.shape({
-      path: PropTypes.string.isRequired,
+  menuItem: shape({
+    path: string,
+    title: string.isRequired,
+    language: string.isRequired,
+    page: shape({
+      path: string.isRequired,
     }),
   }).isRequired,
 };

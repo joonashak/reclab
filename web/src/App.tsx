@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { node } from 'prop-types';
 import { I18nextProvider } from 'react-i18next';
 import i18n from './i18n/i18n';
 
@@ -10,7 +10,7 @@ const App = ({ element }) => (
 );
 
 App.propTypes = {
-  element: PropTypes.node.isRequired,
+  element: node.isRequired,
 };
 
 export default App;

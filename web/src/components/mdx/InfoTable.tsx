@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { node, string } from 'prop-types';
 import { Typography } from '@material-ui/core';
 
 const InfoTable = ({ children, title }) => (
@@ -10,8 +10,8 @@ const InfoTable = ({ children, title }) => (
 );
 
 InfoTable.propTypes = {
-  children: PropTypes.node.isRequired,
-  title: PropTypes.string,
+  children: node.isRequired,
+  title: string,
 };
 
 InfoTable.defaultProps = {
