@@ -5,6 +5,7 @@ import { navigate } from 'gatsby';
 import { login } from '../../../services/loginService';
 import useAuthentication from '../useAuthentication';
 import LoginView from './LoginView';
+import ADMIN_ROUTES from '../../Admin/routes';
 
 const Login = () => {
   const formControl = useForm({ mode: 'onBlur' });
@@ -27,7 +28,7 @@ const Login = () => {
     const { data: { accessToken } } = res;
     setToken(accessToken);
     console.log('You were logged in!');
-    navigate('/admin', { replace: true });
+    navigate(ADMIN_ROUTES.INDEX, { replace: true });
   };
 
   return <LoginView formControl={formControl} onSubmit={onSubmit} />;

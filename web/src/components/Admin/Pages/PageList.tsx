@@ -7,6 +7,7 @@ import { navigate } from 'gatsby';
 import { Link } from 'gatsby-theme-material-ui';
 import usePages from './usePages';
 import { makePath } from '../../../util/snippets';
+import ADMIN_ROUTES from '../routes';
 
 const PageList = () => {
   const { pages } = usePages();
@@ -17,7 +18,7 @@ const PageList = () => {
         <Button
           color="primary"
           variant="contained"
-          onClick={() => navigate('/admin/pages/new')}
+          onClick={() => navigate(ADMIN_ROUTES.NEW_PAGE)}
         >
           New Page
         </Button>
@@ -28,7 +29,7 @@ const PageList = () => {
             <ListItem key={page.id}>
               <ListItemText
                 primary={(
-                  <Link to={`/admin/pages/edit/${page.id}`}>
+                  <Link to={`${ADMIN_ROUTES.EDIT_PAGE}/${page.id}`}>
                     {page.title}
                   </Link>
                 )}

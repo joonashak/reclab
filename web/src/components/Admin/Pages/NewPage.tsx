@@ -5,6 +5,7 @@ import { navigate } from 'gatsby';
 import usePages from './usePages';
 import PageForm from './PageForm';
 import { getTranslationOptions } from './common';
+import ADMIN_ROUTES from '../routes';
 
 const NewPage = () => {
   const { addPage, pages } = usePages();
@@ -22,7 +23,7 @@ const NewPage = () => {
 
     try {
       await addPage({ ...rest, translationIds });
-      navigate('/admin/pages');
+      navigate(ADMIN_ROUTES.PAGES);
     } catch (error) {
       console.log(error);
     }
