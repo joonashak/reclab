@@ -6,6 +6,7 @@ import Admin from '../components/Admin';
 import Pages from '../components/Admin/Pages';
 import AdminWrapper from '../components/Admin/AdminWrapper';
 import adminTheme from '../themes/adminTheme';
+import Login from '../components/authentication/Login';
 
 export default () => (
   <ThemeProvider theme={adminTheme}>
@@ -14,6 +15,7 @@ export default () => (
         <AdminWrapper path="/admin">
           <Admin path="/" default />
           <Pages path="/pages/*" />
+          <Login path="/login" />
         </AdminWrapper>
       </Router>
     </AuthenticationProvider>

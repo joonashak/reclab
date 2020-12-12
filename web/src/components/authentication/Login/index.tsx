@@ -1,10 +1,12 @@
 import React from 'react';
+import { string } from 'prop-types';
 import { useForm } from 'react-hook-form';
+import { navigate } from 'gatsby';
 import { login } from '../../../services/loginService';
 import useAuthentication from '../useAuthentication';
 import LoginView from './LoginView';
 
-export default () => {
+const Login = () => {
   const formControl = useForm({ mode: 'onBlur' });
   const { errors } = formControl;
   const { setToken } = useAuthentication();
@@ -25,7 +27,15 @@ export default () => {
     const { data: { accessToken } } = res;
     setToken(accessToken);
     console.log('You were logged in!');
+    navigate('/Login', { replace: true });
   };
 
   return <LoginView formControl={formControl} onSubmit={onSubmit} />;
 };
+
+Login.propTypes = {
+  // eslint-disable-next-line react/no-unused-prop-types
+  path: string.isRequired,
+};
+
+export default Login;

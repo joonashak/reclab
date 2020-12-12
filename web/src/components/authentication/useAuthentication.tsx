@@ -3,8 +3,8 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import jwt from 'jsonwebtoken';
+import { navigate } from 'gatsby';
 import tokenStore from './tokenStore';
-import Login from './Login';
 import { validateToken } from '../../services/loginService';
 import LoadingModal from '../Admin/LoadingModal';
 
@@ -13,9 +13,9 @@ const AuthenticationContext = createContext([[], () => {}]);
 const AuthenticationProvider = ({ children }) => {
   const [state, setState] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const [showLogin, setShowLogin] = useState(false);
 
   useEffect(() => {
+    console.log('running useAuthentication effect');
     (async () => {
       const token = await tokenStore.getToken();
 
@@ -23,22 +23,18 @@ const AuthenticationProvider = ({ children }) => {
 
       // Show login prompt immediately if no token found.
       if (!token) {
-        setShowLogin(true);
+        navigate('/admin/login');
       }
 
       // Validate token against backend.
       if (token && !await validateToken(token)) {
-        setShowLogin(true);
         tokenStore.setToken('');
+        navigate('/admin/login');
       }
 
       setLoading(false);
     })();
   }, []);
-
-  if (showLogin) {
-    return <Login />;
-  }
 
   if (loading) {
     return <LoadingModal />;
