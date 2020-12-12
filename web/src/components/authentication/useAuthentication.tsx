@@ -56,8 +56,8 @@ export { AuthenticationProvider };
 export default () => {
   const [state, setState] = useContext<any>(AuthenticationContext);
 
-  const setToken = (token: string) => {
-    tokenStore.setToken(token);
+  const setToken = async (token: string) => {
+    await tokenStore.setToken(token);
     setState(token);
   };
 

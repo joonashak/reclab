@@ -5,8 +5,8 @@ import useAuthentication from '../../authentication/useAuthentication';
 export default () => {
   const { logout } = useAuthentication();
 
-  const onClick = () => {
-    logout();
+  const onClick = async () => {
+    await logout();
     window.location.reload();
   };
 

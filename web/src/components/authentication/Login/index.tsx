@@ -26,7 +26,7 @@ const Login = () => {
     }
 
     const { data: { accessToken } } = res;
-    setToken(accessToken);
+    await setToken(accessToken);
     console.log('You were logged in!');
     navigate(ADMIN_ROUTES.INDEX, { replace: true });
   };
