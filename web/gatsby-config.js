@@ -5,7 +5,12 @@ require('dotenv').config({
 const staticPlugins = [
   'gatsby-plugin-react-helmet',
   'gatsby-theme-material-ui',
-  'gatsby-plugin-sharp',
+  {
+    resolve: 'gatsby-plugin-sharp',
+    options: {
+      icon: 'src/images/palli.png',
+    },
+  },
   'gatsby-transformer-sharp',
   {
     resolve: 'gatsby-plugin-mdx',
@@ -20,20 +25,18 @@ const staticPlugins = [
       ],
     },
   },
-  /*
   {
     resolve: 'gatsby-plugin-manifest',
     options: {
-      name: 'gatsby-starter-default',
-      short_name: 'starter',
+      name: 'Recover Laboratory',
+      short_name: 'Reclab',
       start_url: '/',
-      background_color: '#663399',
-      theme_color: '#663399',
+      background_color: '#FFF',
+      theme_color: '#FFF',
       display: 'minimal-ui',
-      icon: 'src/images/gatsby-icon.png', // This path is relative to the root of the site.
+      icon: 'src/images/palli.png',
     },
   },
-  */
   {
     resolve: 'gatsby-source-apiserver',
     options: {
@@ -92,16 +95,6 @@ const imagePlugins = [
       name: 'imagesFromCdn',
     },
   },
-  /*
-  {
-    resolve: 'gatsby-transformer-cloudinary',
-    options: {
-      cloudName: process.env.CLOUDINARY_CLOUD_NAME,
-      apiKey: process.env.CLOUDINARY_API_KEY,
-      apiSecret: process.env.CLOUDINARY_API_SECRET,
-    },
-  },
-  */
 ];
 
 const plugins = process.env.CLOUDINARY_CLOUD_NAME

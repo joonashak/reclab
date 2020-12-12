@@ -2,12 +2,15 @@ import React from 'react';
 import { string } from 'prop-types';
 import { useForm } from 'react-hook-form';
 import { navigate } from 'gatsby';
+import { Helmet } from 'react-helmet';
 import usePages from './usePages';
 import PageForm from './PageForm';
 import { getTranslationOptions } from './common';
 import ADMIN_ROUTES from '../routes';
+import useNotification from '../../GlobalNotification/useNotification';
 
 const EditPage = ({ pageId }) => {
+  const { setNotification } = useNotification();
   const { updatePage, findPage, pages } = usePages();
 
   const { translations, ...page } = findPage(pageId);
@@ -32,9 +35,10 @@ const EditPage = ({ pageId }) => {
 
     try {
       await updatePage({ ...rest, id: pageId, translationIds });
+      setNotification('Page updated!', 'success', true);
       navigate(ADMIN_ROUTES.PAGES);
     } catch (error) {
-      console.log(error);
+      setNotification('Updating page failed.', 'error');
     }
   };
 
@@ -42,11 +46,18 @@ const EditPage = ({ pageId }) => {
   const translationOptions = getTranslationOptions(pages, language, defaultId);
 
   return (
-    <PageForm
-      formControl={formControl}
-      onSubmit={onSubmit}
-      translationOptions={translationOptions}
-    />
+    <>
+      <Helmet>
+        <title>{`Edit Page: ${page.title}`}</title>
+      </Helmet>
+      <PageForm
+        formControl={formControl}
+        onSubmit={onSubmit}
+        translationOptions={translationOptions}
+        heading="Edit Page"
+        submitLabel="Update Page"
+      />
+    </>
   );
 };
 
