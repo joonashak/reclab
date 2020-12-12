@@ -27,7 +27,7 @@ const Login = () => {
     const { data: { accessToken } } = res;
     setToken(accessToken);
     console.log('You were logged in!');
-    navigate('/Login', { replace: true });
+    navigate('/admin', { replace: true });
   };
 
   return <LoginView formControl={formControl} onSubmit={onSubmit} />;

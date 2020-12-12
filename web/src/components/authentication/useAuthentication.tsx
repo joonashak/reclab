@@ -15,7 +15,6 @@ const AuthenticationProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log('running useAuthentication effect');
     (async () => {
       const token = await tokenStore.getToken();
 
