@@ -51,6 +51,8 @@ const EditPage = ({ pageId }) => {
         formControl={formControl}
         onSubmit={onSubmit}
         translationOptions={translationOptions}
+        heading="Edit Page"
+        submitLabel="Update Page"
       />
     </>
   );

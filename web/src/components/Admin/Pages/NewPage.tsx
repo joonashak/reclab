@@ -41,6 +41,8 @@ const NewPage = () => {
         formControl={formControl}
         onSubmit={onSubmit}
         translationOptions={translationOptions}
+        heading="New Page"
+        submitLabel="Create Page"
       />
     </>
   );

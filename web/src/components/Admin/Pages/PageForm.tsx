@@ -9,7 +9,9 @@ import LockOpenIcon from '@material-ui/icons/LockOpen';
 import ControlledTextField from '../../controls/ControlledTextField';
 import ControlledSelect from '../../controls/ControlledSelect';
 
-const PageForm = ({ formControl, onSubmit, translationOptions }) => {
+const PageForm = ({
+  formControl, onSubmit, translationOptions, heading, submitLabel,
+}) => {
   const {
     handleSubmit, register, watch,
   } = formControl;
@@ -19,9 +21,7 @@ const PageForm = ({ formControl, onSubmit, translationOptions }) => {
   return (
     <>
       <Grid item xs={12}>
-        <Typography variant="body1" gutterBottom>
-          New Page
-        </Typography>
+        <Typography variant="body1" gutterBottom>{heading}</Typography>
       </Grid>
       <Grid item xs={12} md={6}>
         <ControlledTextField
@@ -82,7 +82,7 @@ const PageForm = ({ formControl, onSubmit, translationOptions }) => {
           startIcon={<LockOpenIcon />}
           fullWidth
         >
-          Create Page
+          {submitLabel}
         </Button>
       </Grid>
     </>
@@ -103,6 +103,8 @@ PageForm.propTypes = {
       key: string.isRequired,
     }),
   ).isRequired,
+  heading: string.isRequired,
+  submitLabel: string.isRequired,
 };
 
 export default PageForm;
