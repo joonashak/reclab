@@ -5,7 +5,7 @@ import { node } from 'prop-types';
 import jwt from 'jsonwebtoken';
 import { navigate } from 'gatsby';
 import tokenStore from './tokenStore';
-import { validateToken } from '../../services/loginService';
+import loginService from '../../services/loginService';
 import LoadingModal from '../Admin/LoadingModal';
 import ADMIN_ROUTES from '../Admin/routes';
 
@@ -27,7 +27,7 @@ const AuthenticationProvider = ({ children }) => {
       }
 
       // Validate token against backend.
-      if (token && !await validateToken(token)) {
+      if (token && !await loginService.validateToken(token)) {
         tokenStore.setToken('');
         navigate(ADMIN_ROUTES.LOGIN);
       }
@@ -61,14 +61,20 @@ export default () => {
     setState(token);
   };
 
-  const getUsername = () => jwt.decode(state).payload;
+  const login = async (username: string, password: string): Promise<void> => {
+    const result = await loginService.login(username, password);
+    const { data: { accessToken } } = result;
+    await setToken(accessToken);
+  };
 
   const logout = () => setToken('');
 
+  const getUsername = () => jwt.decode(state).payload;
+
   return {
     token: state,
-    setToken,
     getUsername,
     logout,
+    login,
   };
 };

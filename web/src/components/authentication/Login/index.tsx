@@ -2,32 +2,31 @@ import React from 'react';
 import { string } from 'prop-types';
 import { useForm } from 'react-hook-form';
 import { navigate } from 'gatsby';
-import { login } from '../../../services/loginService';
 import useAuthentication from '../useAuthentication';
 import LoginView from './LoginView';
 import ADMIN_ROUTES from '../../Admin/routes';
+import useNotification from '../../GlobalNotification/useNotification';
 
 const Login = () => {
   const formControl = useForm({ mode: 'onBlur' });
   const { errors } = formControl;
-  const { setToken } = useAuthentication();
+  const { login } = useAuthentication();
+  const { setNotification } = useNotification();
 
   const onSubmit = async (data) => {
     if (Object.keys(errors).length > 0) {
       return;
     }
     const { username, password } = data;
-    const res = await login(username, password);
 
-    if (res.error) {
-      console.log(`Login failed: ${res.error.response.data.message}`, 'error');
-
+    try {
+      await login(username, password);
+    } catch (error) {
+      setNotification(`Login failed: ${error.response.data.message}`, 'error');
       return;
     }
 
-    const { data: { accessToken } } = res;
-    await setToken(accessToken);
-    console.log('You were logged in!');
+    setNotification('You were logged in!', 'info', true);
     navigate(ADMIN_ROUTES.INDEX, { replace: true });
   };
 

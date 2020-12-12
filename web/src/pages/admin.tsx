@@ -7,17 +7,22 @@ import Pages from '../components/Admin/Pages';
 import AdminWrapper from '../components/Admin/AdminWrapper';
 import adminTheme from '../themes/adminTheme';
 import Login from '../components/authentication/Login';
+import { NotificationProvider } from '../components/GlobalNotification/useNotification';
+import GlobalNotification from '../components/GlobalNotification';
 
 export default () => (
   <ThemeProvider theme={adminTheme}>
-    <AuthenticationProvider>
-      <Router>
-        <AdminWrapper path="/admin">
-          <Admin path="/" default />
-          <Pages path="/pages/*" />
-          <Login path="/login" />
-        </AdminWrapper>
-      </Router>
-    </AuthenticationProvider>
+    <NotificationProvider>
+      <AuthenticationProvider>
+        <Router>
+          <AdminWrapper path="/admin">
+            <Admin path="/" default />
+            <Pages path="/pages/*" />
+            <Login path="/login" />
+          </AdminWrapper>
+        </Router>
+        <GlobalNotification />
+      </AuthenticationProvider>
+    </NotificationProvider>
   </ThemeProvider>
 );
