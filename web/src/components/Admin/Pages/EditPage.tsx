@@ -7,8 +7,10 @@ import usePages from './usePages';
 import PageForm from './PageForm';
 import { getTranslationOptions } from './common';
 import ADMIN_ROUTES from '../routes';
+import useNotification from '../../GlobalNotification/useNotification';
 
 const EditPage = ({ pageId }) => {
+  const { setNotification } = useNotification();
   const { updatePage, findPage, pages } = usePages();
 
   const { translations, ...page } = findPage(pageId);
@@ -33,9 +35,10 @@ const EditPage = ({ pageId }) => {
 
     try {
       await updatePage({ ...rest, id: pageId, translationIds });
+      setNotification('Page updated!', 'success', true);
       navigate(ADMIN_ROUTES.PAGES);
     } catch (error) {
-      console.log(error);
+      setNotification('Updating page failed.', 'error');
     }
   };
 

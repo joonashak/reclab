@@ -6,9 +6,11 @@ import { Helmet } from 'react-helmet';
 import usePages from './usePages';
 import PageForm from './PageForm';
 import { getTranslationOptions } from './common';
+import useNotification from '../../GlobalNotification/useNotification';
 import ADMIN_ROUTES from '../routes';
 
 const NewPage = () => {
+  const { setNotification } = useNotification();
   const { addPage, pages } = usePages();
   const formControl = useForm({ mode: 'onBlur' });
   const { errors, watch } = formControl;
@@ -24,9 +26,10 @@ const NewPage = () => {
 
     try {
       await addPage({ ...rest, translationIds });
+      setNotification('Page created!', 'success', true);
       navigate(ADMIN_ROUTES.PAGES);
     } catch (error) {
-      console.log(error);
+      setNotification('Creating page failed.', 'error');
     }
   };
 
