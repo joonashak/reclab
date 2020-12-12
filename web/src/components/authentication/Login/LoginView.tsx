@@ -19,10 +19,10 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 
   container: {
     maxWidth: 600,
-    padding: theme.spacing(1),
+    padding: theme.spacing(2),
     paddingBottom: theme.spacing(5),
 
-    '& > *': {
+    '& > *, & > form > *': {
       marginBottom: theme.spacing(1),
     },
 
@@ -32,6 +32,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 
     [theme.breakpoints.down('xs')]: {
       height: '100vh',
+      padding: theme.spacing(1),
     },
   },
 

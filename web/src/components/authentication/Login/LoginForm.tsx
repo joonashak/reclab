@@ -10,7 +10,7 @@ const LoginForm = ({ formControl, onSubmit }) => {
   const { handleSubmit, register } = formControl;
 
   return (
-    <>
+    <form>
       <ControlledTextField
         formControl={formControl}
         name="username"
@@ -41,7 +41,7 @@ const LoginForm = ({ formControl, onSubmit }) => {
       >
         Log In
       </Button>
-    </>
+    </form>
   );
 };
 
