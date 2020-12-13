@@ -26,7 +26,7 @@ export class MenuItem {
   @Column({ type: 'enum', enum: languageEnum })
   language: string;
 
-  @ManyToOne(type => Page, { eager: true })
+  @ManyToOne(type => Page, { eager: true, onDelete: 'CASCADE' })
   @JoinColumn()
   page: Page;
 

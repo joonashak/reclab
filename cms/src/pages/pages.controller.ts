@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Inject,
   Param,
@@ -51,9 +52,13 @@ export class PagesController {
 
   @UseGuards(JwtAuthGuard)
   @Patch()
-  update(
-    @Body() page: CreatePageDto,
-  ): Promise<Page> {
+  update(@Body() page: CreatePageDto): Promise<Page> {
     return this.pagesService.update(page);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Delete()
+  remove(@Body() { id }: CreatePageDto): Promise<any> {
+    return this.pagesService.remove(id);
   }
 }
