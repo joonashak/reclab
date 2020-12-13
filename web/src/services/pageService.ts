@@ -15,8 +15,11 @@ const update = async (page: any, token: string): Promise<any> => {
   return res;
 };
 
+const remove = async (id: string, token: string): Promise<any> => api.remove('/page', { id }, token);
+
 export default {
   getAll,
   create,
   update,
+  remove,
 };

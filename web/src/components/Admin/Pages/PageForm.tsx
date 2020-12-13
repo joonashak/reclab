@@ -13,10 +13,10 @@ const PageForm = ({
   formControl, onSubmit, translationOptions, heading, submitLabel,
 }) => {
   const {
-    handleSubmit, register, watch,
+    handleSubmit, register,
   } = formControl;
 
-  const isPublic = watch('isPublic');
+  const { isPublic } = formControl.control.defaultValuesRef.current;
 
   return (
     <>
@@ -61,7 +61,7 @@ const PageForm = ({
       </Grid>
       <Grid item xs={12}>
         <FormControlLabel
-          control={<Checkbox name="isPublic" inputRef={register} checked={isPublic} />}
+          control={<Checkbox name="isPublic" inputRef={register} defaultChecked={isPublic} />}
           label="Page is public."
         />
       </Grid>
@@ -92,7 +92,6 @@ const PageForm = ({
 PageForm.propTypes = {
   formControl: shape({
     handleSubmit: func.isRequired,
-    watch: func.isRequired,
     register: func.isRequired,
   }).isRequired,
   onSubmit: func.isRequired,

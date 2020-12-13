@@ -8,12 +8,20 @@ import PageForm from './PageForm';
 import { getTranslationOptions } from './common';
 import ADMIN_ROUTES from '../routes';
 import useNotification from '../../GlobalNotification/useNotification';
+import DeletePage from './DeletePage';
 
 const EditPage = ({ pageId }) => {
   const { setNotification } = useNotification();
   const { updatePage, findPage, pages } = usePages();
 
-  const { translations, ...page } = findPage(pageId);
+  const page = findPage(pageId);
+
+  if (!page) {
+    navigate(ADMIN_ROUTES.PAGES);
+    return null;
+  }
+
+  const { translations } = page;
   const defaultValues = pageId
     ? {
       ...page,
@@ -50,6 +58,7 @@ const EditPage = ({ pageId }) => {
       <Helmet>
         <title>{`Edit Page: ${page.title}`}</title>
       </Helmet>
+      <DeletePage page={page} />
       <PageForm
         formControl={formControl}
         onSubmit={onSubmit}
