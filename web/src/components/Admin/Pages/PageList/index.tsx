@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { string, bool } from 'prop-types';
 import {
   List, Container, Typography, makeStyles, Theme, createStyles,
@@ -8,6 +8,7 @@ import usePages from '../usePages';
 import PageListItem from './PageListItem';
 import { useAdminNavbarTitle } from '../../AdminNavbar/useAdminNavbar';
 import NewPageButton from './NewPageButton';
+import SortPages from './SortPages';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   container: {
@@ -24,6 +25,9 @@ const PageList = () => {
   const classes = useStyles();
   useAdminNavbarTitle('Pages');
 
+  const [sortFn, setSortFn] = useState();
+  const sortedPages = pages.sort(sortFn);
+
   return (
     <Container className={classes.container}>
       <Helmet>
@@ -33,8 +37,9 @@ const PageList = () => {
       <NewPageButton />
       <Typography variant="h4" className={classes.h4}>Current Pages</Typography>
       <Typography variant="body1" gutterBottom>Select a page to edit.</Typography>
+      <SortPages setSortFn={setSortFn} />
       <List>
-        {pages.map((page) => <PageListItem key={page.id} page={page} />)}
+        {sortedPages.map((page) => <PageListItem key={page.id} page={page} />)}
       </List>
     </Container>
   );
