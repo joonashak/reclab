@@ -14,7 +14,14 @@ const EditPage = ({ pageId }) => {
   const { setNotification } = useNotification();
   const { updatePage, findPage, pages } = usePages();
 
-  const { translations, ...page } = findPage(pageId);
+  const page = findPage(pageId);
+
+  if (!page) {
+    navigate(ADMIN_ROUTES.PAGES);
+    return null;
+  }
+
+  const { translations } = page;
   const defaultValues = pageId
     ? {
       ...page,

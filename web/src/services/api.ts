@@ -19,7 +19,13 @@ const patch = async (path: string, data, token = null) => axios.patch(
   config(token),
 );
 
-const remove = async (path: string, token = null) => axios.delete(makeUrl(path), config(token));
+const remove = async (path: string, data, token = null) => axios.delete(
+  makeUrl(path),
+  {
+    ...config(token),
+    data,
+  },
+);
 
 export default {
   get,

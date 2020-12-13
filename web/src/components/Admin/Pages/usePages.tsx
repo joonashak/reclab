@@ -19,7 +19,6 @@ const PagesProvider = ({ children }) => {
     }
 
     (async () => {
-      console.log('pages query run');
       setState(await pageService.getAll(token));
       setLoading(false);
     })();
@@ -57,10 +56,16 @@ export default () => {
 
   const findPage = (id: string) => state.find((page) => page.id === id);
 
+  const removePage = async (id: string) => {
+    await pageService.remove(id, token);
+    setState((prev) => prev.filter((page) => page.id !== id));
+  };
+
   return {
     pages: state,
     addPage,
     findPage,
     updatePage,
+    removePage,
   };
 };

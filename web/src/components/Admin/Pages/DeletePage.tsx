@@ -5,16 +5,31 @@ import {
 } from '@material-ui/core';
 import { useForm } from 'react-hook-form';
 import ControlledTextField from '../../controls/ControlledTextField';
+import useNotification from '../../GlobalNotification/useNotification';
+import usePages from './usePages';
 
 const DeletePage = ({ page }) => {
+  const { setNotification } = useNotification();
+  const { removePage } = usePages();
+
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen((prev) => !prev);
 
   const formControl = useForm({ mode: 'onBlur' });
   const path = formControl.watch('path');
 
+  const deleteOnClick = async () => {
+    try {
+      await removePage(page.id);
+    } catch {
+      setNotification('Deleting page failed.', 'error');
+    }
+
+    setNotification('Page deleted!', 'success', true);
+  };
+
   return (
-    <>
+    <form>
       <Button onClick={toggle}>
         Delete Page
       </Button>
@@ -31,25 +46,24 @@ const DeletePage = ({ page }) => {
             <code>{page.path}</code>
             ) in the field below.
           </DialogContentText>
-          <form>
-            <ControlledTextField
-              formControl={formControl}
-              name="path"
-              label="Path"
-              rules={{ validate: (value) => value === page.path || 'The path is not correct.' }}
-            />
-          </form>
+          <ControlledTextField
+            formControl={formControl}
+            name="path"
+            label="Path"
+            rules={{ validate: (value) => value === page.path || 'The path is not correct.' }}
+            autoFocus
+          />
         </DialogContent>
         <DialogActions>
           <Button onClick={toggle} color="primary">
             Cancel
           </Button>
-          <Button onClick={toggle} color="primary" disabled={path !== page.path}>
+          <Button onClick={deleteOnClick} color="primary" type="submit" disabled={path !== page.path}>
             Delete
           </Button>
         </DialogActions>
       </Dialog>
-    </>
+    </form>
   );
 };
 

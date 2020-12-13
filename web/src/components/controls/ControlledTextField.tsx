@@ -14,11 +14,10 @@ const useStyles = makeStyles(() => createStyles({
 }));
 
 const ControlledTextField = ({
-  formControl, name, children, type, label, rules, multiline, autoComplete,
+  formControl, name, children, type, label, rules, multiline, autoComplete, autoFocus,
 }) => {
   const classes = useStyles();
   const { control, errors } = formControl;
-  console.log(errors);
 
   return (
     <Controller
@@ -38,6 +37,7 @@ const ControlledTextField = ({
       multiline={multiline}
       autoComplete={autoComplete}
       className={classes.root}
+      autoFocus={autoFocus}
     >
       {children}
     </Controller>
@@ -56,6 +56,7 @@ ControlledTextField.propTypes = {
   rules: shape({}),
   multiline: bool,
   autoComplete: string,
+  autoFocus: bool,
 };
 
 ControlledTextField.defaultProps = {
@@ -65,6 +66,7 @@ ControlledTextField.defaultProps = {
   multiline: false,
   rules: null,
   autoComplete: null,
+  autoFocus: false,
 };
 
 export default ControlledTextField;
