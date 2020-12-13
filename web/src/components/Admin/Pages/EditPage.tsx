@@ -9,8 +9,10 @@ import { getTranslationOptions } from './common';
 import ADMIN_ROUTES from '../routes';
 import useNotification from '../../GlobalNotification/useNotification';
 import DeletePage from './DeletePage';
+import { useAdminNavbarTitle } from '../AdminNavbar/useAdminNavbar';
 
 const EditPage = ({ pageId }) => {
+  useAdminNavbarTitle('Edit Page');
   const { setNotification } = useNotification();
   const { updatePage, findPage, pages } = usePages();
 
