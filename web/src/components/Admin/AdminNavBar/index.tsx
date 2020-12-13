@@ -15,6 +15,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'gatsby-theme-material-ui';
 import LogoutButton from './LogoutButton';
 import ADMIN_ROUTES from '../routes';
+import useAdminNavbar from './useAdminNavbar';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default () => {
   const classes = useStyles();
+  const { title } = useAdminNavbar();
   const [isOpen, setOpen] = useState(false);
   const toggle = () => setOpen((prev) => !prev);
 
@@ -58,7 +60,7 @@ export default () => {
         </Drawer>
 
         <Typography variant="h6" className={classes.title}>
-          Admin
+          {title}
         </Typography>
         <LogoutButton />
       </Toolbar>

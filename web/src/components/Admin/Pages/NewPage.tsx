@@ -8,8 +8,10 @@ import PageForm from './PageForm';
 import { getTranslationOptions } from './common';
 import useNotification from '../../GlobalNotification/useNotification';
 import ADMIN_ROUTES from '../routes';
+import { useAdminNavbarTitle } from '../AdminNavbar/useAdminNavbar';
 
 const NewPage = () => {
+  useAdminNavbarTitle('New Page');
   const { setNotification } = useNotification();
   const { addPage, pages } = usePages();
   const formControl = useForm({ mode: 'onBlur' });

@@ -9,6 +9,7 @@ import { Helmet } from 'react-helmet';
 import usePages from '../usePages';
 import ADMIN_ROUTES from '../../routes';
 import PageListItem from './PageListItem';
+import { useAdminNavbarTitle } from '../../AdminNavbar/useAdminNavbar';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   container: {
@@ -26,6 +27,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 const PageList = () => {
   const { pages } = usePages();
   const classes = useStyles();
+  useAdminNavbarTitle('Pages');
 
   return (
     <Container className={classes.container}>

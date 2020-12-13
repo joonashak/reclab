@@ -1,12 +1,13 @@
 import React from 'react';
 import { node, string } from 'prop-types';
-import AdminNavBar from './AdminNavBar';
+import AdminNavBar from './AdminNavbar';
+import { AdminNavbarProvider } from './AdminNavbar/useAdminNavbar';
 
 const AdminWrapper = ({ children }) => (
-  <>
+  <AdminNavbarProvider>
     <AdminNavBar />
     {children}
-  </>
+  </AdminNavbarProvider>
 );
 
 AdminWrapper.propTypes = {
