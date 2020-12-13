@@ -18,6 +18,7 @@ const ControlledTextField = ({
 }) => {
   const classes = useStyles();
   const { control, errors } = formControl;
+  console.log(errors);
 
   return (
     <Controller

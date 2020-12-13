@@ -8,6 +8,7 @@ import PageForm from './PageForm';
 import { getTranslationOptions } from './common';
 import ADMIN_ROUTES from '../routes';
 import useNotification from '../../GlobalNotification/useNotification';
+import DeletePage from './DeletePage';
 
 const EditPage = ({ pageId }) => {
   const { setNotification } = useNotification();
@@ -50,6 +51,7 @@ const EditPage = ({ pageId }) => {
       <Helmet>
         <title>{`Edit Page: ${page.title}`}</title>
       </Helmet>
+      <DeletePage page={page} />
       <PageForm
         formControl={formControl}
         onSubmit={onSubmit}
