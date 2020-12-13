@@ -1,22 +1,17 @@
 import React from 'react';
 import { string, bool } from 'prop-types';
 import {
-  Button, List, Container, Typography, makeStyles, Theme, createStyles,
+  List, Container, Typography, makeStyles, Theme, createStyles,
 } from '@material-ui/core';
-import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-import { navigate } from 'gatsby';
 import { Helmet } from 'react-helmet';
 import usePages from '../usePages';
-import ADMIN_ROUTES from '../../routes';
 import PageListItem from './PageListItem';
 import { useAdminNavbarTitle } from '../../AdminNavbar/useAdminNavbar';
+import NewPageButton from './NewPageButton';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   container: {
     paddingTop: theme.spacing(2),
-  },
-  newPageButton: {
-    margin: theme.spacing(2),
   },
   h4: {
     marginBottom: theme.spacing(2),
@@ -35,16 +30,7 @@ const PageList = () => {
         <title>Pages</title>
       </Helmet>
       <Typography variant="h3" gutterBottom>Pages</Typography>
-      <Button
-        color="primary"
-        variant="contained"
-        size="large"
-        startIcon={<AddCircleOutlineIcon />}
-        onClick={() => navigate(ADMIN_ROUTES.NEW_PAGE)}
-        className={classes.newPageButton}
-      >
-        New Page
-      </Button>
+      <NewPageButton />
       <Typography variant="h4" className={classes.h4}>Current Pages</Typography>
       <Typography variant="body1" gutterBottom>Select a page to edit.</Typography>
       <List>
