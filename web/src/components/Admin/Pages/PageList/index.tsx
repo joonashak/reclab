@@ -9,6 +9,7 @@ import PageListItem from './PageListItem';
 import { useAdminNavbarTitle } from '../../AdminNavbar/useAdminNavbar';
 import NewPageButton from './NewPageButton';
 import SortPages from './SortPages';
+import FilterPages from './FilterPages';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   container: {
@@ -28,6 +29,9 @@ const PageList = () => {
   const [sortFn, setSortFn] = useState();
   const sortedPages = pages.sort(sortFn);
 
+  const [filterFn, setFilterFn] = useState(() => () => true);
+  const filteredAndSortedPages = sortedPages.filter(filterFn);
+
   return (
     <Container className={classes.container}>
       <Helmet>
@@ -38,8 +42,9 @@ const PageList = () => {
       <Typography variant="h4" className={classes.h4}>Current Pages</Typography>
       <Typography variant="body1" gutterBottom>Select a page to edit.</Typography>
       <SortPages setSortFn={setSortFn} />
+      <FilterPages setFilterFn={setFilterFn} />
       <List>
-        {sortedPages.map((page) => <PageListItem key={page.id} page={page} />)}
+        {filteredAndSortedPages.map((page) => <PageListItem key={page.id} page={page} />)}
       </List>
     </Container>
   );
