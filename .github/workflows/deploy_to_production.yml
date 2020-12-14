@@ -3,6 +3,8 @@ name: Production Deployment (Release)
 on:
   release:
     types: [published]
+  repository_dispatch:
+    types: [deploy-production]
 
 jobs:
   deploy:
