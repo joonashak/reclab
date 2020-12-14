@@ -12,6 +12,8 @@ services:
       - DATABASE_URL=postgres://postgres:postgres@db:5432/postgres
       - JWT_SECRET=asd
       - FRONTEND_URL=http://localhost:3000
+    env_file:
+      - .env
     volumes:
       - ./cms/src:/usr/src/app/src
       - ./cms/migrations:/usr/src/app/migrations
