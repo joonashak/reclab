@@ -12,6 +12,8 @@ npm run init
 
 ## Configuration
 
+### Cloudinary
+
 Images used in CMS-stored content are stored in Cloudinary. Currently this is not mocked for development or tests. The development environment can be used without configuring Cloudinary credentials but this means that images in the content will not be displayed.
 
 To configure Cloudinary for use in development mode, use the following `.env` file in project root:
@@ -23,6 +25,16 @@ CLOUDINARY_API_SECRET=
 ```
 
 Images are currently not tested in the end-to-end tests.
+
+### Vercel
+
+*Required only if you want Vercel-specific endpoints to work (such as triggering frontend rebuild to update content).*
+
+Create an API token for Vercel [here](https://vercel.com/account/tokens) and add it to `.env`:
+
+```bash
+VERCEL_TOKEN=
+```
 
 ## Development Environment
 

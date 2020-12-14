@@ -6,6 +6,7 @@ import { PagesModule } from './pages/pages.module';
 import { SeederModule } from './seeder/seeder.module';
 import { MenuModule } from './menu/menu.module';
 import { SettingsModule } from './settings/settings.module';
+import { DeploymentModule } from './deployment/deployment.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { SettingsModule } from './settings/settings.module';
     SeederModule,
     MenuModule,
     SettingsModule,
+    DeploymentModule,
   ],
 })
 export class AppModule {}
