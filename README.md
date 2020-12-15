@@ -36,6 +36,16 @@ Create a Personal Access Token for GitHub [here](https://github.com/settings/tok
 GITHUB_TOKEN=
 ```
 
+Also, specify the repository dispatch type to use for triggering frontend rebuild and the repository details:
+
+```bash
+REPOSITORY_DISPATCH_TYPE=
+GITHUB_OWNER=
+GITHUB_REPO_NAME=
+```
+
+If using the workflows specified in `.github/workflows`, the latter should be either `deploy-staging` or `deploy-production`. Be mindful of the side-effects of using this feature locally (e.g, accidental deployment of new code or content).
+
 ## Development Environment
 
 The development environment is configured with npm and Docker. You will need to have the `npm` and `docker` commands available on your system (tested only on macOS).

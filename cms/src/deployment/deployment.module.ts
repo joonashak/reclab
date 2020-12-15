@@ -9,7 +9,7 @@ const controllers = GITHUB_TOKEN ? [DeploymentController] : [];
   controllers,
   imports: [
     HttpModule.register({
-      headers: { Authorization: `Bearer ${GITHUB_TOKEN}` },
+      headers: { Authorization: `token ${GITHUB_TOKEN}` },
     }),
   ],
 })
