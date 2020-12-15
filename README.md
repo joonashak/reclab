@@ -26,14 +26,14 @@ CLOUDINARY_API_SECRET=
 
 Images are currently not tested in the end-to-end tests.
 
-### Vercel
+### GitHub
 
-*Required only if you want Vercel-specific endpoints to work (such as triggering frontend rebuild to update content).*
+*Required only if you want GitHub-specific endpoints to work (such as triggering frontend rebuild to update content).*
 
-Create an API token for Vercel [here](https://vercel.com/account/tokens) and add it to `.env`:
+Create a Personal Access Token for GitHub [here](https://github.com/settings/tokens) with `repo` scopes and add it to `.env`:
 
 ```bash
-VERCEL_TOKEN=
+GITHUB_TOKEN=
 ```
 
 ## Development Environment

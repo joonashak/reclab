@@ -6,8 +6,8 @@ export class DeploymentController {
 
   @Get()
   async get(): Promise<any> {
-    const res = await this.httpService.get('https://api.vercel.com/v5/now/deployments?limit=1').toPromise()
-    console.log(res);
-    return res.data;
+    //const res = await this.httpService.get('https://api.vercel.com/v5/now/deployments?limit=20').toPromise()
+    //console.log('RATE LIMIT', res.headers['x-ratelimit-remaining']);
+    return 'moi';
   }
 }

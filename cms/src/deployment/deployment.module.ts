@@ -1,15 +1,15 @@
 import { HttpModule, Module } from '@nestjs/common';
 import { DeploymentController } from './deployment.controller';
 
-// Mount the endpoints only if VERCEL_TOKEN is set.
-const VERCEL_TOKEN = process.env.VERCEL_TOKEN || '';
-const controllers = VERCEL_TOKEN ? [DeploymentController] : [];
+// Mount the endpoints only if GITHUB_TOKEN is set.
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN || '';
+const controllers = GITHUB_TOKEN ? [DeploymentController] : [];
 
 @Module({
   controllers,
   imports: [
     HttpModule.register({
-      headers: { Authorization: `Bearer ${VERCEL_TOKEN}` },
+      headers: { Authorization: `Bearer ${GITHUB_TOKEN}` },
     }),
   ],
 })
