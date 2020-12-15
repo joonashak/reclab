@@ -3,6 +3,8 @@ name: Staging Deployment
 on:
   push:
     branches: main
+  repository_dispatch:
+    types: [deploy-staging]
 
 jobs:
   deploy:
