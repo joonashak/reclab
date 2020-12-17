@@ -6,6 +6,13 @@ const staticPlugins = [
   'gatsby-plugin-react-helmet',
   'gatsby-theme-material-ui',
   {
+    resolve: 'gatsby-source-filesystem',
+    options: {
+      name: 'images',
+      path: `${__dirname}/src/images`,
+    },
+  },
+  {
     resolve: 'gatsby-plugin-sharp',
     options: {
       icon: 'src/images/palli.png',
@@ -71,13 +78,6 @@ const staticPlugins = [
 // These fail if Cloudinary credentials are not supplied (testing/CI).
 const imagePlugins = [
   'gatsby-remark-images',
-  {
-    resolve: 'gatsby-source-filesystem',
-    options: {
-      name: 'images',
-      path: `${__dirname}/src/images`,
-    },
-  },
   {
     resolve: 'gatsby-source-cloudinary',
     options: {
