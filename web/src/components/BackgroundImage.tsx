@@ -1,8 +1,19 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
-import BackgroundImage from 'gatsby-background-image';
+import { node } from 'prop-types';
+import { makeStyles } from '@material-ui/core/styles';
 
-export default () => {
+type Props = { src: string }
+
+const useStyles = makeStyles({
+  root: {
+    backgroundImage: (props: Props) => `url("${props.src}")`,
+    backgroundSize: 'cover',
+    backgroundAttachment: 'fixed',
+  },
+});
+
+const BackgroundImage = ({ children }) => {
   const data = useStaticQuery(
     graphql`
       query {
@@ -19,14 +30,18 @@ export default () => {
 
   // Set ImageData.
   const imageData = data.file.childImageSharp.fluid;
+  const { src } = imageData;
+  const classes = useStyles({ src });
 
   return (
-    <BackgroundImage
-      Tag="section"
-      fluid={imageData}
-      backgroundColor="#040e18"
-    >
-      <h2>gatsby-background-image</h2>
-    </BackgroundImage>
+    <div className={classes.root}>
+      {children}
+    </div>
   );
 };
+
+BackgroundImage.propTypes = {
+  children: node.isRequired,
+};
+
+export default BackgroundImage;

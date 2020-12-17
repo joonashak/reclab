@@ -7,11 +7,12 @@ import BackgroundImage from './BackgroundImage';
 
 const Layout = ({ page, children }) => (
   <ThemeProvider theme={theme}>
-    <NavBar page={page} />
-    <BackgroundImage />
-    <Container>
-      {children}
-    </Container>
+    <BackgroundImage>
+      <NavBar page={page} />
+      <Container>
+        {children}
+      </Container>
+    </BackgroundImage>
   </ThemeProvider>
 );
 
