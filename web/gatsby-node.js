@@ -115,6 +115,7 @@ exports.createPages = async ({ graphql, actions }) => {
     });
 
     // Create frontpage.
+    /*
     const frontpageId = settingsData.data.allSettings.nodes[0].frontpage.id;
 
     if (page.id === frontpageId) {
@@ -127,6 +128,7 @@ exports.createPages = async ({ graphql, actions }) => {
         },
       });
     }
+    */
   });
 };
 

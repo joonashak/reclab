@@ -7,19 +7,13 @@ import {
   Typography,
 } from '@material-ui/core';
 import Menu from './Menu';
-import LanguageButton from './LanguageButton';
+import LanguageSwitcher from './LanguageSwitcher/index';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
+const useStyles = makeStyles({
   title: {
     flexGrow: 1,
   },
-}));
+});
 
 const NavBar = ({ page }) => {
   const classes = useStyles();
@@ -32,11 +26,11 @@ const NavBar = ({ page }) => {
   return (
     <AppBar position="sticky">
       <Toolbar>
-        <Menu page={page} />
+        <Menu language={page.language} />
         <Typography variant="h6" className={classes.title}>
           Recover Laboratory
         </Typography>
-        <LanguageButton page={page} />
+        <LanguageSwitcher page={page} />
       </Toolbar>
     </AppBar>
   );

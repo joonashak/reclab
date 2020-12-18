@@ -1,5 +1,5 @@
 import React from 'react';
-import { shape, string } from 'prop-types';
+import { string } from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import MenuWithData from './MenuWithData';
 
@@ -23,12 +23,12 @@ const query = graphql`
   }
 `;
 
-const Menu = ({ page }) => (
+const Menu = ({ language }) => (
   <StaticQuery query={query}>
     {(data) => {
       // Filter by active language.
       const menuItems = data.allMenu.nodes.filter(
-        (menuItem) => menuItem.language === page.language,
+        (menuItem) => menuItem.language === language,
       );
 
       // Convert the flat structure from CMS into a nested structure for rendering.
@@ -44,9 +44,7 @@ const Menu = ({ page }) => (
 );
 
 Menu.propTypes = {
-  page: shape({
-    language: string.isRequired,
-  }).isRequired,
+  language: string.isRequired,
 };
 
 export default Menu;
