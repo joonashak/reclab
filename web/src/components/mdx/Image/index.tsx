@@ -8,7 +8,7 @@ import BigBodyImage from './BigBodyImage';
  * Load the specified image with GraphQL and pass it on to another image component
  * that takes care of styling etc.
  */
-const Image = ({ src, fixed }) => {
+const Image = ({ src, fixed, className }) => {
   const images = useStaticQuery(graphql`
     query {
       allFile {
@@ -34,17 +34,19 @@ const Image = ({ src, fixed }) => {
   }
 
   return fixed
-    ? <Img fixed={image.childImageSharp.fixed} />
-    : <BigBodyImage fluid={image.childImageSharp.fluid} />;
+    ? <Img fixed={image.childImageSharp.fixed} className={className} />
+    : <BigBodyImage fluid={image.childImageSharp.fluid} className={className} />;
 };
 
 Image.propTypes = {
   src: string.isRequired,
   fixed: bool,
+  className: string,
 };
 
 Image.defaultProps = {
   fixed: false,
+  className: null,
 };
 
 export default Image;
