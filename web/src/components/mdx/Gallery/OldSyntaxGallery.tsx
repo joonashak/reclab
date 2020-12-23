@@ -2,7 +2,7 @@ import React from 'react';
 import { arrayOf, string } from 'prop-types';
 import { GridList, GridListTile } from '@material-ui/core';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
-import Image from './Image';
+import Image from '../Image';
 
 const useStyles = makeStyles(() => createStyles({
   gridList: {
@@ -15,7 +15,10 @@ const useStyles = makeStyles(() => createStyles({
   },
 }));
 
-const Gallery = ({ images }) => {
+/**
+ * This is here only to support old content. Should be deprecated once time is ripe.
+ */
+const OldSyntaxGallery = ({ images }) => {
   const classes = useStyles();
 
   return (
@@ -29,8 +32,8 @@ const Gallery = ({ images }) => {
   );
 };
 
-Gallery.propTypes = {
+OldSyntaxGallery.propTypes = {
   images: arrayOf(string).isRequired,
 };
 
-export default Gallery;
+export default OldSyntaxGallery;
