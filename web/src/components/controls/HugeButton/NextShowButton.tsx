@@ -16,9 +16,12 @@ export default () => {
     `,
   );
 
-  // Set ImageData.
-  const imageData = data.imageSharp.fluid;
-  const { src } = imageData;
+  try {
+    const imageData = data.imageSharp.fluid;
+    const { src } = imageData;
 
-  return <HugeButton src={src} />;
+    return <HugeButton src={src} />;
+  } catch (error) {
+    return <HugeButton src="" />;
+  }
 };
