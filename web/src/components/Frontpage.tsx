@@ -8,6 +8,7 @@ import BackgroundImage from './BackgroundImage';
 import Menu from './NavBar/Menu/index';
 import Image from './mdx/Image/index';
 import LanguageButton from './NavBar/LanguageSwitcher/LanguageButton';
+import NextShowButton from './controls/HugeButton/NextShowButton';
 
 const useStyles = makeStyles({
   appbar: {
@@ -54,6 +55,10 @@ export default () => {
         <Typography className={classes.tagline}>
           {t('frontpage.tagline')}
         </Typography>
+        <Typography variant="subtitle1">
+          Traileri tähän?
+        </Typography>
+        <NextShowButton />
       </Container>
     </BackgroundImage>
   );
