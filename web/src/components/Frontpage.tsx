@@ -1,5 +1,7 @@
 import React from 'react';
-import { AppBar, Toolbar } from '@material-ui/core';
+import {
+  AppBar, Container, Toolbar, Typography,
+} from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
 import BackgroundImage from './BackgroundImage';
@@ -16,11 +18,19 @@ const useStyles = makeStyles({
     maxWidth: 500,
     margin: 0,
   },
+  tagline: {
+    fontSize: '5rem',
+    fontStyle: 'italic',
+    textAlign: 'center',
+    fontWeight: 100,
+    lineHeight: 'normal',
+    marginTop: '3rem',
+  },
 });
 
 export default () => {
   const classes = useStyles();
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   const { language } = i18n;
 
   return (
@@ -32,9 +42,11 @@ export default () => {
           <LanguageButton path="/" />
         </Toolbar>
       </AppBar>
-      <div>
-        asd
-      </div>
+      <Container>
+        <Typography className={classes.tagline}>
+          {t('frontpage.tagline')}
+        </Typography>
+      </Container>
     </BackgroundImage>
   );
 };

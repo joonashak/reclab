@@ -10,6 +10,7 @@ const useStyles = makeStyles({
     backgroundImage: (props: Props) => `url("${props.src}")`,
     backgroundSize: 'cover',
     backgroundAttachment: 'fixed',
+    minHeight: '100vh',
   },
 });
 
