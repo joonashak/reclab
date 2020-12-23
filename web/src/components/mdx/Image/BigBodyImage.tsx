@@ -1,5 +1,5 @@
 import React from 'react';
-import { shape } from 'prop-types';
+import { shape, string } from 'prop-types';
 import Img from 'gatsby-image';
 import { createStyles, makeStyles } from '@material-ui/core';
 import { Theme } from '@material-ui/core/styles';
@@ -15,20 +15,23 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
   },
 }));
 
-const BigBodyImage = ({ fluid, fixed }) => {
+const BigBodyImage = ({ fluid, fixed, className }) => {
   const classes = useStyles();
+  const allClasses = `${classes.root} ${className}`;
 
-  return <Img fluid={fluid} fixed={fixed} className={classes.root} />;
+  return <Img fluid={fluid} fixed={fixed} className={allClasses} />;
 };
 
 BigBodyImage.propTypes = {
   fixed: shape({}),
   fluid: shape({}),
+  className: string,
 };
 
 BigBodyImage.defaultProps = {
   fixed: null,
   fluid: null,
+  className: '',
 };
 
 export default BigBodyImage;

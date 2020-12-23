@@ -5,7 +5,9 @@
         "fi": "Näytä suomeksi",
         "en": "View in English"
       },
-      "test": "hello"
+      "frontpage": {
+        "tagline": "CURIOUS. SURREAL. HONEST. CONTEMPORARY. GENTLE. RAW. IMMERSIVE. SITE-SPECIFIC."
+      }
     }
   },
   "fi": {
@@ -14,7 +16,9 @@
         "fi": "Näytä suomeksi",
         "en": "View in English"
       },
-      "test": "mo"
+      "frontpage": {
+        "tagline": "KIINNOSTAVA. UUDENLAINEN. SURREALISTINEN. LEMPEÄ. RAAKA. IMMERSIIVINEN. TILASIDONNAINEN."
+      }
     }
   }
 }
