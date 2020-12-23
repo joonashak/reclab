@@ -10,9 +10,17 @@ import Image from './mdx/Image/index';
 import LanguageButton from './NavBar/LanguageSwitcher/LanguageButton';
 
 const useStyles = makeStyles({
+  appbar: {
+    backgroundColor: 'transparent',
+    boxShadow: 'none',
+  },
   toolbar: {
     display: 'flex',
     justifyContent: 'space-between',
+    '& > .MuiIconButton-root > .MuiIconButton-label > svg': {
+      color: 'black',
+      fontSize: '3rem',
+    },
   },
   logo: {
     maxWidth: 500,
@@ -35,7 +43,7 @@ export default () => {
 
   return (
     <BackgroundImage>
-      <AppBar position="sticky">
+      <AppBar position="sticky" className={classes.appbar}>
         <Toolbar className={classes.toolbar}>
           <Menu language={language} />
           <Image src="logo_horizontal.png" className={classes.logo} />

@@ -11,6 +11,7 @@ const useStyles = makeStyles(() => createStyles({
     width: '2.5rem',
     height: '2.5rem',
     overflow: 'hidden',
+    marginLeft: 11,
   },
   flag: {
     width: '2em !important',
