@@ -1,3 +1,7 @@
 import React from 'react';
 
-export default () => <div>moi</div>;
+export default () => (
+  <div>
+    asd
+  </div>
+);
