@@ -1,19 +1,21 @@
 import React from 'react';
 import {
-  AppBar, Container, Toolbar, Typography,
+  AppBar, Container, Toolbar, Typography, useMediaQuery,
 } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, Theme } from '@material-ui/core/styles';
 import BackgroundImage from './BackgroundImage';
 import Menu from './NavBar/Menu/index';
 import Image from './mdx/Image/index';
 import LanguageButton from './NavBar/LanguageSwitcher/LanguageButton';
-import NextShowButton from './controls/HugeButton/NextShowButton';
+import YouTube from './mdx/YouTube';
+import HugeActionButton from './controls/HugeActionButton';
 
 const useStyles = makeStyles({
   appbar: {
     backgroundColor: 'transparent',
     boxShadow: 'none',
+    position: 'relative',
   },
   toolbar: {
     display: 'flex',
@@ -24,8 +26,9 @@ const useStyles = makeStyles({
     },
   },
   logo: {
-    maxWidth: 500,
+    maxWidth: 1000,
     margin: 0,
+    width: '70%',
   },
   tagline: {
     fontSize: '5rem',
@@ -35,6 +38,9 @@ const useStyles = makeStyles({
     lineHeight: 'normal',
     marginTop: '3rem',
   },
+  showreel: {
+    marginTop: '4rem',
+  },
 });
 
 export default () => {
@@ -42,23 +48,29 @@ export default () => {
   const { i18n, t } = useTranslation();
   const { language } = i18n;
 
+  const isMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'));
+  const logo = isMobile
+    ? <Image src="logo_vertical.png" className={classes.logo} />
+    : <Image src="logo_horizontal.png" className={classes.logo} />;
+
   return (
     <BackgroundImage>
       <AppBar position="sticky" className={classes.appbar}>
         <Toolbar className={classes.toolbar}>
           <Menu language={language} />
-          <Image src="logo_horizontal.png" className={classes.logo} />
+          {logo}
           <LanguageButton path="/" />
         </Toolbar>
       </AppBar>
       <Container>
+        <div className={classes.showreel}>
+          <YouTube videoId="cKYjZHZeE-I" />
+        </div>
         <Typography className={classes.tagline}>
           {t('frontpage.tagline')}
         </Typography>
-        <Typography variant="subtitle1">
-          Traileri tähän?
-        </Typography>
-        <NextShowButton />
+        <HugeActionButton subtitle="Our next" title="Shows" />
+        <HugeActionButton subtitle="Recover Laboratory" title="Shop" />
       </Container>
     </BackgroundImage>
   );
