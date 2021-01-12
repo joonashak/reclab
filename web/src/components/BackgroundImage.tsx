@@ -1,18 +1,19 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { node } from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, Theme } from '@material-ui/core/styles';
 
 type Props = { src: string }
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
     backgroundImage: (props: Props) => `url("${props.src}")`,
     backgroundSize: 'cover',
     backgroundAttachment: 'fixed',
     minHeight: '100vh',
+    paddingBottom: theme.spacing(5),
   },
-});
+}));
 
 const BackgroundImage = ({ children }) => {
   const data = useStaticQuery(

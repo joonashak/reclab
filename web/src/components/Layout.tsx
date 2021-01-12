@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import NavBar from './NavBar/index';
 import theme from '../themes/theme';
 import BackgroundImage from './BackgroundImage';
+import Footer from './Footer';
 
 const usestyles = makeStyles({
   container: {
@@ -24,6 +25,7 @@ const Layout = ({ page, children }) => {
           {children}
         </Container>
       </BackgroundImage>
+      <Footer />
     </ThemeProvider>
   );
 };
