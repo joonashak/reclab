@@ -1,6 +1,5 @@
 import React from 'react';
 import { arrayOf, string, node } from 'prop-types';
-import { ImageList } from '@material-ui/core';
 import OldSyntaxGallery from './OldSyntaxGallery';
 
 const Gallery = ({ images, children }) => {
@@ -9,9 +8,9 @@ const Gallery = ({ images, children }) => {
   }
 
   return (
-    <ImageList cols={3}>
+    <div>
       {children}
-    </ImageList>
+    </div>
   );
 };
 
