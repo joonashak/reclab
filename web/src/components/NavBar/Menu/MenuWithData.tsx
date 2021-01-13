@@ -11,6 +11,7 @@ import MenuCategory from './MenuCategory';
 const MenuWithData = ({ menuItems }) => {
   const [isOpen, setOpen] = useState(false);
   const toggle = () => setOpen((prev) => !prev);
+  const isCategory = (menuItem) => !menuItem.path && !menuItem.page;
 
   return (
     <>
@@ -26,7 +27,7 @@ const MenuWithData = ({ menuItems }) => {
         <Container maxWidth="md">
           <List>
             {sortBy(menuItems, ['order'])
-              .map((menuItem) => (menuItem.children.length ? (
+              .map((menuItem) => (isCategory(menuItem) ? (
                 <MenuCategory key={menuItem.id} menuItem={menuItem} />
               ) : (
                 <MenuItem key={menuItem.id} menuItem={menuItem} />
