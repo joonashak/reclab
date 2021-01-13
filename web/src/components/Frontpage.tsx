@@ -5,8 +5,8 @@ import {
 import { useTranslation } from 'react-i18next';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import BackgroundImage from './BackgroundImage';
-import Menu from './NavBar/Menu/index';
-import Image from './mdx/Image/index';
+import Menu from './NavBar/Menu';
+import Image from './mdx/Image';
 import LanguageButton from './NavBar/LanguageSwitcher/LanguageButton';
 import YouTube from './mdx/YouTube';
 import HugeActionButton from './controls/HugeActionButton';
@@ -85,7 +85,7 @@ export default () => {
           {t('frontpage.tagline')}
         </Typography>
         <div className={classes.showreel}>
-          <YouTube videoId="cKYjZHZeE-I" />
+          <YouTube videoId="_y6pnvV91-A" />
         </div>
         <div className={classes.actionButtons}>
           <HugeActionButton
