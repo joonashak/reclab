@@ -11,7 +11,7 @@ import LanguageButton from './NavBar/LanguageSwitcher/LanguageButton';
 import YouTube from './mdx/YouTube';
 import HugeActionButton from './controls/HugeActionButton';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme: Theme) => ({
   appbar: {
     backgroundColor: 'transparent',
     boxShadow: 'none',
@@ -31,17 +31,35 @@ const useStyles = makeStyles({
     width: '70%',
   },
   tagline: {
-    fontSize: '5rem',
+    fontSize: '2rem',
     fontStyle: 'italic',
     textAlign: 'center',
     fontWeight: 100,
     lineHeight: 'normal',
     marginTop: '3rem',
+    marginBottom: '3rem',
   },
   showreel: {
     marginTop: '4rem',
+    '& > div': {
+      [theme.breakpoints.down('sm')]: {
+        width: '100vw',
+        marginLeft: -16,
+        marginRight: -16,
+      },
+    },
   },
-});
+  actionButtons: {
+    display: 'flex',
+    alignItems: 'center',
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column',
+      '& > button': {
+        marginBottom: '1rem',
+      },
+    },
+  },
+}));
 
 export default () => {
   const classes = useStyles();
@@ -69,8 +87,10 @@ export default () => {
         <Typography className={classes.tagline}>
           {t('frontpage.tagline')}
         </Typography>
-        <HugeActionButton subtitle="Our next" title="Shows" />
-        <HugeActionButton subtitle="Recover Laboratory" title="Shop" />
+        <div className={classes.actionButtons}>
+          <HugeActionButton subtitle="Check Out" title="Latest Shows" />
+          <HugeActionButton subtitle="Support Us" title="Visit Store" />
+        </div>
       </Container>
     </BackgroundImage>
   );
