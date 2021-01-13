@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Grid, IconButton } from '@material-ui/core';
+import { Container, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import YouTubeIcon from '@material-ui/icons/YouTube';
@@ -29,6 +29,7 @@ const useStyles = makeStyles({
   },
   iconButton: {
     color: 'white',
+    marginRight: 20,
   },
   logo: {
     maxWidth: 300,
@@ -55,15 +56,24 @@ export default () => {
           </Grid>
           <Grid item xs={12} sm={6} className={`${classes.col} ${classes.right}`}>
             <div>
-              <IconButton className={classes.iconButton}>
+              <a
+                href="https://www.facebook.com/recoverlaboratory"
+                className={classes.iconButton}
+              >
                 <FacebookIcon />
-              </IconButton>
-              <IconButton className={classes.iconButton}>
+              </a>
+              <a
+                href="https://www.instagram.com/recoverlaboratory/"
+                className={classes.iconButton}
+              >
                 <InstagramIcon />
-              </IconButton>
-              <IconButton className={classes.iconButton}>
+              </a>
+              <a
+                href="https://www.youtube.com/channel/UCcJLWrHP4H3scDHOeCOv2XA/videos"
+                className={classes.iconButton}
+              >
                 <YouTubeIcon />
-              </IconButton>
+              </a>
             </div>
           </Grid>
         </Grid>
