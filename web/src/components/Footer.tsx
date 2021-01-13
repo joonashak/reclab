@@ -59,18 +59,21 @@ export default () => {
               <a
                 href="https://www.facebook.com/recoverlaboratory"
                 className={classes.iconButton}
+                rel="noopener noreferrer"
               >
                 <FacebookIcon />
               </a>
               <a
                 href="https://www.instagram.com/recoverlaboratory/"
                 className={classes.iconButton}
+                rel="noopener noreferrer"
               >
                 <InstagramIcon />
               </a>
               <a
                 href="https://www.youtube.com/channel/UCcJLWrHP4H3scDHOeCOv2XA/videos"
                 className={classes.iconButton}
+                rel="noopener noreferrer"
               >
                 <YouTubeIcon />
               </a>
