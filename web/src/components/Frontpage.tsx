@@ -81,15 +81,21 @@ export default () => {
         </Toolbar>
       </AppBar>
       <Container>
-        <div className={classes.showreel}>
-          <YouTube videoId="cKYjZHZeE-I" />
-        </div>
         <Typography className={classes.tagline}>
           {t('frontpage.tagline')}
         </Typography>
+        <div className={classes.showreel}>
+          <YouTube videoId="cKYjZHZeE-I" />
+        </div>
         <div className={classes.actionButtons}>
-          <HugeActionButton subtitle="Check Out" title="Latest Shows" />
-          <HugeActionButton subtitle="Support Us" title="Visit Store" />
+          <HugeActionButton
+            subtitle={t('frontpage.showButton.subtitle')}
+            title={t('frontpage.showButton.title')}
+          />
+          <HugeActionButton
+            subtitle={t('frontpage.storeButton.subtitle')}
+            title={t('frontpage.storeButton.title')}
+          />
         </div>
       </Container>
     </BackgroundImage>
