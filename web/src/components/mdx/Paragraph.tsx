@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     [theme.breakpoints.up('sm')]: {
       margin: '0 3rem 2rem 3rem',
     },
+    clear: 'both',
   },
 }));
 
