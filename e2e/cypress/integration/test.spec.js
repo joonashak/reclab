@@ -3,7 +3,7 @@
 describe("My First Test", () => {
   it("Does not do much!", () => {
     cy.visit("/");
-    cy.contains("CURIOUS.");
+    cy.contains("Recover Laboratory");
   });
 
   it("Login", () => {
