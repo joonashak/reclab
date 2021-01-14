@@ -49,6 +49,17 @@ const theme = createMuiTheme({
       fontStyle: 'italic',
       textTransform: 'uppercase',
     },
+    caption: {
+      fontSize: '1.333rem !important',
+      padding: '0 10%',
+      display: 'block',
+      textAlign: 'justify',
+      fontStyle: 'italic',
+      marginBottom: '2rem',
+      '& p': {
+        margin: 0,
+      },
+    },
   },
 });
 
