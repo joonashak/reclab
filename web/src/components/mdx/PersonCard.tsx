@@ -10,6 +10,16 @@ const useStyles = makeStyles({
     width: '30%',
     float: 'left',
     marginRight: 20,
+    backgroundColor: '#f5daf5',
+  },
+  image: {
+    width: '50%',
+  },
+  content: {
+    '&>p': {
+      fontSize: 17,
+      margin: '10px 22px',
+    },
   },
 });
 
@@ -21,8 +31,8 @@ const PersonCard = ({
   return (
     <Card className={classes.card}>
       <CardHeader title={name} subheader={title} />
-      <Image src={image} />
-      <CardContent>
+      <Image src={image} className={classes.image} />
+      <CardContent className={classes.content}>
         {children}
       </CardContent>
     </Card>
