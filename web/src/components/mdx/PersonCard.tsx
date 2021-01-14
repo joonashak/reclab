@@ -8,8 +8,6 @@ import Image from './Image/index';
 const useStyles = makeStyles({
   card: {
     width: '30%',
-    float: 'left',
-    marginRight: 20,
     backgroundColor: '#f5daf5',
   },
   image: {
