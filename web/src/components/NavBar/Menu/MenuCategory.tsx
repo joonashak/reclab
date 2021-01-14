@@ -4,6 +4,7 @@ import {
   Accordion, AccordionDetails, AccordionSummary, List, makeStyles,
 } from '@material-ui/core';
 import { sortBy } from 'lodash';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MenuItem from './MenuItem';
 
 const useStyles = makeStyles({
@@ -18,6 +19,9 @@ const useStyles = makeStyles({
   },
   accordionSummary: {
     margin: '0 auto',
+    fontFamily: 'Montserrat',
+    fontStyle: 'italic',
+    textTransform: 'uppercase',
     '&.Mui-expanded': {
       margin: '0 auto',
       '& > div': {
@@ -26,7 +30,7 @@ const useStyles = makeStyles({
     },
   },
   accordionDetails: {
-    padding: '0 50px',
+    padding: '0 70px',
   },
 });
 
@@ -37,6 +41,7 @@ const MenuCategory = ({ menuItem }) => {
   return (
     <Accordion className={classes.accordion}>
       <AccordionSummary className={classes.accordionSummary}>
+        <ExpandMoreIcon />
         {title}
       </AccordionSummary>
       <AccordionDetails className={classes.accordionDetails}>

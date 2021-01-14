@@ -13,6 +13,9 @@ const useStyles = makeStyles({
     color: 'white',
     '& > span': {
       fontSize: '1.5rem',
+      fontFamily: 'Montserrat',
+      fontStyle: 'italic',
+      textTransform: 'uppercase',
     },
   },
 });

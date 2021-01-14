@@ -17,6 +17,9 @@ const useStyles = makeStyles({
   title: {
     flexGrow: 1,
     fontFamily: 'Montserrat',
+    fontStyle: 'italic',
+    textTransform: 'uppercase',
+    marginLeft: '2rem',
   },
 });
 
