@@ -12,7 +12,6 @@ const useStyles = makeStyles({
       borderTop: '5px solid black',
       borderBottom: '5px solid black',
     },
-    // hover #d666e2
   },
 });
 
