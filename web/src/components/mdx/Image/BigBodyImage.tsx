@@ -15,22 +15,20 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
   },
 }));
 
-const BigBodyImage = ({ fluid, fixed, className }) => {
+const BigBodyImage = ({ src, className }) => {
   const classes = useStyles();
   const allClasses = `${classes.root} ${className}`;
 
-  return <Img fluid={fluid} fixed={fixed} className={allClasses} />;
+  return <Img fluid={src} className={allClasses} />;
 };
 
 BigBodyImage.propTypes = {
-  fixed: shape({}),
-  fluid: shape({}),
+  src: shape({}),
   className: string,
 };
 
 BigBodyImage.defaultProps = {
-  fixed: null,
-  fluid: null,
+  src: null,
   className: '',
 };
 
