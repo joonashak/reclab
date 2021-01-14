@@ -1,4 +1,3 @@
-import { Link } from 'gatsby-theme-material-ui';
 import Headings from './Headings';
 import Blockquote from './Blockquote';
 import Image from './Image';
@@ -10,6 +9,7 @@ import Ingress from './Ingress';
 import InfoTable from './InfoTable';
 import Gallery from './Gallery';
 import Paragraph from './Paragraph';
+import Link from './Link';
 
 // Shortcodes for use with <MDXProvider>.
 export default {

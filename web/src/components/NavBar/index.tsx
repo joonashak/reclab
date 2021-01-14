@@ -10,8 +10,16 @@ import Menu from './Menu';
 import LanguageSwitcher from './LanguageSwitcher/index';
 
 const useStyles = makeStyles({
+  appBar: {
+    backgroundColor: '#00000094',
+    color: 'white',
+  },
   title: {
     flexGrow: 1,
+    fontFamily: 'Montserrat',
+    fontStyle: 'italic',
+    textTransform: 'uppercase',
+    marginLeft: '2rem',
   },
 });
 
@@ -24,7 +32,7 @@ const NavBar = ({ page }) => {
   }, []);
 
   return (
-    <AppBar position="sticky">
+    <AppBar position="sticky" className={classes.appBar}>
       <Toolbar>
         <Menu language={page.language} />
         <Typography variant="h6" className={classes.title}>

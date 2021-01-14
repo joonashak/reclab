@@ -1,19 +1,43 @@
 import React from 'react';
 import { string, node } from 'prop-types';
-import { Card, CardContent, CardHeader } from '@material-ui/core';
+import {
+  Card, CardContent, CardHeader, makeStyles,
+} from '@material-ui/core';
 import Image from './Image/index';
+
+const useStyles = makeStyles({
+  card: {
+    width: '30%',
+    float: 'left',
+    marginRight: 20,
+    backgroundColor: '#f5daf5',
+  },
+  image: {
+    width: '50%',
+  },
+  content: {
+    '&>p': {
+      fontSize: 17,
+      margin: '10px 22px',
+    },
+  },
+});
 
 const PersonCard = ({
   name, image, title, children,
-}) => (
-  <Card>
-    <CardHeader title={name} subheader={title} />
-    <Image src={image} />
-    <CardContent>
-      {children}
-    </CardContent>
-  </Card>
-);
+}) => {
+  const classes = useStyles();
+
+  return (
+    <Card className={classes.card}>
+      <CardHeader title={name} subheader={title} />
+      <Image src={image} className={classes.image} />
+      <CardContent className={classes.content}>
+        {children}
+      </CardContent>
+    </Card>
+  );
+};
 
 PersonCard.propTypes = {
   name: string.isRequired,

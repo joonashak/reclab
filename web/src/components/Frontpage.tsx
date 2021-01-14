@@ -5,13 +5,13 @@ import {
 import { useTranslation } from 'react-i18next';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import BackgroundImage from './BackgroundImage';
-import Menu from './NavBar/Menu/index';
-import Image from './mdx/Image/index';
+import Menu from './NavBar/Menu';
+import Image from './mdx/Image';
 import LanguageButton from './NavBar/LanguageSwitcher/LanguageButton';
 import YouTube from './mdx/YouTube';
 import HugeActionButton from './controls/HugeActionButton';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme: Theme) => ({
   appbar: {
     backgroundColor: 'transparent',
     boxShadow: 'none',
@@ -31,17 +31,35 @@ const useStyles = makeStyles({
     width: '70%',
   },
   tagline: {
-    fontSize: '5rem',
+    fontSize: '2rem',
     fontStyle: 'italic',
     textAlign: 'center',
     fontWeight: 100,
     lineHeight: 'normal',
     marginTop: '3rem',
+    marginBottom: '3rem',
   },
   showreel: {
     marginTop: '4rem',
+    '& > div': {
+      [theme.breakpoints.down('sm')]: {
+        width: '100vw',
+        marginLeft: -16,
+        marginRight: -16,
+      },
+    },
   },
-});
+  actionButtons: {
+    display: 'flex',
+    alignItems: 'center',
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column',
+      '& > button': {
+        marginBottom: '1rem',
+      },
+    },
+  },
+}));
 
 export default () => {
   const classes = useStyles();
@@ -63,14 +81,22 @@ export default () => {
         </Toolbar>
       </AppBar>
       <Container>
-        <div className={classes.showreel}>
-          <YouTube videoId="cKYjZHZeE-I" />
-        </div>
         <Typography className={classes.tagline}>
           {t('frontpage.tagline')}
         </Typography>
-        <HugeActionButton subtitle="Our next" title="Shows" />
-        <HugeActionButton subtitle="Recover Laboratory" title="Shop" />
+        <div className={classes.showreel}>
+          <YouTube videoId="_y6pnvV91-A" />
+        </div>
+        <div className={classes.actionButtons}>
+          <HugeActionButton
+            subtitle={t('frontpage.showButton.subtitle')}
+            title={t('frontpage.showButton.title')}
+          />
+          <HugeActionButton
+            subtitle={t('frontpage.storeButton.subtitle')}
+            title={t('frontpage.storeButton.title')}
+          />
+        </div>
       </Container>
     </BackgroundImage>
   );

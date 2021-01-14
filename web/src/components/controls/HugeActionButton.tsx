@@ -3,24 +3,25 @@ import { Button } from '@material-ui/core';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import { string } from 'prop-types';
 import { navigate } from 'gatsby';
-import amber from '@material-ui/core/colors/amber';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   button: {
-    height: 200,
-    width: 300,
-    color: 'white',
-    backgroundColor: amber[800],
+    width: '100%',
+    backgroundColor: '#b380f77a',
+    color: 'black',
+    border: '2px solid black',
     '& > .MuiButton-label': {
       display: 'flex',
       flexDirection: 'column',
     },
   },
   title: {
-    fontSize: theme.typography.h5.fontSize,
+    fontSize: theme.typography.h4.fontSize,
+    lineHeight: '3rem',
   },
   subtitle: {
     fontSize: theme.typography.h6.fontSize,
+    lineHeight: '2rem',
   },
 }));
 

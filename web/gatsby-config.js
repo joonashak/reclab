@@ -73,6 +73,14 @@ const staticPlugins = [
       },
     },
   },
+  {
+    resolve: 'gatsby-plugin-web-font-loader',
+    options: {
+      google: {
+        families: ['Montserrat'],
+      },
+    },
+  },
 ];
 
 // These fail if Cloudinary credentials are not supplied (testing/CI).

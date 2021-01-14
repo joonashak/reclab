@@ -20,6 +20,7 @@
     "gatsby-plugin-react-helmet": "^3.6.0",
     "gatsby-plugin-remote-images": "^2.2.0",
     "gatsby-plugin-sharp": "^2.6.24",
+    "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-remark-images": "^3.4.2",
     "gatsby-source-apiserver": "^2.1.7",
     "gatsby-source-cloudinary": "^0.1.14",

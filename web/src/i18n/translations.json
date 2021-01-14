@@ -6,7 +6,15 @@
         "en": "View in English"
       },
       "frontpage": {
-        "tagline": "CURIOUS. SURREAL. HONEST. CONTEMPORARY. GENTLE. RAW. IMMERSIVE. SITE-SPECIFIC."
+        "tagline": "Here the freedom is yours.",
+        "showButton": {
+          "subtitle": "Check Out",
+          "title": "Latest Shows"
+        },
+        "storeButton": {
+          "subtitle": "Support Us",
+          "title": "Visit Store"
+        }
       }
     }
   },
@@ -17,7 +25,15 @@
         "en": "View in English"
       },
       "frontpage": {
-        "tagline": "KIINNOSTAVA. UUDENLAINEN. SURREALISTINEN. LEMPEÄ. RAAKA. IMMERSIIVINEN. TILASIDONNAINEN."
+        "tagline": "Täällä vapaus on sinun.",
+        "showButton": {
+          "subtitle": "Uusimmat",
+          "title": "Teoksemme"
+        },
+        "storeButton": {
+          "subtitle": "Tue Taidettamme",
+          "title": "Recover-kaupassa"
+        }
       }
     }
   }
