@@ -20,8 +20,8 @@ const heading = (variant, centered = false, spacing = 3) => ({ children }) => {
 export default {
   H1: heading('h1', true),
   H2: heading('h2', true),
-  H3: heading('h3'),
-  H4: heading('h4'),
-  H5: heading('h5'),
-  H6: heading('h6'),
+  H3: heading('h3', false, 2),
+  H4: heading('h4', false, 2),
+  H5: heading('h5', false, 1),
+  H6: heading('h6', false, 1),
 };

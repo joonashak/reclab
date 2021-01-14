@@ -11,6 +11,7 @@ const usestyles = makeStyles({
   container: {
     backgroundColor: '#ffffffa8',
     overflow: 'auto',
+    paddingBottom: '6rem',
   },
 });
 

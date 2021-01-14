@@ -1,8 +1,8 @@
 import React from 'react';
 import { string, bool } from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
-import Img from 'gatsby-image';
 import BigBodyImage from './BigBodyImage';
+import FixedImage from './FixedImage';
 
 /**
  * Load the specified image with GraphQL and pass it on to another image component
@@ -34,8 +34,8 @@ const Image = ({ src, fixed, className }) => {
   }
 
   return fixed
-    ? <Img fixed={image.childImageSharp.fixed} className={className} />
-    : <BigBodyImage fluid={image.childImageSharp.fluid} className={className} />;
+    ? <FixedImage src={image.childImageSharp.fixed} className={className} />
+    : <BigBodyImage src={image.childImageSharp.fluid} className={className} />;
 };
 
 Image.propTypes = {
