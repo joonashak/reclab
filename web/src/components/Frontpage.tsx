@@ -10,6 +10,7 @@ import Image from './mdx/Image';
 import LanguageButton from './NavBar/LanguageSwitcher/LanguageButton';
 import YouTube from './mdx/YouTube';
 import HugeActionButton from './controls/HugeActionButton';
+import Footer from './Footer';
 
 const useStyles = makeStyles((theme: Theme) => ({
   appbar: {
@@ -61,6 +62,12 @@ const useStyles = makeStyles((theme: Theme) => ({
       },
     },
   },
+  container: {
+    paddingBottom: '15rem',
+    [theme.breakpoints.down('sm')]: {
+      paddingBottom: '5rem',
+    },
+  },
 }));
 
 export default () => {
@@ -78,36 +85,39 @@ export default () => {
     : '/fi/satamiljoonaa-prosenttia';
 
   return (
-    <BackgroundImage>
-      <AppBar position="sticky" className={classes.appbar}>
-        <Toolbar className={classes.toolbar}>
-          <Menu language={language} />
-          {logo}
-          <LanguageButton path="/" />
-        </Toolbar>
-      </AppBar>
-      <Container>
-        <Typography className={classes.tagline}>
-          {t('frontpage.tagline')}
-        </Typography>
-        <div className={classes.showreel}>
-          <YouTube videoId="_y6pnvV91-A" />
-        </div>
-        <div className={classes.actionButtons}>
-          <HugeActionButton
-            to={showButtonPath}
-            subtitle={t('frontpage.showButton.subtitle')}
-            title={t('frontpage.showButton.title')}
-            iconSrc="palli_inv.png"
-          />
-          <HugeActionButton
-            to="https://holvi.com/shop/recover/"
-            subtitle={t('frontpage.storeButton.subtitle')}
-            title={t('frontpage.storeButton.title')}
-            iconSrc="mask_stay_safe.png"
-          />
-        </div>
-      </Container>
-    </BackgroundImage>
+    <>
+      <BackgroundImage>
+        <AppBar position="sticky" className={classes.appbar}>
+          <Toolbar className={classes.toolbar}>
+            <Menu language={language} />
+            {logo}
+            <LanguageButton path="/" />
+          </Toolbar>
+        </AppBar>
+        <Container className={classes.container}>
+          <Typography className={classes.tagline}>
+            {t('frontpage.tagline')}
+          </Typography>
+          <div className={classes.showreel}>
+            <YouTube videoId="_y6pnvV91-A" />
+          </div>
+          <div className={classes.actionButtons}>
+            <HugeActionButton
+              to={showButtonPath}
+              subtitle={t('frontpage.showButton.subtitle')}
+              title={t('frontpage.showButton.title')}
+              iconSrc="palli_inv.png"
+            />
+            <HugeActionButton
+              to="https://holvi.com/shop/recover/"
+              subtitle={t('frontpage.storeButton.subtitle')}
+              title={t('frontpage.storeButton.title')}
+              iconSrc="mask_stay_safe.png"
+            />
+          </div>
+        </Container>
+      </BackgroundImage>
+      <Footer />
+    </>
   );
 };
