@@ -71,6 +71,10 @@ export default () => {
     ? <Image src="logo_vertical.png" className={classes.logo} />
     : <Image src="logo_horizontal.png" className={classes.logo} />;
 
+  const showButtonPath = language === 'en'
+    ? '/en/one-hundred-million-percent'
+    : '/fi/satamiljoonaa-prosenttia';
+
   return (
     <BackgroundImage>
       <AppBar position="sticky" className={classes.appbar}>
@@ -89,10 +93,12 @@ export default () => {
         </div>
         <div className={classes.actionButtons}>
           <HugeActionButton
+            to={showButtonPath}
             subtitle={t('frontpage.showButton.subtitle')}
             title={t('frontpage.showButton.title')}
           />
           <HugeActionButton
+            to="https://holvi.com/shop/recover/"
             subtitle={t('frontpage.storeButton.subtitle')}
             title={t('frontpage.storeButton.title')}
           />

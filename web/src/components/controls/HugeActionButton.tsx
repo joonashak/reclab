@@ -43,13 +43,12 @@ const HugeActionButton = ({ to, title, subtitle }) => {
 };
 
 HugeActionButton.propTypes = {
-  to: string,
+  to: string.isRequired,
   title: string.isRequired,
   subtitle: string,
 };
 
 HugeActionButton.defaultProps = {
-  to: '.',
   subtitle: null,
 };
 
