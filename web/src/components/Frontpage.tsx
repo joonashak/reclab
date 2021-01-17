@@ -10,6 +10,7 @@ import Image from './mdx/Image';
 import LanguageButton from './NavBar/LanguageSwitcher/LanguageButton';
 import YouTube from './mdx/YouTube';
 import HugeActionButton from './controls/HugeActionButton';
+import Footer from './Footer';
 
 const useStyles = makeStyles((theme: Theme) => ({
   appbar: {
@@ -27,7 +28,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   logo: {
     maxWidth: 1000,
-    margin: 0,
+    margin: '13px 15px',
     width: '70%',
   },
   tagline: {
@@ -52,11 +53,20 @@ const useStyles = makeStyles((theme: Theme) => ({
   actionButtons: {
     display: 'flex',
     alignItems: 'center',
+    justifyContent: 'space-evenly',
+    marginTop: '5rem',
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
       '& > button': {
         marginBottom: '1rem',
+        width: '100%',
       },
+    },
+  },
+  container: {
+    paddingBottom: '15rem',
+    [theme.breakpoints.down('sm')]: {
+      paddingBottom: '5rem',
     },
   },
 }));
@@ -71,33 +81,44 @@ export default () => {
     ? <Image src="logo_vertical.png" className={classes.logo} />
     : <Image src="logo_horizontal.png" className={classes.logo} />;
 
+  const showButtonPath = language === 'en'
+    ? '/en/one-hundred-million-percent'
+    : '/fi/satamiljoonaa-prosenttia';
+
   return (
-    <BackgroundImage>
-      <AppBar position="sticky" className={classes.appbar}>
-        <Toolbar className={classes.toolbar}>
-          <Menu language={language} />
-          {logo}
-          <LanguageButton path="/" />
-        </Toolbar>
-      </AppBar>
-      <Container>
-        <Typography className={classes.tagline}>
-          {t('frontpage.tagline')}
-        </Typography>
-        <div className={classes.showreel}>
-          <YouTube videoId="_y6pnvV91-A" />
-        </div>
-        <div className={classes.actionButtons}>
-          <HugeActionButton
-            subtitle={t('frontpage.showButton.subtitle')}
-            title={t('frontpage.showButton.title')}
-          />
-          <HugeActionButton
-            subtitle={t('frontpage.storeButton.subtitle')}
-            title={t('frontpage.storeButton.title')}
-          />
-        </div>
-      </Container>
-    </BackgroundImage>
+    <>
+      <BackgroundImage>
+        <AppBar position="sticky" className={classes.appbar}>
+          <Toolbar className={classes.toolbar}>
+            <Menu language={language} />
+            {logo}
+            <LanguageButton path="/" />
+          </Toolbar>
+        </AppBar>
+        <Container className={classes.container}>
+          <Typography className={classes.tagline}>
+            {t('frontpage.tagline')}
+          </Typography>
+          <div className={classes.showreel}>
+            <YouTube videoId="_y6pnvV91-A" />
+          </div>
+          <div className={classes.actionButtons}>
+            <HugeActionButton
+              to={showButtonPath}
+              subtitle={t('frontpage.showButton.subtitle')}
+              title={t('frontpage.showButton.title')}
+              iconSrc="palli_inv.png"
+            />
+            <HugeActionButton
+              to="https://holvi.com/shop/recover/"
+              subtitle={t('frontpage.storeButton.subtitle')}
+              title={t('frontpage.storeButton.title')}
+              iconSrc="mask_stay_safe.png"
+            />
+          </div>
+        </Container>
+      </BackgroundImage>
+      <Footer />
+    </>
   );
 };
