@@ -3,16 +3,18 @@ import { Button } from '@material-ui/core';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import { string } from 'prop-types';
 import { navigate } from 'gatsby';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import Image from '../mdx/Image';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   button: {
-    width: '100%',
     backgroundColor: '#b380f77a',
     color: 'black',
     border: '2px solid black',
+    padding: '10px 20px',
     '& > .MuiButton-label': {
       display: 'flex',
-      flexDirection: 'column',
+      flexDirection: 'row',
     },
   },
   title: {
@@ -23,9 +25,30 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     fontSize: theme.typography.h6.fontSize,
     lineHeight: '2rem',
   },
+  mainIcon: {
+    width: 60,
+    margin: 0,
+  },
+  label: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  iconDiv: {
+    width: 80,
+    fontSize: 50,
+    display: 'flex',
+    justifyContent: 'center',
+    marginLeft: 12,
+  },
+  left: {
+    marginRight: 16,
+    marginLeft: 5,
+  },
 }));
 
-const HugeActionButton = ({ to, title, subtitle }) => {
+const HugeActionButton = ({
+  to, title, subtitle, iconSrc,
+}) => {
   const classes = useStyles();
 
   return (
@@ -36,8 +59,16 @@ const HugeActionButton = ({ to, title, subtitle }) => {
       centerRipple
       className={classes.button}
     >
-      <span className={classes.subtitle}>{subtitle}</span>
-      <span className={classes.title}>{title}</span>
+      <div className={[classes.iconDiv, classes.left].join(' ')}>
+        <Image src={iconSrc} className={classes.mainIcon} />
+      </div>
+      <div className={classes.label}>
+        <span className={classes.subtitle}>{subtitle}</span>
+        <span className={classes.title}>{title}</span>
+      </div>
+      <div className={classes.iconDiv}>
+        <ArrowForwardIosIcon fontSize="inherit" />
+      </div>
     </Button>
   );
 };
@@ -46,6 +77,7 @@ HugeActionButton.propTypes = {
   to: string.isRequired,
   title: string.isRequired,
   subtitle: string,
+  iconSrc: string.isRequired,
 };
 
 HugeActionButton.defaultProps = {

@@ -52,10 +52,12 @@ const useStyles = makeStyles((theme: Theme) => ({
   actionButtons: {
     display: 'flex',
     alignItems: 'center',
+    justifyContent: 'space-evenly',
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
       '& > button': {
         marginBottom: '1rem',
+        width: '100%',
       },
     },
   },
@@ -96,11 +98,13 @@ export default () => {
             to={showButtonPath}
             subtitle={t('frontpage.showButton.subtitle')}
             title={t('frontpage.showButton.title')}
+            iconSrc="palli_inv.png"
           />
           <HugeActionButton
             to="https://holvi.com/shop/recover/"
             subtitle={t('frontpage.storeButton.subtitle')}
             title={t('frontpage.storeButton.title')}
+            iconSrc="mask_stay_safe.png"
           />
         </div>
       </Container>
