@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   logo: {
     maxWidth: 1000,
-    margin: 0,
+    margin: '13px 15px',
     width: '70%',
   },
   tagline: {
@@ -54,6 +54,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-evenly',
+    marginTop: '5rem',
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
       '& > button': {
