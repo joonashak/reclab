@@ -1,31 +1,41 @@
 import React from 'react';
 import { Container, Grid } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, Theme } from '@material-ui/core/styles';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import Image from './mdx/Image/index';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme: Theme) => ({
   container: {
     backgroundColor: 'black',
     color: 'white',
     width: '100vw',
     maxWidth: 'unset',
+    paddingTop: '1rem',
   },
   col: {
     display: 'flex',
     flexDirection: 'column',
-    marginTop: 20,
-    marginBottom: 100,
+    alignItems: 'center',
+    marginTop: '1rem',
+    marginBottom: '2rem',
+    [theme.breakpoints.up('md')]: {
+      marginTop: 20,
+      marginBottom: 100,
+    },
   },
   left: {
-    alignItems: 'flex-end',
-    paddingRight: 60,
+    [theme.breakpoints.up('md')]: {
+      alignItems: 'flex-end',
+      paddingRight: 60,
+    },
   },
   right: {
-    alignItems: 'flex-start',
-    paddingLeft: 60,
+    [theme.breakpoints.up('md')]: {
+      alignItems: 'flex-start',
+      paddingLeft: 60,
+    },
   },
   iconButton: {
     color: 'white',
@@ -39,7 +49,7 @@ const useStyles = makeStyles({
   link: {
     color: 'white',
   },
-});
+}));
 
 export default () => {
   const classes = useStyles();
