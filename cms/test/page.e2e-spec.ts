@@ -2,7 +2,7 @@ import { INestApplication } from '@nestjs/common';
 import initializeApp from './utils/initializeApp';
 import { apiPages } from './utils/apiData';
 import { server } from './utils/common';
-import { Cms } from './utils/request';
+import { Cms } from './utils/cms';
 
 describe('/page', () => {
   //let app: INestApplication;
