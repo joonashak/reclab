@@ -1,18 +1,15 @@
-import { INestApplication } from '@nestjs/common';
-import initializeApp from './utils/initializeApp';
 import { apiPages } from './utils/apiData';
-import { server } from './utils/common';
+import { Cms } from './utils/cms';
 
 describe('/page', () => {
-  let app: INestApplication;
+  const cms = new Cms();
 
   beforeEach(async () => {
-    app = await initializeApp();
+    await cms.init();
   });
 
   it('/ (GET)', async () => {
-    const res = await server(app).get('/page');
-
+    const res = await cms.get('/page');
     expect(res.status).toBe(200);
     expect(res.body).toEqual(
       expect.arrayContaining(apiPages.filter(p => p.isPublic)),
@@ -20,11 +17,7 @@ describe('/page', () => {
   });
 
   it('/ (POST)', async () => {
-    const authResult = await server(app)
-      .post('/auth/login')
-      .send({ username: 'admin', password: '1234' });
-
-    const { accessToken } = authResult.body;
+    await cms.authenticate();
 
     const testPage = {
       title: 'Test Page',
@@ -35,10 +28,7 @@ describe('/page', () => {
       translationIds: [],
     };
 
-    const postResult = await server(app)
-      .post('/page')
-      .send(testPage)
-      .set('Authorization', `Bearer ${accessToken}`);
+    const postResult = await cms.post('/page', testPage);
 
     expect(postResult.status).toBe(201);
 
@@ -59,6 +49,6 @@ describe('/page', () => {
   });
 
   afterEach(async () => {
-    await app.close();
+    await cms.close();
   });
 });

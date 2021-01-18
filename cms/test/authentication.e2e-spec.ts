@@ -1,29 +1,25 @@
-import { INestApplication } from '@nestjs/common';
-import * as request from 'supertest';
-import { expect } from 'chai';
-import initializeApp from './utils/initializeApp';
+import { Cms } from './utils/cms';
 
 describe('/auth/login', () => {
-  let app: INestApplication;
+  const cms = new Cms();
 
   beforeEach(async () => {
-    app = await initializeApp();
+    await cms.init();
   });
 
   it('Can login with valid credentials.', async () => {
-    const res = await request(app.getHttpServer())
-      .post('/auth/login')
-      .send({ username: 'admin', password: '1234' })
-      .expect(201);
-
-    expect(res.body).to.have.property('accessToken');
+    const res = await cms.post('/auth/login', {
+      username: 'admin',
+      password: '1234',
+    });
+    expect(res.status).toBe(201);
+    expect(res.body).toHaveProperty('accessToken');
   });
 
-  const testInvalidLogin = data =>
-    request(app.getHttpServer())
-      .post('/auth/login')
-      .send(data)
-      .expect(401);
+  const testInvalidLogin = async (data) => {
+    const res = await cms.post('/auth/login', data);
+    expect(res.status).toBe(401);
+  };
 
   it('Cannot login with invalid or missing credentials.', () =>
     testInvalidLogin({}));
@@ -47,6 +43,6 @@ describe('/auth/login', () => {
     testInvalidLogin({ username: 'admin', password: '12345' }));
 
   afterEach(async () => {
-    await app.close();
+    await cms.close();
   });
 });
