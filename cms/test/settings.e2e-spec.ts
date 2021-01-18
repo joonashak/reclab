@@ -1,23 +1,20 @@
-import { INestApplication } from '@nestjs/common';
-import * as request from 'supertest';
-import initializeApp from './utils/initializeApp';
 import { apiSettings } from './utils/apiData';
+import { Cms } from './utils/cms';
 
 describe('/settings', () => {
-  let app: INestApplication;
+  const cms = new Cms();
 
   beforeEach(async () => {
-    app = await initializeApp();
+    await cms.init();
   });
 
-  it('/ (GET)', () => {
-    return request(app.getHttpServer())
-      .get('/settings')
-      .expect(200)
-      .expect(apiSettings);
+  it('/ (GET)', async () => {
+    const res = await cms.get('/settings');
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual(apiSettings);
   });
 
   afterEach(async () => {
-    await app.close();
+    await cms.close();
   });
 });

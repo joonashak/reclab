@@ -1,23 +1,20 @@
-import { INestApplication } from '@nestjs/common';
-import * as request from 'supertest';
-import initializeApp from './utils/initializeApp';
 import { apiMenu } from './utils/apiData';
+import { Cms } from './utils/cms';
 
 describe('/menu', () => {
-  let app: INestApplication;
+  const cms = new Cms();
 
   beforeEach(async () => {
-    app = await initializeApp();
+    await cms.init();
   });
 
-  it('/ (GET)', () => {
-    return request(app.getHttpServer())
-      .get('/menu')
-      .expect(200)
-      .expect(apiMenu);
+  it('/ (GET)', async () => {
+    const res = await cms.get('/menu');
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual(apiMenu);
   });
 
   afterEach(async () => {
-    await app.close();
+    await cms.close();
   });
 });
