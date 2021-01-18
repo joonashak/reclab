@@ -2,19 +2,20 @@ import { INestApplication } from '@nestjs/common';
 import initializeApp from './utils/initializeApp';
 import { apiPages } from './utils/apiData';
 import { server } from './utils/common';
-import { Request } from './utils/request';
+import { Cms } from './utils/request';
 
 describe('/page', () => {
   //let app: INestApplication;
-  const req = new Request()
+  const cms = new Cms()
 
   beforeEach(async () => {
     //app = await initializeApp();
-    await req.init()
+    await cms.init()
   });
 
   it('/ (GET)', async () => {
-    const res = await req.get('/page');
+    const res = await cms.get('/page');
+    await cms.authenticate()
 
     expect(res.status).toBe(200);
     expect(res.body).toEqual(
@@ -63,6 +64,6 @@ describe('/page', () => {
 */
   afterEach(async () => {
     //await app.close();
-    await req.close()
+    await cms.close()
   });
 });

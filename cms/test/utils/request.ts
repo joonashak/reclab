@@ -19,14 +19,31 @@ export class Request {
 }
 */
 
-export class Request {
+export class Cms {
   app: INestApplication;
+  token: string;
 
-  init = async () => {
+  init = async (): Promise<void> => {
     this.app = await initializeApp();
   };
 
-  close = async () => this.app.close();
+  close = async (): Promise<void> => this.app.close();
 
-  get = async url => supertest(this.app.getHttpServer()).get(url);
+  server = (): supertest.SuperTest<supertest.Test> =>
+    supertest(this.app.getHttpServer());
+
+  authenticate = async (): Promise<void> => {
+    const response = await this.server()
+      .post('/auth/login')
+      .send({ username: 'admin', password: '1234' });
+
+    this.token = response.body.accessToken;
+
+    if (!this.token) {
+      throw new Error('Login failed.');
+    }
+  };
+
+  get = async (url: string): Promise<supertest.Response> =>
+    supertest(this.app.getHttpServer()).get(url);
 }
