@@ -6,6 +6,18 @@ export class Cms {
   app: INestApplication;
   authenticationHeader: any;
 
+  private server = (): supertest.SuperTest<supertest.Test> =>
+    supertest(this.app.getHttpServer());
+
+  private addAuthHeaders = async (
+    request: supertest.Request,
+  ): Promise<supertest.Response> => {
+    if (this.authenticationHeader) {
+      return request.set(this.authenticationHeader);
+    }
+    return request;
+  };
+
   /**
    * Initialize new CMS test instance.
    *
@@ -21,9 +33,6 @@ export class Cms {
    * Must be called before initializing new CMS instances, typically in `afterEach`.
    */
   close = async (): Promise<void> => this.app.close();
-
-  private server = (): supertest.SuperTest<supertest.Test> =>
-    supertest(this.app.getHttpServer());
 
   /**
    * Enter authenticated mode.
@@ -52,15 +61,13 @@ export class Cms {
     this.authenticationHeader = null;
   };
 
-  // TODO: Implement authentication.
   /**
    * Perform GET request.
    * @param url URL to request against.
    */
   get = async (url: string): Promise<supertest.Response> =>
-    this.server().get(url);
+    this.addAuthHeaders(this.server().get(url));
 
-  // TODO: Implement unauthenticated request.
   /**
    * Perform POST request.
    * @param url URL to request against.
@@ -68,9 +75,10 @@ export class Cms {
    */
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   post = async (url: string, data: any): Promise<supertest.Response> => {
-    return this.server()
+    const request = this.server()
       .post(url)
-      .send(data)
-      .set(this.authenticationHeader);
+      .send(data);
+
+    return this.addAuthHeaders(request);
   };
 }
