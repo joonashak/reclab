@@ -23,7 +23,7 @@
     "typeorm": "npx ts-node node_modules/typeorm/cli.js"
   },
   "dependencies": {
-    "@nestjs/common": "^7.4.2",
+    "@nestjs/common": "^7.6.5",
     "@nestjs/core": "^7.4.2",
     "@nestjs/jwt": "^7.1.0",
     "@nestjs/passport": "^7.1.0",
