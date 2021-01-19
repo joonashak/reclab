@@ -1,6 +1,17 @@
 import { apiPages } from './utils/apiData';
 import { Cms } from './utils/cms';
 
+const url = '/page';
+
+const testPage = {
+  title: 'Test Page',
+  content: 'Lorem ipsum...',
+  language: 'en',
+  isPublic: true,
+  path: '/test',
+  translationIds: [],
+};
+
 describe('/page', () => {
   const cms = new Cms();
 
@@ -8,28 +19,29 @@ describe('/page', () => {
     await cms.init();
   });
 
-  it('/ (GET)', async () => {
-    const res = await cms.get('/page');
+  it('/ (GET) returns only public pages when not authenticated', async () => {
+    const res = await cms.get(url);
     expect(res.status).toBe(200);
     expect(res.body).toEqual(
       expect.arrayContaining(apiPages.filter(p => p.isPublic)),
     );
   });
 
-  it('/ (POST)', async () => {
+  it('/ (GET) returns all pages when authenticated', async () => {
     await cms.authenticate();
+    const res = await cms.get(url);
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual(expect.arrayContaining(apiPages));
+  });
 
-    const testPage = {
-      title: 'Test Page',
-      content: 'Lorem ipsum...',
-      language: 'en',
-      isPublic: true,
-      path: '/test',
-      translationIds: [],
-    };
+  it('/ (POST) unauthenticated user cannot create a page', async () => {
+    const res = await cms.post(url, testPage);
+    expect(res.status).toBe(401);
+  });
 
+  it('/ (POST) create basic page', async () => {
+    await cms.authenticate();
     const postResult = await cms.post('/page', testPage);
-
     expect(postResult.status).toBe(201);
 
     const { id, createdAt, ...testablePage } = postResult.body;
@@ -45,6 +57,37 @@ describe('/page', () => {
       },
       translations: [],
       updatedAt: null,
+    });
+  });
+
+  it('/ (PATCH) unauthenticated user cannot edit a page', async () => {
+    const res = await cms.patch(url, {
+      id: apiPages[0].id,
+      title: 'asd',
+    });
+    expect(res.status).toBe(401);
+  });
+
+  it('/ (PATCH) edit page', async () => {
+    await cms.authenticate();
+    const newPage = await cms.post(url, testPage);
+    const { id } = newPage.body;
+
+    const edits = {
+      title: 'edited title',
+      content: 'edited content',
+      language: 'fi',
+      isPublic: false,
+      path: '/edited',
+    };
+
+    const res = await cms.patch(url, { ...edits, id });
+    expect(res.status).toBe(200);
+
+    const { id: _, createdAt, updatedAt, ...testablePage } = res.body;
+    expect(testablePage).toEqual({
+      ...edits,
+      translations: [],
     });
   });
 
