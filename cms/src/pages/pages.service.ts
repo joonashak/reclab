@@ -114,6 +114,10 @@ export class PagesService {
       [id],
     );
 
+    if (!translationIds) {
+      return this.findOne(id);
+    }
+
     translationIds.forEach(async translationId => {
       // Remove possible existing translations.
       // TODO: Needs to be filtered by language if this is to handle more than two languages.
