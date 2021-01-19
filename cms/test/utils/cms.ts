@@ -25,6 +25,7 @@ export class Cms {
    */
   init = async (): Promise<void> => {
     this.app = await initializeApp();
+    this.authenticationHeader = null;
   };
 
   /**
@@ -77,6 +78,20 @@ export class Cms {
   post = async (url: string, data: any): Promise<supertest.Response> => {
     const request = this.server()
       .post(url)
+      .send(data);
+
+    return this.addAuthHeaders(request);
+  };
+
+  /**
+   * Perform PATCH request.
+   * @param url URL to request against.
+   * @param data Payload data.
+   */
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  patch = async (url: string, data: any): Promise<supertest.Response> => {
+    const request = this.server()
+      .patch(url)
       .send(data);
 
     return this.addAuthHeaders(request);
