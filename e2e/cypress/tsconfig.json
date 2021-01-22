@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["es5", "dom"],
+    "types": ["cypress"]
+  },
+  "include": [
+    "**/*.ts"
+  ],
+  // For some reason the type definitions work only when explicitly included here.
+  "files": ["support/commands.d.ts"]
+}
