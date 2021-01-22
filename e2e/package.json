@@ -6,6 +6,9 @@
     "cypress:open": "cypress open"
   },
   "dependencies": {
-    "cypress": "^5.3.0"
+    "cypress": "^6.3.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.1.3"
   }
 }

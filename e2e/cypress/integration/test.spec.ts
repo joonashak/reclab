@@ -2,8 +2,8 @@
 
 describe("My First Test", () => {
   it("Test custom commands", () => {
-    cy.init();
-    cy.login();
+    //cy.init();
+    //cy.login();
   })
 
   it("Does not do much!", () => {
