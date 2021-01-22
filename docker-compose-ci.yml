@@ -51,6 +51,7 @@ services:
     container_name: reclab-e2e-ci
     environment:
       - CYPRESS_BASE_URL=http://web-ci:3002/
+      - CYPRESS_API_URL=http://cms-ci:3003
     volumes:
       - ./e2e/cypress:/e2e/cypress
     depends_on:
