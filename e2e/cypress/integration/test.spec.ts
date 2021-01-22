@@ -1,9 +1,10 @@
-/// <reference types="Cypress" />
+/// <reference types="cypress" />
+//// <reference path="../support/commands.d.ts" />
 
 describe("My First Test", () => {
   it("Test custom commands", () => {
-    //cy.init();
-    //cy.login();
+    cy.init();
+    cy.login();
   })
 
   it("Does not do much!", () => {

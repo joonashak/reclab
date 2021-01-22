@@ -6,5 +6,7 @@
   },
   "include": [
     "**/*.ts"
-  ]
+  ],
+  // For some reason the type definitions work only when explicitly included here.
+  "files": ["support/commands.d.ts"]
 }

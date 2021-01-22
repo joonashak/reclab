@@ -1,5 +1,3 @@
-// / <reference types="Cypress" />
-
 const apiUrl = Cypress.env('API_URL') || '';
 
 /**
