@@ -11,6 +11,7 @@ export default () => (
     size="large"
     startIcon={<AddCircleOutlineIcon />}
     onClick={() => navigate(ADMIN_ROUTES.NEW_PAGE)}
+    data-cy="new-page-button"
   >
     New Page
   </Button>

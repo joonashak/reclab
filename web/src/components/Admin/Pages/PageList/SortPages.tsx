@@ -33,6 +33,7 @@ const SortPages = ({ setSortFn }) => {
         value={value}
         onChange={onChange}
         label="Sort By"
+        data-cy="sort-pages"
       >
         {options.map(({ name }) => <MenuItem key={name} value={name}>{name}</MenuItem>)}
       </Select>

@@ -81,6 +81,7 @@ const PageForm = ({
           color="primary"
           startIcon={<LockOpenIcon />}
           fullWidth
+          data-cy="page-form-submit"
         >
           {submitLabel}
         </Button>

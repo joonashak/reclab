@@ -37,6 +37,7 @@ const FilterPages = ({ setFilterFn }) => {
         value={value}
         onChange={onChange}
         label="Language"
+        data-cy="filter-pages"
       >
         {options.map(({ name }) => <MenuItem key={name} value={name}>{name}</MenuItem>)}
       </Select>
