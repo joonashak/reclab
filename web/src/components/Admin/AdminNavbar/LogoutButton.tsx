@@ -10,5 +10,5 @@ export default () => {
     window.location.reload();
   };
 
-  return <Button color="inherit" onClick={onClick}>Logout</Button>;
+  return <Button color="inherit" onClick={onClick} data-cy="logout">Logout</Button>;
 };
