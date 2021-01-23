@@ -43,7 +43,7 @@ const PageList = () => {
       <Typography variant="body1" gutterBottom>Select a page to edit.</Typography>
       <SortPages setSortFn={setSortFn} />
       <FilterPages setFilterFn={setFilterFn} />
-      <List>
+      <List data-cy="pages-list">
         {filteredAndSortedPages.map((page) => <PageListItem key={page.id} page={page} />)}
       </List>
     </Container>
