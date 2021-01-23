@@ -31,6 +31,35 @@ describe('Page admin', () => {
     cy.contains('English').click();
     cy.cs('page-form-submit').click();
 
+    cy.contains('Page created!');
     cy.cs('pages-list').children().contains('Cypress page');
+  });
+
+  it('Edit a page', () => {
+    cy.contains('Private page').click();
+
+    cy.contains('Edit Page');
+    cy.get('#title').type(' edited');
+    cy.cs('page-form-submit').click();
+
+    cy.contains('Page updated!');
+    cy.cs('pages-list').children().contains('Private page edited');
+  });
+
+  it('Delete a page', () => {
+    // Delete Test Page 1 and ensure that the translation relation is removed, too.
+    cy.contains('Testisivu 1').click();
+    cy.get('#translation').contains('Test Page 1');
+
+    cy.go(-1);
+    cy.contains('Test Page 1').click();
+    cy.cs('delete-page').click();
+    cy.cs('input-confirm-path').type('/page1');
+    cy.cs('confirmation-submit').click();
+    cy.contains('Page deleted!');
+    cy.contains('Test Page 1').should('not.exist');
+
+    cy.contains('Testisivu 1').click();
+    cy.get('#translation').contains('Test Page 1').should('not.exist');
   });
 });

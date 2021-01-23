@@ -4,9 +4,11 @@ import {
   Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle,
 } from '@material-ui/core';
 import { useForm } from 'react-hook-form';
+import { navigate } from 'gatsby';
 import ControlledTextField from '../../controls/ControlledTextField';
 import useNotification from '../../GlobalNotification/useNotification';
 import usePages from './usePages';
+import ADMIN_ROUTES from '../routes';
 
 const DeletePage = ({ page }) => {
   const { setNotification } = useNotification();
@@ -16,9 +18,12 @@ const DeletePage = ({ page }) => {
   const toggle = () => setIsOpen((prev) => !prev);
 
   const formControl = useForm({ mode: 'onBlur' });
-  const path = formControl.watch('path');
+  const path = formControl.watch('confirm-path');
 
   const deleteOnClick = async () => {
+    // Navigate away first as to not delete a page that is currently being viewed.
+    navigate(ADMIN_ROUTES.PAGES);
+
     try {
       await removePage(page.id);
     } catch {
@@ -30,7 +35,7 @@ const DeletePage = ({ page }) => {
 
   return (
     <form>
-      <Button onClick={toggle}>
+      <Button onClick={toggle} data-cy="delete-page">
         Delete Page
       </Button>
       <Dialog open={isOpen} onClose={toggle} aria-labelledby="delete-page-dialog-title">
@@ -48,7 +53,7 @@ const DeletePage = ({ page }) => {
           </DialogContentText>
           <ControlledTextField
             formControl={formControl}
-            name="path"
+            name="confirm-path"
             label="Path"
             rules={{ validate: (value) => value === page.path || 'The path is not correct.' }}
             autoFocus
@@ -58,7 +63,13 @@ const DeletePage = ({ page }) => {
           <Button onClick={toggle} color="primary">
             Cancel
           </Button>
-          <Button onClick={deleteOnClick} color="primary" type="submit" disabled={path !== page.path}>
+          <Button
+            onClick={deleteOnClick}
+            color="primary"
+            type="submit"
+            disabled={path !== page.path}
+            data-cy="confirmation-submit"
+          >
             Delete
           </Button>
         </DialogActions>
