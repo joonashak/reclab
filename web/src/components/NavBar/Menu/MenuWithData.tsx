@@ -32,6 +32,7 @@ const MenuWithData = ({ menuItems }) => {
         edge="start"
         color="inherit"
         aria-label="Open Menu"
+        data-cy="hamburger"
       >
         <MenuIcon />
       </IconButton>

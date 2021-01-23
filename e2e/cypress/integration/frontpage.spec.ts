@@ -1,11 +1,13 @@
-describe('My First Test', () => {
-  it('Test custom commands', () => {
-    cy.init();
-    cy.login();
-  });
-
-  it('Does not do much!', () => {
+describe('Frontpage', () => {
+  it('Content smoke test', () => {
     cy.visit('/');
     cy.contains('Here the freedom is yours.');
+  });
+
+  it('Menu smoke test', () => {
+    cy.visit('/');
+    cy.cs('hamburger').click();
+    cy.contains('Page 1').click();
+    cy.contains('Lorem ipsum...');
   });
 });
