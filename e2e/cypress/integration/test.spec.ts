@@ -16,6 +16,6 @@ describe('My First Test', () => {
     cy.visit('/admin');
     cy.get('#username').type('admin');
     cy.get('#password').type('1234');
-      cy.cs('submit-login').click();
+    cy.cs('submit-login').click();
   });
 });
