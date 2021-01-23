@@ -19,11 +19,9 @@ Cypress.Commands.add('init', () => {
     method: 'GET',
     url: `${apiUrl}/seeder/reset`,
   });
-})
+});
 
 /**
  * Shorthand for using "Cypress Selectors" (CS), i.e., `data-cy` attributes.
  */
-Cypress.Commands.add('cs', (name) => {
-  return cy.get(`[data-cy='${name}']`);
-});
+Cypress.Commands.add('cs', (name) => cy.get(`[data-cy='${name}']`));
