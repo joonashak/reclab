@@ -1,4 +1,8 @@
 describe('Admin menu', () => {
+  before(() => {
+    cy.login();
+  });
+
   const checkMenuItem = (label: string, pathname: string) => {
     cy.visit('/admin');
     cy.cs('hamburger').click();
