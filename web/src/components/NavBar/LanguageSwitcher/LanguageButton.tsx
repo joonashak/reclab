@@ -47,6 +47,7 @@ const LanguageButton = ({ path }) => {
       disabled={!path}
       onClick={onClick}
       className={classes.icon}
+      data-cy="switch-language"
     >
       <CountryFlag
         countryCode={languageToCountryCode[targetLanguage]}
