@@ -55,4 +55,10 @@ export class Page {
     inverseJoinColumn: { name: 'targetPageId' },
   })
   translations: Page[];
+
+  @Column('text', { nullable: true })
+  description: string;
+
+  @Column('text', { nullable: true })
+  keywords: string;
 }
