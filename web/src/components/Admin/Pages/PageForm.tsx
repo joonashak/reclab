@@ -44,7 +44,6 @@ const PageForm = ({
           formControl={formControl}
           name="description"
           label="Description"
-          rules={{ required: 'Description cannot be empty' }}
         />
       </Grid>
       <Grid item xs={12} md={6}>
@@ -52,7 +51,6 @@ const PageForm = ({
           formControl={formControl}
           name="keywords"
           label="Keywords"
-          rules={{ required: 'Keywords cannot be empty' }}
         />
       </Grid>
       <Grid item xs={12} md={6}>
