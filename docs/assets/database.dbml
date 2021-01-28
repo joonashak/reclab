@@ -20,6 +20,8 @@ Table page {
   language LANGUAGE [not null]
   isPublic BOOL [not null, default: false]
   path TEXT
+  description TEXT
+  keywords TEXT
 }
 
 Table translation {
