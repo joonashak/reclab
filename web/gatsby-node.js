@@ -21,6 +21,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       isPublic: Boolean!
       language: String!
       path: String
+      description: String
       translations: [Translation]
       childMdx: ChildMdx
     }
