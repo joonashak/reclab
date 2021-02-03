@@ -5,7 +5,7 @@
   "scripts": {
     "start": "docker-compose up -d",
     "stop": "docker-compose down; docker-compose -f docker-compose-ci.yml down",
-    "stop:web": "docker stop reclab-web",
+    "stop:web": "docker-compose stop web web-test",
     "restart": "docker-compose restart",
     "restart:web": "npm run stop:web && npm start",
     "logs": "docker-compose logs -f",
@@ -26,9 +26,9 @@
     "migrations:run": "npm run typeorm -- migration:run",
     "migrations:revert": "npm run typeorm -- migration:revert",
     "migrations:generate": "curl http://localhost:3003/seeder/clear && npm run migrations:run && npm run typeorm -- migration:generate -d migrations -n",
-    "rebuild": "npm stop && docker image rm reclab_web && npm run build && npm start",
+    "rebuild": "npm stop && docker image rm reclab_web reclab_web-test && npm run build && npm start",
     "rebuild:cms": "npm stop && npm run build:cms && npm start",
-    "rebuild:web": "npm run stop:web && docker image rm reclab_web reclab_web-test && npm run build:web && npm start"
+    "rebuild:web": "npm stop && docker image rm reclab_web reclab_web-test && npm run build:web && npm start"
   },
   "repository": {
     "type": "git",
