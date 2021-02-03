@@ -43,12 +43,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export default () => {
   const classes = useStyles();
-  const { i18n, t } = useTranslation();
-  const { language } = i18n;
-
-  const showButtonPath = language === 'en'
-    ? '/en/one-hundred-million-percent'
-    : '/fi/satamiljoonaa-prosenttia';
+  const { t } = useTranslation();
 
   return (
     <LayoutWide>
@@ -60,7 +55,7 @@ export default () => {
       </div>
       <div className={classes.actionButtons}>
         <HugeActionButton
-          to={showButtonPath}
+          to="/en/subcase-2021"
           subtitle={t('frontpage.showButton.subtitle')}
           title={t('frontpage.showButton.title')}
           iconSrc="palli_inv.png"
