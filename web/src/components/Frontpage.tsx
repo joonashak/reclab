@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   showreel: {
     marginTop: '4rem',
+    marginBottom: '4rem',
     '& > div': {
       [theme.breakpoints.down('sm')]: {
         width: '100vw',
@@ -39,6 +40,12 @@ const useStyles = makeStyles((theme: Theme) => ({
       },
     },
   },
+  introduction: {
+    fontSize: '1.3rem',
+    marginTop: '1rem',
+    textAlign: 'justify',
+    fontWeight: 400,
+  },
 }));
 
 export default () => {
@@ -53,6 +60,12 @@ export default () => {
       <div className={classes.showreel}>
         <YouTube videoId="_y6pnvV91-A" />
       </div>
+      <Typography className={classes.introduction}>
+        {t('frontpage.introduction.p1')}
+      </Typography>
+      <Typography className={classes.introduction}>
+        {t('frontpage.introduction.p2')}
+      </Typography>
       <div className={classes.actionButtons}>
         <HugeActionButton
           to="/en/subcase-2021"
