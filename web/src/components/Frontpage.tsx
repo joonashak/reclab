@@ -2,10 +2,10 @@ import React from 'react';
 import { Typography } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import { makeStyles, Theme } from '@material-ui/core/styles';
+import { Helmet } from 'react-helmet';
 import YouTube from './mdx/YouTube';
 import HugeActionButton from './controls/HugeActionButton';
 import LayoutWide from './LayoutWide';
-import { Helmet } from 'react-helmet';
 
 const useStyles = makeStyles((theme: Theme) => ({
   tagline: {
