@@ -19,6 +19,9 @@
           "p1": "Recover Laboratory is a Finnish multi-art company led by artists Miradonna Sirkka and Sofi Häkkinen, and experience designer Inna Huttunen. We create surreal art experiences based on human contact, honesty and freedom, asking you to stop for a while and experience art at your own pace and your own way.",
           "p2": "Our artworks take several different forms: they can be enormous labyrinths under the ground, promenade performances in public space, multidisciplinary performances on stage, immersive wonderlands for kids, or specially designed productions for events. In Recover’s artworks anything can happen - just like on an ordinary day. Here, the freedom is yours."
         }
+      },
+      "meta": {
+        "description": "description in english"
       }
     }
   },
@@ -43,6 +46,9 @@
           "p2": "Teoksemme ottavat erilaisia muotoja: Ne voivat olla jättimäisiä labyrintteja maan alla, kaupunkitilaan suunniteltuja kävelyteoksia, monitaiteisia teoksia perinteiselle lavalle, lasten immersiivisiä ihmemaita, tai tapahtumia varten kuratoituja kokonaisuuksia. Recoverin teoksissa voi tapahtua mitä tahansa – aivan kuten tavallisena arkipäivänäkin. Täällä vapaus on sinun."
         }
       }
+    },
+    "meta": {
+      "description": "selostus suomeksi"
     }
   }
 }

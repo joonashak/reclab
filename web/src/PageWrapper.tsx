@@ -1,12 +1,13 @@
 import React from 'react';
 import { node, shape, string } from 'prop-types';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import Layout from './components/Layout';
 
 const PageWrapper = ({ page, children }) => (
   <>
     <Helmet>
       <title>{`${page.title} - Recover Laboratory`}</title>
+      <meta name="description" content={page.description || ''} />
     </Helmet>
     <Layout page={page}>{children}</Layout>
   </>

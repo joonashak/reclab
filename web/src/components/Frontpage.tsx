@@ -5,6 +5,7 @@ import { makeStyles, Theme } from '@material-ui/core/styles';
 import YouTube from './mdx/YouTube';
 import HugeActionButton from './controls/HugeActionButton';
 import LayoutWide from './LayoutWide';
+import { Helmet } from 'react-helmet';
 
 const useStyles = makeStyles((theme: Theme) => ({
   tagline: {
@@ -54,6 +55,10 @@ export default () => {
 
   return (
     <LayoutWide>
+      <Helmet>
+        <title>Recover Laboratory</title>
+        <meta name="description" content={t('meta.description')} />
+      </Helmet>
       <Typography className={classes.tagline}>
         {t('frontpage.tagline')}
       </Typography>

@@ -70,20 +70,6 @@ exports.sourceNodes = async ({
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
-  const settingsData = await graphql(`
-    query {
-      allSettings {
-        nodes {
-          title
-          frontpage {
-            id: alternative_id
-            path
-          }
-        }
-      }
-    }
-  `);
-
   const pages = await graphql(`
     query {
       allPage(filter: { id: { ne: "dummy" } }) {
@@ -93,6 +79,7 @@ exports.createPages = async ({ graphql, actions }) => {
           content
           path
           language
+          description
           translations {
             path
             language
@@ -113,22 +100,6 @@ exports.createPages = async ({ graphql, actions }) => {
         data: page,
       },
     });
-
-    // Create frontpage.
-    /*
-    const frontpageId = settingsData.data.allSettings.nodes[0].frontpage.id;
-
-    if (page.id === frontpageId) {
-      console.log('creating frontpage');
-      createPage({
-        path: '/',
-        component: path.resolve('./src/templates/Page.tsx'),
-        context: {
-          data: page,
-        },
-      });
-    }
-    */
   });
 };
 
