@@ -13,7 +13,6 @@ const justPages = [
     editor: null,
     path: '/page1',
     description: 'description 1',
-    keywords: 'keywords 1',
   },
   {
     id: '350feb92-7be8-4df3-812e-cc8a491c1344',
@@ -27,7 +26,6 @@ const justPages = [
     editor: null,
     path: '/page2',
     description: 'description 2',
-    keywords: 'keywords 2',
   },
   {
     id: 'f3c9259c-fd0c-420c-b80e-a68ad7b97bfa',
@@ -41,7 +39,6 @@ const justPages = [
     editor: null,
     path: '/sivu1',
     description: 'description 3',
-    keywords: 'keywords 3',
   },
   {
     id: 'a4414d39-73f9-481f-880f-ae98e5ef1638',
@@ -55,7 +52,6 @@ const justPages = [
     editor: null,
     path: '/sivu2',
     description: 'description 4',
-    keywords: 'keywords 4',
   },
   {
     id: 'e762e04d-70f5-49fb-aac4-c816e9d0a78f',
@@ -69,7 +65,6 @@ const justPages = [
     editor: null,
     path: '/no-relation',
     description: 'description 5',
-    keywords: 'keywords 5',
   },
   {
     id: 'd13cf0a8-44db-49c5-9309-f34ecbc8e5d7',
@@ -83,7 +78,6 @@ const justPages = [
     editor: null,
     path: '/private',
     description: 'description 6',
-    keywords: 'keywords 6',
   },
   {
     id: '10b5cd43-ed7e-4c54-b70e-f33677276ddb',
@@ -97,7 +91,6 @@ const justPages = [
     editor: null,
     path: '/',
     description: 'description 7',
-    keywords: 'keywords 7',
   },
 ];
 
