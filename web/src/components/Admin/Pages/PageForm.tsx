@@ -47,13 +47,6 @@ const PageForm = ({
         />
       </Grid>
       <Grid item xs={12} md={6}>
-        <ControlledTextField
-          formControl={formControl}
-          name="keywords"
-          label="Keywords"
-        />
-      </Grid>
-      <Grid item xs={12} md={6}>
         <ControlledSelect
           formControl={formControl}
           name="language"

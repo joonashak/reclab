@@ -58,7 +58,4 @@ export class Page {
 
   @Column('text', { nullable: true })
   description: string;
-
-  @Column('text', { nullable: true })
-  keywords: string;
 }

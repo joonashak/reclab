@@ -8,12 +8,16 @@
       "frontpage": {
         "tagline": "Here the freedom is yours.",
         "showButton": {
-          "subtitle": "Check Out",
-          "title": "Latest Shows"
+          "subtitle": "For visitors of",
+          "title": "Subcase 2021"
         },
         "storeButton": {
           "subtitle": "Support Us",
           "title": "Visit Store"
+        },
+        "introduction": {
+          "p1": "Recover Laboratory is a Finnish multi-art company led by artists Miradonna Sirkka and Sofi Häkkinen, and experience designer Inna Huttunen. We create surreal art experiences based on human contact, honesty and freedom, asking you to stop for a while and experience art at your own pace and your own way.",
+          "p2": "Our artworks take several different forms: they can be enormous labyrinths under the ground, promenade performances in public space, multidisciplinary performances on stage, immersive wonderlands for kids, or specially designed productions for events. In Recover’s artworks anything can happen - just like on an ordinary day. Here, the freedom is yours."
         }
       }
     }
@@ -27,12 +31,16 @@
       "frontpage": {
         "tagline": "Täällä vapaus on sinun.",
         "showButton": {
-          "subtitle": "Uusimmat",
-          "title": "Teoksemme"
+          "subtitle": "For visitors of",
+          "title": "Subcase 2021"
         },
         "storeButton": {
           "subtitle": "Tue Taidettamme",
           "title": "Recover-kaupassa"
+        },
+        "introduction": {
+          "p1": "Recover Laboratory on helsinkiläinen monitaideryhmä, jota luotsaavat taiteilijat Miradonna Sirkka ja Sofi Häkkinen sekä kokemussuunnittelija Inna Huttunen. Surrealismia henkivät teoksemme rakentuvat ihmisten välisen kontaktin, kohtaamisten, rehellisyyden ja vapauden ympärille. Pyydämme katsojaa pysähtymään hetkeksi, ja kokemaan taiteen rauhassa omalla tavallaan.",
+          "p2": "Teoksemme ottavat erilaisia muotoja: Ne voivat olla jättimäisiä labyrintteja maan alla, kaupunkitilaan suunniteltuja kävelyteoksia, monitaiteisia teoksia perinteiselle lavalle, lasten immersiivisiä ihmemaita, tai tapahtumia varten kuratoituja kokonaisuuksia. Recoverin teoksissa voi tapahtua mitä tahansa – aivan kuten tavallisena arkipäivänäkin. Täällä vapaus on sinun."
         }
       }
     }

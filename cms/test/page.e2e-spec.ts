@@ -11,7 +11,6 @@ const testPage = {
   path: '/test',
   translationIds: [],
   description: 'test description',
-  keywords: 'test keywords',
 };
 
 describe('/page', () => {
@@ -60,7 +59,6 @@ describe('/page', () => {
       translations: [],
       updatedAt: null,
       description: 'test description',
-      keywords: 'test keywords',
     });
   });
 
@@ -84,7 +82,6 @@ describe('/page', () => {
       isPublic: false,
       path: '/edited',
       description: 'edited description',
-      keywords: 'edited keywords',
     };
 
     const res = await cms.patch(url, { ...edits, id });
