@@ -4,7 +4,6 @@ import { Container, ThemeProvider } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import NavBar from './NavBar/index';
 import theme from '../themes/theme';
-import BackgroundImage from './BackgroundImage';
 import Footer from './Footer';
 
 const usestyles = makeStyles({
@@ -20,12 +19,10 @@ const Layout = ({ page, children }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <BackgroundImage>
-        <NavBar page={page} />
-        <Container className={classes.container}>
-          {children}
-        </Container>
-      </BackgroundImage>
+      <NavBar page={page} />
+      <Container className={classes.container}>
+        {children}
+      </Container>
       <Footer />
     </ThemeProvider>
   );

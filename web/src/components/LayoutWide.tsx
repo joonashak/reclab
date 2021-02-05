@@ -5,7 +5,6 @@ import {
 import { useTranslation } from 'react-i18next';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { node } from 'prop-types';
-import BackgroundImage from './BackgroundImage';
 import Menu from './NavBar/Menu';
 import Image from './mdx/Image';
 import LanguageButton from './NavBar/LanguageSwitcher/LanguageButton';
@@ -50,18 +49,16 @@ const LayoutWide = ({ children }) => {
 
   return (
     <>
-      <BackgroundImage>
-        <AppBar position="sticky" className={classes.appbar}>
-          <Toolbar className={classes.toolbar}>
-            <Menu language={language} />
-            {logo}
-            <LanguageButton path="/" />
-          </Toolbar>
-        </AppBar>
-        <Container className={classes.container}>
-          {children}
-        </Container>
-      </BackgroundImage>
+      <AppBar position="sticky" className={classes.appbar}>
+        <Toolbar className={classes.toolbar}>
+          <Menu language={language} />
+          {logo}
+          <LanguageButton path="/" />
+        </Toolbar>
+      </AppBar>
+      <Container className={classes.container}>
+        {children}
+      </Container>
       <Footer />
     </>
   );
