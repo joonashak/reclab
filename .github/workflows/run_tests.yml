@@ -2,7 +2,7 @@ name: Run Test Suite
 
 on:
   push:
-    branches: trunk
+    branches-ignore: main
 
 jobs:
   test:
