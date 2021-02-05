@@ -7,7 +7,7 @@ import {
 } from '@material-ui/core';
 import Menu from './Menu';
 import LanguageSwitcher from './LanguageSwitcher/index';
-import Image from '../mdx/Image/index';
+import LogoPartialTop from '../common/logo/LogoPartialTop/index';
 
 const useStyles = makeStyles({
   appBar: {
@@ -31,7 +31,7 @@ const NavBar = ({ page }) => {
   return (
     <AppBar position="sticky" className={classes.appBar}>
       <Toolbar className={classes.toolbar}>
-        <Image src="logo_partial_top.png" className={classes.logo} />
+        <LogoPartialTop className={classes.logo} />
         <div>
           <Menu language={page.language} />
           <LanguageSwitcher page={page} />

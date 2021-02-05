@@ -4,7 +4,7 @@ import { makeStyles, Theme } from '@material-ui/core/styles';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import InstagramIcon from '@material-ui/icons/Instagram';
-import Logo from './common/Logo/index';
+import LogoInverted from './common/logo/LogoInverted/index';
 
 const useStyles = makeStyles((theme: Theme) => ({
   container: {
@@ -59,7 +59,7 @@ export default () => {
       <Container>
         <Grid container>
           <Grid item xs={12} sm={6} className={`${classes.col} ${classes.left}`}>
-            <Logo className={classes.logo} />
+            <LogoInverted className={classes.logo} />
             <div>
               <a href="mailto:hello@recoverlaboratory.com" className={classes.link}>hello@recoverlaboratory.com</a>
             </div>
