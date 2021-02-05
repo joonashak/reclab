@@ -4,7 +4,7 @@ import { makeStyles, Theme } from '@material-ui/core/styles';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import InstagramIcon from '@material-ui/icons/Instagram';
-import Image from './mdx/Image/index';
+import Logo from './common/Logo/index';
 
 const useStyles = makeStyles((theme: Theme) => ({
   container: {
@@ -59,7 +59,7 @@ export default () => {
       <Container>
         <Grid container>
           <Grid item xs={12} sm={6} className={`${classes.col} ${classes.left}`}>
-            <Image src="logo_vertical_inv.png" className={classes.logo} />
+            <Logo className={classes.logo} />
             <div>
               <a href="mailto:hello@recoverlaboratory.com" className={classes.link}>hello@recoverlaboratory.com</a>
             </div>
