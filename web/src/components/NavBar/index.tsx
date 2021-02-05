@@ -1,44 +1,41 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { shape, string } from 'prop-types';
 import {
   AppBar,
   makeStyles,
   Toolbar,
-  Typography,
 } from '@material-ui/core';
 import Menu from './Menu';
 import LanguageSwitcher from './LanguageSwitcher/index';
+import Image from '../mdx/Image/index';
 
 const useStyles = makeStyles({
   appBar: {
     backgroundColor: '#000000',
     color: 'white',
   },
-  title: {
-    flexGrow: 1,
-    fontFamily: 'Montserrat',
-    fontStyle: 'italic',
-    textTransform: 'uppercase',
-    marginLeft: '2rem',
+  toolbar: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  logo: {
+    // FIXME: Refactor into <Logo /> component that properly fetches the image.
+    maxWidth: 250,
+    margin: 0,
   },
 });
 
 const NavBar = ({ page }) => {
   const classes = useStyles();
 
-  useEffect(() => {
-    console.log('navbar did mount');
-    return () => console.log('navbar did unmount');
-  }, []);
-
   return (
     <AppBar position="sticky" className={classes.appBar}>
-      <Toolbar>
-        <Menu language={page.language} />
-        <Typography variant="h6" className={classes.title}>
-          Recover Laboratory
-        </Typography>
-        <LanguageSwitcher page={page} />
+      <Toolbar className={classes.toolbar}>
+        <Image src="logo_partial_top.png" className={classes.logo} />
+        <div>
+          <Menu language={page.language} />
+          <LanguageSwitcher page={page} />
+        </div>
       </Toolbar>
     </AppBar>
   );
