@@ -11,7 +11,7 @@ import LanguageSwitcher from './LanguageSwitcher/index';
 
 const useStyles = makeStyles({
   appBar: {
-    backgroundColor: '#00000094',
+    backgroundColor: '#000000',
     color: 'white',
   },
   title: {
