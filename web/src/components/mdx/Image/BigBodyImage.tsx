@@ -19,7 +19,11 @@ const BigBodyImage = ({ src, className }) => {
   const classes = useStyles();
   const allClasses = `${classes.root} ${className}`;
 
-  return <Img fluid={src} className={allClasses} />;
+  return (
+    <div>
+      <Img fluid={src} className={allClasses} />
+    </div>
+  );
 };
 
 BigBodyImage.propTypes = {

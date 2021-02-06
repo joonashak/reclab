@@ -1,6 +1,7 @@
 import React from 'react';
 import { Typography } from '@material-ui/core';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import ContentPanel from '../common/ContentPanel';
 
 // eslint-disable-next-line react/prop-types
 const heading = (variant, centered = false, spacing = 3) => ({ children }) => {
@@ -14,7 +15,11 @@ const heading = (variant, centered = false, spacing = 3) => ({ children }) => {
 
   const classes = useStyles();
 
-  return (<Typography variant={variant} className={classes.root}>{children}</Typography>);
+  return (
+    <ContentPanel>
+      <Typography variant={variant} className={classes.root}>{children}</Typography>
+    </ContentPanel>
+  );
 };
 
 export default {

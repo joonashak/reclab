@@ -32,18 +32,22 @@ const useStyles = makeStyles({
     maxWidth: 250,
     paddingTop: 1,
   },
+  contentPanel: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
 });
 
 const NavBar = ({ page }) => {
   const classes = useStyles();
+  const TopLogo = <LogoPartialTop className={classes.logo} />;
   const BottomLogo = <LogoPartialBottom className={classes.logoBottom} />;
 
   return (
     <AppBar position="sticky" elevation={0} className={classes.appBar}>
       <Toolbar className={classes.toolbar}>
-        <ContentPanelSharedLayout
-          sidePanelContent={<LogoPartialTop className={classes.logo} />}
-        >
+        <ContentPanelSharedLayout sidePanelContent={TopLogo} className={classes.contentPanel}>
           <Menu language={page.language} />
           <LanguageSwitcher page={page} />
         </ContentPanelSharedLayout>

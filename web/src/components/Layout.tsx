@@ -4,14 +4,11 @@ import { ThemeProvider } from '@material-ui/core';
 import NavBar from './NavBar/index';
 import theme from '../themes/theme';
 import Footer from './Footer';
-import ContentPanel from './common/ContentPanel/index';
 
 const Layout = ({ page, children }) => (
   <ThemeProvider theme={theme}>
     <NavBar page={page} />
-    <ContentPanel>
-      {children}
-    </ContentPanel>
+    {children}
     <Footer />
   </ThemeProvider>
 );
