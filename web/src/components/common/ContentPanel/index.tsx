@@ -1,13 +1,13 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, Theme } from '@material-ui/core/styles';
 import { node } from 'prop-types';
 import ContentPanelSharedLayout from './ContentPanelSharedLayout';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme: Theme) => ({
   sidePanel: {
-    backgroundColor: '#F1E0FE',
+    backgroundColor: theme.palette.secondary.main,
   },
-});
+}));
 
 /**
  * Container for typograhical content. Forms the base layout of the page.

@@ -30,7 +30,7 @@ const MenuWithData = ({ menuItems }) => {
       <IconButton
         onClick={toggle}
         edge="start"
-        color="inherit"
+        color="primary"
         aria-label="Open Menu"
         data-cy="hamburger"
       >

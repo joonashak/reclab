@@ -1,11 +1,13 @@
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
-import purple from '@material-ui/core/colors/purple';
-import amber from '@material-ui/core/colors/amber';
 
 const theme = createMuiTheme({
   palette: {
-    primary: amber,
-    secondary: purple,
+    primary: {
+      main: '#FCFF00',
+    },
+    secondary: {
+      main: '#F1E0FE',
+    },
   },
 
   spacing: 16,
