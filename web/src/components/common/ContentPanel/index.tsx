@@ -1,32 +1,27 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { node } from 'prop-types';
+import ContentPanelSharedLayout from './ContentPanelSharedLayout';
 
 const useStyles = makeStyles({
   sidePanel: {
-    width: 300,
     backgroundColor: '#F1E0FE',
-    display: 'flex',
-    justifyContent: 'center',
   },
 });
 
 /**
- * Container for typograhical content.
- * Forms the base layout of the page.
+ * Container for typograhical content. Forms the base layout of the page.
  */
 const ContentPanel = ({ children, sidePanelContent }) => {
   const classes = useStyles();
 
   return (
-    <div>
-      <div className={classes.sidePanel}>
-        {sidePanelContent}
-      </div>
-      <div>
-        {children}
-      </div>
-    </div>
+    <ContentPanelSharedLayout
+      sidePanelContent={sidePanelContent}
+      sidePanelClassName={classes.sidePanel}
+    >
+      {children}
+    </ContentPanelSharedLayout>
   );
 };
 

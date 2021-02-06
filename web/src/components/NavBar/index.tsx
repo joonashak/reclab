@@ -10,6 +10,7 @@ import LanguageSwitcher from './LanguageSwitcher/index';
 import LogoPartialTop from '../common/logo/LogoPartialTop/index';
 import ContentPanel from '../common/ContentPanel';
 import LogoPartialBottom from '../common/logo/LogoPartialBottom/index';
+import ContentPanelSharedLayout from '../common/ContentPanel/ContentPanelSharedLayout';
 
 const useStyles = makeStyles({
   appBar: {
@@ -22,16 +23,10 @@ const useStyles = makeStyles({
     backgroundColor: 'black',
     paddingLeft: 0,
   },
-  topLogoContainer: {
-    // This should match <ContentPanel>'s side panel in size and alignment to line up the logo.
-    width: 300,
-    display: 'flex',
-    justifyContent: 'center',
-    alignSelf: 'flex-end',
-  },
   logo: {
     maxWidth: 250,
     margin: 0,
+    alignSelf: 'flex-end',
   },
   logoBottom: {
     maxWidth: 250,
@@ -46,13 +41,13 @@ const NavBar = ({ page }) => {
   return (
     <AppBar position="sticky" elevation={0} className={classes.appBar}>
       <Toolbar className={classes.toolbar}>
-        <div className={classes.topLogoContainer}>
-          <LogoPartialTop className={classes.logo} />
-        </div>
-        <div>
+        <ContentPanelSharedLayout
+          sidePanelContent={<LogoPartialTop className={classes.logo} />}
+        >
           <Menu language={page.language} />
           <LanguageSwitcher page={page} />
-        </div>
+        </ContentPanelSharedLayout>
+        <div />
       </Toolbar>
       <ContentPanel sidePanelContent={BottomLogo}>asd</ContentPanel>
     </AppBar>
