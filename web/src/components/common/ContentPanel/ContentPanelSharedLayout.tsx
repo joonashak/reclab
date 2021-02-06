@@ -1,8 +1,8 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, Theme } from '@material-ui/core/styles';
 import { node, string } from 'prop-types';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -13,8 +13,11 @@ const useStyles = makeStyles({
     minWidth: 300,
     display: 'flex',
     justifyContent: 'center',
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+    },
   },
-});
+}));
 
 /**
  * Shared layout for unified column styles.
