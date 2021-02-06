@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   container: {
     backgroundColor: 'black',
     color: 'white',
-    width: '100vw',
+    width: '100%',
     maxWidth: 'unset',
     paddingTop: '1rem',
   },

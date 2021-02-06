@@ -6,10 +6,11 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     justifyContent: 'space-between',
-    width: '100vw',
+    width: '100%',
   },
   sidePanel: {
     width: 300,
+    minWidth: 300,
     display: 'flex',
     justifyContent: 'center',
   },
