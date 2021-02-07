@@ -4,7 +4,6 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import { string } from 'prop-types';
 import { navigate } from 'gatsby';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-import Image from '../mdx/Image';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   button: {
@@ -47,7 +46,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 }));
 
 const HugeActionButton = ({
-  to, title, subtitle, iconSrc,
+  to, title, subtitle,
 }) => {
   const classes = useStyles();
 
@@ -60,7 +59,9 @@ const HugeActionButton = ({
       className={classes.button}
     >
       <div className={[classes.iconDiv, classes.left].join(' ')}>
+        {/* }
         <Image src={iconSrc} className={classes.mainIcon} />
+        */}
       </div>
       <div className={classes.label}>
         <span className={classes.subtitle}>{subtitle}</span>
@@ -77,7 +78,6 @@ HugeActionButton.propTypes = {
   to: string.isRequired,
   title: string.isRequired,
   subtitle: string,
-  iconSrc: string.isRequired,
 };
 
 HugeActionButton.defaultProps = {
