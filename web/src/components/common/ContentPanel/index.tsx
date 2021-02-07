@@ -27,7 +27,7 @@ const ContentPanel = ({ children, sidePanelContent }) => {
 
 ContentPanel.propTypes = {
   /** Main content to be displayed. */
-  children: node.isRequired,
+  children: node,
   /**
    * Side panel content.
    *
@@ -37,6 +37,7 @@ ContentPanel.propTypes = {
 };
 
 ContentPanel.defaultProps = {
+  children: null,
   sidePanelContent: null,
 };
 

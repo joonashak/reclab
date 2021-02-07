@@ -46,7 +46,7 @@ const ContentPanelSharedLayout = ({
 
 ContentPanelSharedLayout.propTypes = {
   /** Main content to be displayed. */
-  children: node.isRequired,
+  children: node,
   /**
    * Side panel content.
    *
@@ -61,6 +61,7 @@ ContentPanelSharedLayout.propTypes = {
 };
 
 ContentPanelSharedLayout.defaultProps = {
+  children: null,
   sidePanelContent: null,
   sidePanelClassName: null,
   className: null,

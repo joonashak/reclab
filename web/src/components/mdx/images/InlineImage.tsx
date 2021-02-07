@@ -1,7 +1,9 @@
 import React from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { string } from 'prop-types';
+import { useMediaQuery } from '@material-ui/core';
 import FluidImage from './FluidImage';
+import FullscreenImage from './FullscreenImage';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -24,10 +26,14 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const InlineImage = ({ src }) => {
   const classes = useStyles();
+  const mobile = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'));
+  const Image = <FluidImage src={src} className={classes.img} />;
 
   return (
     <div className={classes.root}>
-      <FluidImage src={src} className={classes.img} />
+      {mobile
+        ? Image
+        : <FullscreenImage trigger={Image} src={src} />}
     </div>
   );
 };
