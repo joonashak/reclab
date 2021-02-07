@@ -9,9 +9,9 @@ const query = graphql`
     allFile {
       nodes {
         childImageSharp {
-          fixed(height: 400) {
+          fluid {
             originalName
-            ...GatsbyImageSharpFixed
+            ...GatsbyImageSharpFluid
           }
         }
       }
@@ -22,13 +22,18 @@ const query = graphql`
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     backgroundColor: theme.palette.primary.main,
-    padding: '2rem',
+    padding: '2rem 0',
+    [theme.breakpoints.up('sm')]: {
+      padding: '2rem',
+    },
   },
   img: {
-    width: '50%',
-    [theme.breakpoints.down('xs')]: {
-      width: '100vw',
-      marginLeft: -32,
+    width: '100%',
+    borderTop: '4px solid black',
+    borderBottom: '4px solid black',
+    [theme.breakpoints.up('sm')]: {
+      width: 600,
+      border: '4px solid black',
     },
   },
 }));
@@ -38,7 +43,7 @@ const InlineImage = ({ src }) => {
 
   const allImages = useStaticQuery(query);
   const image = allImages.allFile.nodes.find(
-    (img) => img.childImageSharp.fixed.originalName === src,
+    (img) => img.childImageSharp.fluid.originalName === src,
   );
 
   // TODO: Handle missing images visibly.
@@ -48,7 +53,7 @@ const InlineImage = ({ src }) => {
 
   return (
     <div className={classes.root}>
-      <Img fixed={image.childImageSharp.fixed} />
+      <Img fluid={image.childImageSharp.fluid} className={classes.img} />
     </div>
   );
 };

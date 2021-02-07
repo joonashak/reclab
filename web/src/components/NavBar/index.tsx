@@ -53,7 +53,7 @@ const NavBar = ({ page }) => {
         </ContentPanelSharedLayout>
         <div />
       </Toolbar>
-      <ContentPanel sidePanelContent={BottomLogo}>asd</ContentPanel>
+      <ContentPanel sidePanelContent={BottomLogo} />
     </AppBar>
   );
 };
