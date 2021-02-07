@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   root: {
     backgroundColor: theme.palette.primary.main,
     padding: '2rem 0',
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       padding: '2rem',
     },
   },
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     width: '100%',
     borderTop: '4px solid black',
     borderBottom: '4px solid black',
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       width: 600,
       border: '4px solid black',
     },
