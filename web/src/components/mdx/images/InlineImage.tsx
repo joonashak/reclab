@@ -1,23 +1,7 @@
 import React from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
-import Img from 'gatsby-image';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { string } from 'prop-types';
-
-const query = graphql`
-  query {
-    allFile {
-      nodes {
-        childImageSharp {
-          fluid {
-            originalName
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  }
-`;
+import FluidImage from './FluidImage';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -41,19 +25,9 @@ const useStyles = makeStyles((theme: Theme) => ({
 const InlineImage = ({ src }) => {
   const classes = useStyles();
 
-  const allImages = useStaticQuery(query);
-  const image = allImages.allFile.nodes.find(
-    (img) => img.childImageSharp.fluid.originalName === src,
-  );
-
-  // TODO: Handle missing images visibly.
-  if (!image) {
-    return null;
-  }
-
   return (
     <div className={classes.root}>
-      <Img fluid={image.childImageSharp.fluid} className={classes.img} />
+      <FluidImage src={src} className={classes.img} />
     </div>
   );
 };
