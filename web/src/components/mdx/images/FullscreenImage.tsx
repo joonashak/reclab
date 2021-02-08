@@ -57,12 +57,12 @@ const FullscreenImage = ({ trigger, src }) => {
     (img) => img.childImageSharp.fluid.originalName === src,
   );
 
-  const { aspectRatio } = image.childImageSharp.fluid;
-  const classes = useStyles({ aspectRatio });
-
   if (!image) {
     return trigger;
   }
+
+  const { aspectRatio } = image.childImageSharp.fluid;
+  const classes = useStyles({ aspectRatio });
 
   return (
     <>
