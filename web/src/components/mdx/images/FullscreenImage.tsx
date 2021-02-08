@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { ButtonBase, Modal } from '@material-ui/core';
+import { ButtonBase, Fab, Modal } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { node, string } from 'prop-types';
 import { graphql, useStaticQuery } from 'gatsby';
+import CloseIcon from '@material-ui/icons/Close';
 import FluidImage from './FluidImage';
 
 type StyleProps = {
@@ -17,6 +18,11 @@ const useStyles = makeStyles({
   image: {
     width: ({ aspectRatio }: StyleProps) => `calc(${aspectRatio} * (100vh - 4rem))`,
     maxWidth: 'calc(100vw - 4rem)',
+  },
+  fab: {
+    position: 'absolute',
+    top: '1rem',
+    right: '1rem',
   },
 });
 
@@ -59,6 +65,14 @@ const FullscreenImage = ({ trigger, src }) => {
       <Modal open={open} onClose={toggle}>
         <div className={classes.container}>
           <FluidImage src={src} className={classes.image} />
+          <Fab
+            color="primary"
+            aria-label="Close"
+            onClick={toggle}
+            className={classes.fab}
+          >
+            <CloseIcon />
+          </Fab>
         </div>
       </Modal>
     </>
