@@ -6,26 +6,6 @@ import { graphql, useStaticQuery } from 'gatsby';
 import CloseIcon from '@material-ui/icons/Close';
 import FluidImage from './FluidImage';
 
-type StyleProps = {
-  aspectRatio: number
-}
-
-const useStyles = makeStyles({
-  container: {
-    margin: '2rem auto',
-    width: 'fit-content',
-  },
-  image: {
-    width: ({ aspectRatio }: StyleProps) => `calc(${aspectRatio} * (100vh - 4rem))`,
-    maxWidth: 'calc(100vw - 4rem)',
-  },
-  fab: {
-    position: 'absolute',
-    top: '1rem',
-    right: '1rem',
-  },
-});
-
 const query = graphql`
   query {
     allFile {
@@ -40,6 +20,33 @@ const query = graphql`
     }
   }
 `;
+
+type StyleProps = {
+  aspectRatio: number
+}
+
+const useStyles = makeStyles({
+  modal: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  container: {
+    margin: '2rem auto',
+    width: 'fit-content',
+    '&:focus': {
+      outline: 'none',
+    },
+  },
+  image: {
+    width: ({ aspectRatio }: StyleProps) => `calc(${aspectRatio} * (100vh - 4rem))`,
+    maxWidth: 'calc(100vw - 4rem)',
+  },
+  fab: {
+    position: 'absolute',
+    top: '1rem',
+    right: '1rem',
+  },
+});
 
 const FullscreenImage = ({ trigger, src }) => {
   const [open, setOpen] = useState(false);
@@ -62,7 +69,7 @@ const FullscreenImage = ({ trigger, src }) => {
       <ButtonBase onClick={toggle}>
         {trigger}
       </ButtonBase>
-      <Modal open={open} onClose={toggle}>
+      <Modal open={open} onClose={toggle} className={classes.modal}>
         <div className={classes.container}>
           <FluidImage src={src} className={classes.image} />
           <Fab
