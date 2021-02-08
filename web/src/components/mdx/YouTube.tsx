@@ -2,6 +2,7 @@ import React from 'react';
 import { string } from 'prop-types';
 import ReactYouTube from 'react-youtube';
 import { createStyles, makeStyles } from '@material-ui/core';
+import ContentPanel from '../common/ContentPanel/index';
 
 const useStyles = makeStyles(() => createStyles({
   root: {
@@ -29,9 +30,11 @@ const YouTube = ({ videoId }) => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <ReactYouTube videoId={videoId} className={classes.youtube} />
-    </div>
+    <ContentPanel>
+      <div className={classes.root}>
+        <ReactYouTube videoId={videoId} className={classes.youtube} />
+      </div>
+    </ContentPanel>
   );
 };
 

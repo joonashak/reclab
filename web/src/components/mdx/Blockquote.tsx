@@ -2,6 +2,7 @@ import React from 'react';
 import { string } from 'prop-types';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import deepPurple from '@material-ui/core/colors/deepPurple';
+import ContentPanel from '../common/ContentPanel';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   root: {
@@ -30,15 +31,17 @@ const Blockquote = ({ quote, author }) => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <div className={classes.quote}>{quote}</div>
-      {author && (
-      <div className={classes.author}>
-        –&nbsp;
-        {author}
+    <ContentPanel>
+      <div className={classes.root}>
+        <div className={classes.quote}>{quote}</div>
+        {author && (
+        <div className={classes.author}>
+          –&nbsp;
+          {author}
+        </div>
+        )}
       </div>
-      )}
-    </div>
+    </ContentPanel>
   );
 };
 
