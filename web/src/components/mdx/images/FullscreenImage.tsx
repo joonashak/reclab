@@ -26,6 +26,9 @@ type StyleProps = {
 }
 
 const useStyles = makeStyles({
+  button: {
+    width: 'fit-content',
+  },
   modal: {
     display: 'flex',
     alignItems: 'center',
@@ -66,7 +69,7 @@ const FullscreenImage = ({ trigger, src }) => {
 
   return (
     <>
-      <ButtonBase onClick={toggle}>
+      <ButtonBase onClick={toggle} className={classes.button}>
         {trigger}
       </ButtonBase>
       <Modal open={open} onClose={toggle} className={classes.modal}>
