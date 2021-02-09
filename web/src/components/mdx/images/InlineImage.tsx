@@ -7,13 +7,19 @@ import FullscreenImage from './FullscreenImage';
 import ContentPanel from '../../common/ContentPanel';
 
 type StyleProps = {
-  position: string
+  position: string,
+  size: string
 }
 
 const flexDirection = {
   left: 'row',
-  center: 'column-reverse',
+  center: 'column',
   right: 'row-reverse',
+};
+
+const imageSize = {
+  small: { mobile: '50%', desktop: 250 },
+  medium: { mobile: '100%', desktop: 600 },
 };
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -21,23 +27,26 @@ const useStyles = makeStyles((theme: Theme) => ({
     backgroundColor: theme.palette.primary.main,
     padding: '2rem 0',
     display: 'flex',
-    flexDirection: ({ position }: StyleProps) => flexDirection[position],
-    justifyContent: ({ position }:StyleProps) => (position === 'center' ? 'center' : 'flex-start'),
+    flexDirection: 'column',
     alignItems: 'center',
     [theme.breakpoints.up('md')]: {
+      flexDirection: ({ position }: StyleProps) => flexDirection[position],
+      justifyContent: ({ position }: StyleProps) => (position === 'center' ? 'center' : 'flex-start'),
       padding: '2rem',
     },
   },
   img: {
-    width: '100%',
+    width: ({ size }: StyleProps) => imageSize[size].mobile,
     [theme.breakpoints.up('md')]: {
-      width: 600,
+      width: ({ size }: StyleProps) => imageSize[size].desktop,
     },
   },
   headingContainer: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    width: '100%',
+    margin: theme.spacing(1, 1, 0),
   },
   spacingPanelUpper: {
     height: theme.spacing(3),
@@ -50,8 +59,10 @@ const useStyles = makeStyles((theme: Theme) => ({
 /**
  * Standard image component for use amidst other content.
  */
-const InlineImage = ({ src, position, heading }) => {
-  const classes = useStyles({ position });
+const InlineImage = ({
+  src, position, heading, size,
+}) => {
+  const classes = useStyles({ position, size });
   const mobile = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'));
   const Image = <FluidImage src={src} className={classes.img} />;
 
@@ -86,11 +97,16 @@ InlineImage.propTypes = {
    * Optional heading text.
    */
   heading: string,
+  /**
+   * Image size (`small | medium`).
+   */
+  size: string,
 };
 
 InlineImage.defaultProps = {
   position: 'left',
   heading: null,
+  size: 'medium',
 };
 
 export default InlineImage;
