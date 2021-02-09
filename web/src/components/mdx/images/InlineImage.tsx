@@ -30,11 +30,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   img: {
     width: '100%',
-    borderTop: '2px solid black',
-    borderBottom: '4px solid black',
     [theme.breakpoints.up('md')]: {
       width: 600,
-      border: '2px solid black',
     },
   },
   headingContainer: {

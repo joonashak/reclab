@@ -51,7 +51,7 @@ const useStyles = makeStyles({
   },
 });
 
-const FullscreenImage = ({ trigger, src }) => {
+const FullscreenImage = ({ trigger, src, className }) => {
   const [open, setOpen] = useState(false);
   const toggle = () => setOpen((prev) => !prev);
 
@@ -66,10 +66,11 @@ const FullscreenImage = ({ trigger, src }) => {
 
   const { aspectRatio } = image.childImageSharp.fluid;
   const classes = useStyles({ aspectRatio });
+  const buttonClasses = [classes.button, className].join(' ');
 
   return (
     <>
-      <ButtonBase onClick={toggle} className={classes.button}>
+      <ButtonBase onClick={toggle} className={buttonClasses}>
         {trigger}
       </ButtonBase>
       <Modal open={open} onClose={toggle} className={classes.modal}>
@@ -98,6 +99,11 @@ FullscreenImage.propTypes = {
    * Name of the image to be shown in fullscreen.
    */
   src: string.isRequired,
+  className: string,
+};
+
+FullscreenImage.defaultProps = {
+  className: null,
 };
 
 export default FullscreenImage;
