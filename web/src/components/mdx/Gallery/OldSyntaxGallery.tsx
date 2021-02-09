@@ -10,6 +10,9 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     padding: '2rem 0',
     display: 'flex',
     flexWrap: 'wrap',
+    [theme.breakpoints.up('sm')]: {
+      justifyContent: 'center',
+    },
   },
   image: {
     width: '100%',
@@ -20,6 +23,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     [theme.breakpoints.up('sm')]: {
       width: 500,
       justifyContent: 'space-evenly',
+      margin: theme.spacing(1),
     },
   },
 }));
