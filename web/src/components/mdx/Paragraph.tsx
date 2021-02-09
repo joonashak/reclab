@@ -7,9 +7,9 @@ import ContentPanel from '../common/ContentPanel';
 const useStyles = makeStyles((theme: Theme) => createStyles({
   body1: {
     textAlign: 'justify',
-    marginBottom: '2rem',
+    margin: theme.spacing(0, 1, 2, 1),
     [theme.breakpoints.up('sm')]: {
-      margin: '0 3rem 2rem 3rem',
+      margin: theme.spacing(0, 5, 2, 5),
     },
     clear: 'both',
   },

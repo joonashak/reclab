@@ -47,7 +47,10 @@ const NavBar = ({ page }) => {
   return (
     <AppBar position="sticky" elevation={0} className={classes.appBar}>
       <Toolbar className={classes.toolbar}>
-        <ContentPanelSharedLayout sidePanelContent={TopLogo} className={classes.contentPanel}>
+        <ContentPanelSharedLayout
+          sidePanelContent={TopLogo}
+          contentPanelClassName={classes.contentPanel}
+        >
           <Menu language={page.language} />
           <LanguageSwitcher page={page} />
         </ContentPanelSharedLayout>

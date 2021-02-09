@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import { node } from 'prop-types';
+import { node, string } from 'prop-types';
 import ContentPanelSharedLayout from './ContentPanelSharedLayout';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -12,13 +12,14 @@ const useStyles = makeStyles((theme: Theme) => ({
 /**
  * Container for typograhical content. Forms the base layout of the page.
  */
-const ContentPanel = ({ children, sidePanelContent }) => {
+const ContentPanel = ({ children, sidePanelContent, className }) => {
   const classes = useStyles();
 
   return (
     <ContentPanelSharedLayout
       sidePanelContent={sidePanelContent}
       sidePanelClassName={classes.sidePanel}
+      className={className}
     >
       {children}
     </ContentPanelSharedLayout>
@@ -34,11 +35,16 @@ ContentPanel.propTypes = {
    * CAUTION: Not shown on the mobile layout.
    */
   sidePanelContent: node,
+  /**
+   * Classes to be applied to the root container.
+   */
+  className: string,
 };
 
 ContentPanel.defaultProps = {
   children: null,
   sidePanelContent: null,
+  className: null,
 };
 
 export default ContentPanel;

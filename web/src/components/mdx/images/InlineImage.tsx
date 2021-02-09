@@ -4,6 +4,7 @@ import { oneOf, string } from 'prop-types';
 import { Typography, useMediaQuery } from '@material-ui/core';
 import FluidImage from './FluidImage';
 import FullscreenImage from './FullscreenImage';
+import ContentPanel from '../../common/ContentPanel';
 
 type StyleProps = {
   position: string
@@ -29,17 +30,23 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   img: {
     width: '100%',
-    borderTop: '4px solid black',
+    borderTop: '2px solid black',
     borderBottom: '4px solid black',
     [theme.breakpoints.up('md')]: {
       width: 600,
-      border: '4px solid black',
+      border: '2px solid black',
     },
   },
   headingContainer: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  spacingPanelUpper: {
+    height: theme.spacing(3),
+  },
+  spacingPanelLower: {
+    height: theme.spacing(5),
   },
 }));
 
@@ -52,16 +59,20 @@ const InlineImage = ({ src, position, heading }) => {
   const Image = <FluidImage src={src} className={classes.img} />;
 
   return (
-    <div className={classes.root}>
-      {mobile
-        ? Image
-        : <FullscreenImage trigger={Image} src={src} />}
-      {heading && (
+    <>
+      <ContentPanel className={classes.spacingPanelUpper} />
+      <div className={classes.root}>
+        {mobile
+          ? Image
+          : <FullscreenImage trigger={Image} src={src} />}
+        {heading && (
         <div className={classes.headingContainer}>
           <Typography variant="h3">{heading}</Typography>
         </div>
-      )}
-    </div>
+        )}
+      </div>
+      <ContentPanel className={classes.spacingPanelLower} />
+    </>
   );
 };
 

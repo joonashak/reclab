@@ -26,14 +26,15 @@ const useStyles = makeStyles((theme: Theme) => ({
  * Shared layout for unified column styles.
  */
 const ContentPanelSharedLayout = ({
-  children, sidePanelContent, sidePanelClassName, className,
+  children, sidePanelContent, sidePanelClassName, contentPanelClassName, className,
 }) => {
   const classes = useStyles();
+  const rootClasses = [classes.root, className].join(' ');
   const sidePanelClasses = [classes.sidePanel, sidePanelClassName].join(' ');
-  const contentPanelClasses = [classes.contentPanel, className].join(' ');
+  const contentPanelClasses = [classes.contentPanel, contentPanelClassName].join(' ');
 
   return (
-    <div className={classes.root}>
+    <div className={rootClasses}>
       <div className={sidePanelClasses}>
         {sidePanelContent}
       </div>
@@ -57,6 +58,13 @@ ContentPanelSharedLayout.propTypes = {
    * Classes to be applied to the side panel.
    */
   sidePanelClassName: string,
+  /**
+   * Classes to be applied to the content panel.
+   */
+  contentPanelClassName: string,
+  /**
+   * Classes to be applied to the root container.
+   */
   className: string,
 };
 
@@ -64,6 +72,7 @@ ContentPanelSharedLayout.defaultProps = {
   children: null,
   sidePanelContent: null,
   sidePanelClassName: null,
+  contentPanelClassName: null,
   className: null,
 };
 
