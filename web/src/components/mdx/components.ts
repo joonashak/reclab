@@ -3,7 +3,6 @@ import Blockquote from './Blockquote';
 import MockImage from '../test/MockImage';
 import YouTube from './YouTube';
 import Center from './Center';
-import PersonCard from './PersonCard';
 import Ingress from './Ingress';
 import InfoTable from './InfoTable';
 import Gallery from './Gallery';
@@ -25,7 +24,6 @@ export default {
   Image: process.env.CI ? MockImage : InlineImage,
   YouTube,
   Center,
-  PersonCard,
   Ingress,
   InfoTable,
   Gallery,
