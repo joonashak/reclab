@@ -12,7 +12,9 @@ const useStyles = makeStyles((theme: Theme) => ({
 /**
  * Container for typograhical content. Forms the base layout of the page.
  */
-const ContentPanel = ({ children, sidePanelContent, className }) => {
+const ContentPanel = ({
+  children, sidePanelContent, className, contentPanelClassName,
+}) => {
   const classes = useStyles();
 
   return (
@@ -20,6 +22,7 @@ const ContentPanel = ({ children, sidePanelContent, className }) => {
       sidePanelContent={sidePanelContent}
       sidePanelClassName={classes.sidePanel}
       className={className}
+      contentPanelClassName={contentPanelClassName}
     >
       {children}
     </ContentPanelSharedLayout>
@@ -39,12 +42,17 @@ ContentPanel.propTypes = {
    * Classes to be applied to the root container.
    */
   className: string,
+  /**
+   * Classes to be applied to the content panel.
+   */
+  contentPanelClassName: string,
 };
 
 ContentPanel.defaultProps = {
   children: null,
   sidePanelContent: null,
   className: null,
+  contentPanelClassName: null,
 };
 
 export default ContentPanel;

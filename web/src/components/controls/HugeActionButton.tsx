@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     color: 'black',
     border: '2px solid black',
     padding: '10px 20px',
+    marginBottom: '1rem',
     '& > .MuiButton-label': {
       display: 'flex',
       flexDirection: 'row',
@@ -46,7 +47,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 }));
 
 const HugeActionButton = ({
-  to, title, subtitle,
+  to, title, subtitle, iconSrc,
 }) => {
   const classes = useStyles();
 
@@ -59,9 +60,7 @@ const HugeActionButton = ({
       className={classes.button}
     >
       <div className={[classes.iconDiv, classes.left].join(' ')}>
-        {/* }
-        <Image src={iconSrc} className={classes.mainIcon} />
-        */}
+        <img src={iconSrc} className={classes.mainIcon} alt="Icon" />
       </div>
       <div className={classes.label}>
         <span className={classes.subtitle}>{subtitle}</span>
@@ -78,6 +77,7 @@ HugeActionButton.propTypes = {
   to: string.isRequired,
   title: string.isRequired,
   subtitle: string,
+  iconSrc: string.isRequired,
 };
 
 HugeActionButton.defaultProps = {
