@@ -1,17 +1,26 @@
 import React from 'react';
 import { arrayOf, string } from 'prop-types';
-import { GridList, GridListTile } from '@material-ui/core';
-import { makeStyles, createStyles } from '@material-ui/core/styles';
-import Image from '../Image';
+import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+import FullscreenImage from '../images/FullscreenImage';
+import FluidImage from '../images/FluidImage';
 
-const useStyles = makeStyles(() => createStyles({
-  gridList: {
-    width: '700px',
-    margin: '0 auto !important',
+const useStyles = makeStyles((theme: Theme) => createStyles({
+  root: {
+    backgroundColor: theme.palette.primary.main,
+    padding: '2rem 0',
+    display: 'flex',
+    flexWrap: 'wrap',
   },
-  gridListTile: {
-    width: '300px !important',
-    height: '300px !important',
+  image: {
+    width: '100%',
+  },
+  fullscreenImage: {
+    width: '100%',
+    marginBottom: '2rem',
+    [theme.breakpoints.up('sm')]: {
+      width: 500,
+      justifyContent: 'space-evenly',
+    },
   },
 }));
 
@@ -22,13 +31,15 @@ const OldSyntaxGallery = ({ images }) => {
   const classes = useStyles();
 
   return (
-    <GridList cols={2} className={classes.gridList}>
+    <div className={classes.root}>
       {images.map((src) => (
-        <GridListTile key={`gallery-tile-${src}`} cols={1} className={classes.gridListTile}>
-          <Image src={src} />
-        </GridListTile>
+        <FullscreenImage
+          src={src}
+          trigger={<FluidImage src={src} className={classes.image} />}
+          className={classes.fullscreenImage}
+        />
       ))}
-    </GridList>
+    </div>
   );
 };
 

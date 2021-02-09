@@ -2,6 +2,7 @@ import React from 'react';
 import { node } from 'prop-types';
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import ContentPanel from '../common/ContentPanel/index';
 
 const useStyles = makeStyles({
   root: {
@@ -14,7 +15,11 @@ const useStyles = makeStyles({
 const Center = ({ children }) => {
   const classes = useStyles();
 
-  return <Typography align="center" className={classes.root}>{children}</Typography>;
+  return (
+    <ContentPanel>
+      <Typography align="center" className={classes.root}>{children}</Typography>
+    </ContentPanel>
+  );
 };
 
 Center.propTypes = {

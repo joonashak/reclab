@@ -1,53 +1,51 @@
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
-import purple from '@material-ui/core/colors/purple';
-import amber from '@material-ui/core/colors/amber';
+
+const baseFontFamily = '"Roboto", "Helvetica", "Arial", sans-serif';
+
+const commonHeadingStyles = {
+  fontFamily: '"Oxygen", "Roboto", "Helvetica", "Arial", sans-serif',
+  fontWeight: 600,
+};
 
 const theme = createMuiTheme({
   palette: {
-    primary: amber,
-    secondary: purple,
+    primary: {
+      main: '#FCFF00',
+    },
+    secondary: {
+      main: '#F1E0FE',
+      dark: '#D9A7FF',
+    },
   },
 
   spacing: 16,
 
   typography: {
     fontSize: 18,
+    fontFamily: baseFontFamily,
     h1: {
       fontSize: 50,
-      fontFamily: 'Montserrat',
-      textTransform: 'uppercase',
+      ...commonHeadingStyles,
     },
     h2: {
       fontSize: 40,
-      fontFamily: 'Montserrat',
-      fontStyle: 'italic',
-      textTransform: 'uppercase',
-      fontWeight: 'bold',
+      ...commonHeadingStyles,
     },
     h3: {
       fontSize: 35,
-      fontFamily: 'Montserrat',
-      fontStyle: 'italic',
-      textTransform: 'uppercase',
+      ...commonHeadingStyles,
     },
     h4: {
       fontSize: 30,
-      fontFamily: 'Montserrat',
-      fontStyle: 'italic',
-      textTransform: 'uppercase',
-      fontWeight: 'bold',
+      ...commonHeadingStyles,
     },
     h5: {
       fontSize: 25,
-      fontFamily: 'Montserrat',
-      fontStyle: 'italic',
-      textTransform: 'uppercase',
+      ...commonHeadingStyles,
     },
     h6: {
       fontSize: 25,
-      fontFamily: 'Montserrat',
-      fontStyle: 'italic',
-      textTransform: 'uppercase',
+      ...commonHeadingStyles,
     },
     caption: {
       fontSize: '1.333rem !important',

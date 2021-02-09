@@ -2,6 +2,7 @@ import React from 'react';
 import { node, string } from 'prop-types';
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import ContentPanel from '../common/ContentPanel/index';
 
 const useStyles = makeStyles({
   table: {
@@ -19,10 +20,10 @@ const InfoTable = ({ children, title }) => {
   const classes = useStyles();
 
   return (
-    <>
+    <ContentPanel>
       {title && <Typography variant="h4">{title}</Typography>}
       <table className={classes.table}>{children}</table>
-    </>
+    </ContentPanel>
   );
 };
 

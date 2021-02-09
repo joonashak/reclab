@@ -1,15 +1,15 @@
 import Headings from './Headings';
 import Blockquote from './Blockquote';
-import Image from './Image';
 import MockImage from '../test/MockImage';
 import YouTube from './YouTube';
 import Center from './Center';
-import PersonCard from './PersonCard';
 import Ingress from './Ingress';
 import InfoTable from './InfoTable';
 import Gallery from './Gallery';
 import Paragraph from './Paragraph';
 import Link from './Link';
+import InlineImage from './images/InlineImage';
+import FrontpageActionButtons from './FrontpageActionButtons';
 
 // Shortcodes for use with <MDXProvider>.
 export default {
@@ -22,11 +22,11 @@ export default {
   h6: Headings.H6,
   Link,
   Blockquote,
-  Image: process.env.CI ? MockImage : Image,
+  Image: process.env.CI ? MockImage : InlineImage,
   YouTube,
   Center,
-  PersonCard,
   Ingress,
   InfoTable,
   Gallery,
+  FrontpageActionButtons,
 };

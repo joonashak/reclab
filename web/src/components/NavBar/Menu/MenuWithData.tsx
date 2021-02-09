@@ -17,6 +17,9 @@ const useStyles = makeStyles({
   paper: {
     backgroundColor: '#000000ba',
   },
+  hamburger: {
+    fontSize: '3rem',
+  },
 });
 
 const MenuWithData = ({ menuItems }) => {
@@ -30,11 +33,11 @@ const MenuWithData = ({ menuItems }) => {
       <IconButton
         onClick={toggle}
         edge="start"
-        color="inherit"
+        color="primary"
         aria-label="Open Menu"
         data-cy="hamburger"
       >
-        <MenuIcon />
+        <MenuIcon className={classes.hamburger} />
       </IconButton>
       <Drawer anchor="top" open={isOpen} onClose={toggle} classes={{ root: classes.drawer, paper: classes.paper }}>
         <Container maxWidth="md">

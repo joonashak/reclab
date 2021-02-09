@@ -1,35 +1,17 @@
 import React from 'react';
 import { node, shape, string } from 'prop-types';
-import { Container, ThemeProvider } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/core';
 import NavBar from './NavBar/index';
 import theme from '../themes/theme';
-import BackgroundImage from './BackgroundImage';
 import Footer from './Footer';
 
-const usestyles = makeStyles({
-  container: {
-    backgroundColor: '#ffffffa8',
-    overflow: 'auto',
-    paddingBottom: '6rem',
-  },
-});
-
-const Layout = ({ page, children }) => {
-  const classes = usestyles();
-
-  return (
-    <ThemeProvider theme={theme}>
-      <BackgroundImage>
-        <NavBar page={page} />
-        <Container className={classes.container}>
-          {children}
-        </Container>
-      </BackgroundImage>
-      <Footer />
-    </ThemeProvider>
-  );
-};
+const Layout = ({ page, children }) => (
+  <ThemeProvider theme={theme}>
+    <NavBar page={page} />
+    {children}
+    <Footer />
+  </ThemeProvider>
+);
 
 Layout.propTypes = {
   children: node.isRequired,
