@@ -19,6 +19,10 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   contentPanel: {
     width: '100%',
+    margin: theme.spacing(0, 1, 0, 1),
+    [theme.breakpoints.up('sm')]: {
+      margin: theme.spacing(0, 5, 0, 5),
+    },
   },
 }));
 
