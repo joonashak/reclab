@@ -7,8 +7,8 @@ import usePages from './usePages';
 import PageForm from './PageForm';
 import { getTranslationOptions } from './common';
 import useNotification from '../../GlobalNotification/useNotification';
-import ADMIN_ROUTES from '../routes';
 import { useAdminNavbarTitle } from '../AdminNavbar/useAdminNavbar';
+import adminRoutes from '../adminRoutes';
 
 const NewPage = () => {
   useAdminNavbarTitle('New Page');
@@ -29,7 +29,7 @@ const NewPage = () => {
     try {
       await addPage({ ...rest, translationIds });
       setNotification('Page created!', 'success', true);
-      navigate(ADMIN_ROUTES.PAGES);
+      navigate(adminRoutes.pages.fullPath);
     } catch (error) {
       setNotification('Creating page failed.', 'error');
     }

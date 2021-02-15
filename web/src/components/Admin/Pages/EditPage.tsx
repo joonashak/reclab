@@ -6,10 +6,10 @@ import { Helmet } from 'react-helmet';
 import usePages from './usePages';
 import PageForm from './PageForm';
 import { getTranslationOptions } from './common';
-import ADMIN_ROUTES from '../routes';
 import useNotification from '../../GlobalNotification/useNotification';
 import DeletePage from './DeletePage';
 import { useAdminNavbarTitle } from '../AdminNavbar/useAdminNavbar';
+import adminRoutes from '../adminRoutes';
 
 const EditPage = ({ pageId }) => {
   useAdminNavbarTitle('Edit Page');
@@ -19,7 +19,7 @@ const EditPage = ({ pageId }) => {
   const page = findPage(pageId);
 
   if (!page) {
-    navigate(ADMIN_ROUTES.PAGES);
+    navigate(adminRoutes.pages.fullPath);
     return null;
   }
 
@@ -46,7 +46,7 @@ const EditPage = ({ pageId }) => {
     try {
       await updatePage({ ...rest, id: pageId, translationIds });
       setNotification('Page updated!', 'success', true);
-      navigate(ADMIN_ROUTES.PAGES);
+      navigate(adminRoutes.pages.fullPath);
     } catch (error) {
       setNotification('Updating page failed.', 'error');
     }

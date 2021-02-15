@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from '@material-ui/core';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import { navigate } from 'gatsby';
-import ADMIN_ROUTES from '../../routes';
+import adminRoutes from '../../adminRoutes';
 
 export default () => (
   <Button
@@ -10,7 +10,7 @@ export default () => (
     variant="contained"
     size="large"
     startIcon={<AddCircleOutlineIcon />}
-    onClick={() => navigate(ADMIN_ROUTES.NEW_PAGE)}
+    onClick={() => navigate(adminRoutes.newPage.fullPath)}
     data-cy="new-page-button"
   >
     New Page

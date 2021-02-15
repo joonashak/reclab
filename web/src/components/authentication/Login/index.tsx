@@ -4,8 +4,8 @@ import { useForm } from 'react-hook-form';
 import { navigate } from 'gatsby';
 import useAuthentication from '../useAuthentication';
 import LoginView from './LoginView';
-import ADMIN_ROUTES from '../../Admin/routes';
 import useNotification from '../../GlobalNotification/useNotification';
+import adminRoutes from '../../Admin/adminRoutes';
 
 const Login = () => {
   const formControl = useForm({ mode: 'onBlur' });
@@ -27,7 +27,7 @@ const Login = () => {
     }
 
     setNotification('You were logged in!', 'info', true);
-    navigate(ADMIN_ROUTES.INDEX, { replace: true });
+    navigate(adminRoutes.root, { replace: true });
   };
 
   return <LoginView formControl={formControl} onSubmit={onSubmit} />;

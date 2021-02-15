@@ -1,25 +1,31 @@
 import React from 'react';
-import { string, bool } from 'prop-types';
-import { Helmet } from 'react-helmet';
+import { Router } from '@reach/router';
+import { ThemeProvider } from '@material-ui/core';
+import adminTheme from '../../themes/adminTheme';
+import { NotificationProvider } from '../GlobalNotification/useNotification';
+import { AuthenticationProvider } from '../authentication/useAuthentication';
+import AdminRouteWrapper from './AdminRouteWrapper';
+import Dashboard from './Dashboard';
+import Pages from './Pages/index';
+import Login from '../authentication/Login/index';
+import Documentation from './Documentation/index';
+import GlobalNotification from '../GlobalNotification';
+import adminRoutes from './adminRoutes';
 
-const Admin = () => (
-  <>
-    <Helmet>
-      <title>Admin</title>
-    </Helmet>
-    admin
-  </>
+export default () => (
+  <ThemeProvider theme={adminTheme}>
+    <NotificationProvider>
+      <AuthenticationProvider>
+        <Router>
+          <AdminRouteWrapper path={adminRoutes.root}>
+            <Dashboard path="/" default />
+            <Pages path="/pages/*" />
+            <Login path="/login" />
+            <Documentation path="/docs" />
+          </AdminRouteWrapper>
+        </Router>
+        <GlobalNotification />
+      </AuthenticationProvider>
+    </NotificationProvider>
+  </ThemeProvider>
 );
-
-Admin.propTypes = {
-  // eslint-disable-next-line react/no-unused-prop-types
-  path: string.isRequired,
-  // eslint-disable-next-line react/no-unused-prop-types
-  default: bool,
-};
-
-Admin.defaultProps = {
-  default: false,
-};
-
-export default Admin;
