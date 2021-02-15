@@ -57,6 +57,9 @@ export default () => {
               <ListItem button component={Link} to={ADMIN_ROUTES.PAGES} onClick={toggle}>
                 <ListItemText>Pages</ListItemText>
               </ListItem>
+              <ListItem button component={Link} to={ADMIN_ROUTES.DOCS} onClick={toggle}>
+                <ListItemText>Documentation</ListItemText>
+              </ListItem>
             </List>
           </Container>
         </Drawer>
