@@ -13,6 +13,13 @@ const staticPlugins = [
     },
   },
   {
+    resolve: 'gatsby-source-filesystem',
+    options: {
+      name: 'components',
+      path: `${__dirname}/src/components/mdx`,
+    },
+  },
+  {
     resolve: 'gatsby-plugin-sharp',
     options: {
       icon: 'src/images/palli.png',
@@ -81,6 +88,7 @@ const staticPlugins = [
       },
     },
   },
+  'gatsby-transformer-react-docgen',
 ];
 
 // These fail if Cloudinary credentials are not supplied (testing/CI).

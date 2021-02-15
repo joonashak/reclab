@@ -1,24 +1,24 @@
 import React, { useState } from 'react';
 import { ButtonBase, Fab, Modal } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { node, string } from 'prop-types';
+import { node as nodeProp, string } from 'prop-types';
 import { graphql, useStaticQuery } from 'gatsby';
 import CloseIcon from '@material-ui/icons/Close';
 import FluidImage from './FluidImage';
 
 const query = graphql`
-  query {
-    allFile {
-      nodes {
-        childImageSharp {
-          fluid {
-            originalName
-            aspectRatio
-          }
+query {
+  allImageSharp {
+    edges {
+      node {
+        fluid {
+          originalName
+          aspectRatio
         }
       }
     }
   }
+}
 `;
 
 type StyleProps = {
@@ -56,15 +56,15 @@ const FullscreenImage = ({ trigger, src, className }) => {
   const toggle = () => setOpen((prev) => !prev);
 
   const allImages = useStaticQuery(query);
-  const image = allImages.allFile.nodes.find(
-    (img) => img.childImageSharp.fluid.originalName === src,
+  const image = allImages.allImageSharp.edges.find(
+    ({ node }) => node.fluid.originalName === src,
   );
 
   if (!image) {
     return trigger;
   }
 
-  const { aspectRatio } = image.childImageSharp.fluid;
+  const { aspectRatio } = image.node.fluid;
   const classes = useStyles({ aspectRatio });
   const buttonClasses = [classes.button, className].join(' ');
 
@@ -94,7 +94,7 @@ FullscreenImage.propTypes = {
   /**
    * Component that will be rendered to open the `src` image in fullscreen.
    */
-  trigger: node.isRequired,
+  trigger: nodeProp.isRequired,
   /**
    * Name of the image to be shown in fullscreen.
    */
