@@ -3,7 +3,6 @@ import { string, bool } from 'prop-types';
 import {
   List, Container, Typography, makeStyles, Theme, createStyles,
 } from '@material-ui/core';
-import { Helmet } from 'react-helmet';
 import usePages from '../usePages';
 import PageListItem from './PageListItem';
 import { useAdminNavbarTitle } from '../../AdminNavbar/useAdminNavbar';
@@ -34,9 +33,6 @@ const PageList = () => {
 
   return (
     <Container className={classes.container}>
-      <Helmet>
-        <title>Pages</title>
-      </Helmet>
       <Typography variant="h3" gutterBottom>Pages</Typography>
       <NewPageButton />
       <Typography variant="h4" className={classes.h4}>Current Pages</Typography>
