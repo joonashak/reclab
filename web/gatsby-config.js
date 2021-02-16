@@ -84,7 +84,7 @@ const staticPlugins = [
     resolve: 'gatsby-plugin-web-font-loader',
     options: {
       google: {
-        families: ['Roboto', 'Oxygen'],
+        families: ['Roboto', 'Oxygen', 'Roboto Mono'],
       },
     },
   },
