@@ -14,9 +14,9 @@ import {
 import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'gatsby-theme-material-ui';
 import LogoutButton from './LogoutButton';
-import ADMIN_ROUTES from '../routes';
 import useAdminNavbar from './useAdminNavbar';
 import DeploymentButton from './DeploymentButton';
+import adminRoutes from '../adminRoutes';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -51,11 +51,14 @@ export default () => {
         <Drawer anchor="top" open={isOpen} onClose={toggle}>
           <Container maxWidth="md">
             <List>
-              <ListItem button component={Link} to={ADMIN_ROUTES.INDEX} onClick={toggle}>
+              <ListItem button component={Link} to={adminRoutes.root} onClick={toggle}>
                 <ListItemText>Dashboard</ListItemText>
               </ListItem>
-              <ListItem button component={Link} to={ADMIN_ROUTES.PAGES} onClick={toggle}>
+              <ListItem button component={Link} to={adminRoutes.pages.fullPath} onClick={toggle}>
                 <ListItemText>Pages</ListItemText>
+              </ListItem>
+              <ListItem button component={Link} to={adminRoutes.docs.fullPath} onClick={toggle}>
+                <ListItemText>Documentation</ListItemText>
               </ListItem>
             </List>
           </Container>

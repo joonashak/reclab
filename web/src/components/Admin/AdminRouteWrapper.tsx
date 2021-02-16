@@ -3,17 +3,17 @@ import { node, string } from 'prop-types';
 import AdminNavBar from './AdminNavbar';
 import { AdminNavbarProvider } from './AdminNavbar/useAdminNavbar';
 
-const AdminWrapper = ({ children }) => (
+const AdminRouteWrapper = ({ children }) => (
   <AdminNavbarProvider>
     <AdminNavBar />
     {children}
   </AdminNavbarProvider>
 );
 
-AdminWrapper.propTypes = {
+AdminRouteWrapper.propTypes = {
   children: node.isRequired,
   // eslint-disable-next-line react/no-unused-prop-types
   path: string.isRequired,
 };
 
-export default AdminWrapper;
+export default AdminRouteWrapper;

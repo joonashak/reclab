@@ -5,8 +5,8 @@ import {
 } from '@material-ui/core';
 import { Link } from 'gatsby-theme-material-ui';
 import { makePath } from '../../../../util/snippets';
-import ADMIN_ROUTES from '../../routes';
 import PrivacyAvatar from './PrivacyAvatar';
+import adminRoutes from '../../adminRoutes';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   listItemText: {
@@ -35,7 +35,7 @@ const PageListItem = ({ page }) => {
       <ListItemText
         className={classes.listItemText}
         primary={(
-          <Link to={`${ADMIN_ROUTES.EDIT_PAGE}/${page.id}`} className={classes.primaryLink}>
+          <Link to={`${adminRoutes.editPage.fullPath}/${page.id}`} className={classes.primaryLink}>
             {page.title}
           </Link>
                 )}

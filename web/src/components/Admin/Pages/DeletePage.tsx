@@ -8,7 +8,7 @@ import { navigate } from 'gatsby';
 import ControlledTextField from '../../controls/ControlledTextField';
 import useNotification from '../../GlobalNotification/useNotification';
 import usePages from './usePages';
-import ADMIN_ROUTES from '../routes';
+import adminRoutes from '../adminRoutes';
 
 const DeletePage = ({ page }) => {
   const { setNotification } = useNotification();
@@ -22,7 +22,7 @@ const DeletePage = ({ page }) => {
 
   const deleteOnClick = async () => {
     // Navigate away first as to not delete a page that is currently being viewed.
-    navigate(ADMIN_ROUTES.PAGES);
+    navigate(adminRoutes.pages.fullPath);
 
     try {
       await removePage(page.id);
