@@ -1,13 +1,21 @@
 import React from 'react';
 import { string } from 'prop-types';
+import { Container, Typography } from '@material-ui/core';
+import { useAdminNavbarTitle } from '../AdminNavbar/useAdminNavbar';
+import ComponentList from './ComponentList';
 
 const Documentation = () => {
-  console.log('asd');
+  useAdminNavbarTitle('Documentation');
 
   return (
-    <div>
-      the docs
-    </div>
+    <Container>
+      <Typography>
+        Documentation currently covers only custom MDX components
+        (and possibly not even all of them)!
+      </Typography>
+      <Typography variant="h4">Components</Typography>
+      <ComponentList />
+    </Container>
   );
 };
 
