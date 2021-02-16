@@ -13,9 +13,10 @@ const useStyles = makeStyles({
     color: 'white',
     '& > span': {
       fontSize: '1.5rem',
-      fontFamily: 'Montserrat',
+      fontFamily: 'Oxygen',
       fontStyle: 'italic',
       textTransform: 'uppercase',
+      letterSpacing: '0.1rem',
     },
   },
 });

@@ -19,7 +19,8 @@ const useStyles = makeStyles({
   },
   accordionSummary: {
     margin: '0 auto',
-    fontFamily: 'Montserrat',
+    fontFamily: 'Oxygen',
+    letterSpacing: '0.1rem',
     fontStyle: 'italic',
     textTransform: 'uppercase',
     '&.Mui-expanded': {
