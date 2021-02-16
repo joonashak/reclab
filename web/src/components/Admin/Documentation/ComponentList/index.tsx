@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import ComponentInfo from './ComponentInfo';
+import componentNames from '../componentNames';
 
 const query = graphql`
   query {
@@ -32,7 +33,9 @@ const query = graphql`
 export default () => {
   const data = useStaticQuery(query);
   console.log(data);
-  const components = data.allComponentMetadata.nodes;
+  const namesToInclude = componentNames.map((name) => name.componentName);
+  const components = data.allComponentMetadata.nodes
+    .filter((component) => namesToInclude.includes(component.displayName));
 
   return (
     <>
