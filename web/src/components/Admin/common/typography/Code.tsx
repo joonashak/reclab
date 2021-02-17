@@ -14,6 +14,10 @@ const useStyles = makeStyles({
 const Code = ({ children }) => {
   const classes = useStyles();
 
+  if (!children) {
+    return null;
+  }
+
   return (
     <span className={classes.code}>
       {children}
@@ -22,7 +26,11 @@ const Code = ({ children }) => {
 };
 
 Code.propTypes = {
-  children: node.isRequired,
+  children: node,
+};
+
+Code.defaultProps = {
+  children: null,
 };
 
 export default Code;

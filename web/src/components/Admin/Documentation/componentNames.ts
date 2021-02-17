@@ -12,4 +12,7 @@ export default [
   {
     componentName: 'Link',
   },
+  {
+    componentName: 'Center',
+  },
 ];

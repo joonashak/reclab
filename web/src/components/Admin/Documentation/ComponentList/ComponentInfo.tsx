@@ -7,6 +7,7 @@ import { makeStyles, Theme } from '@material-ui/core/styles';
 import Code from '../../common/typography/Code';
 import SubHeading from '../../common/typography/SubHeading';
 import documentationMdxShortcodes from '../documentationMdxShortcodes';
+import PropTable from './PropTable';
 
 const usetStyles = makeStyles((theme: Theme) => ({
   card: {
@@ -17,23 +18,22 @@ const usetStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const ComponentInfo = ({ component, prettyName }) => {
-  console.log(component);
+const ComponentInfo = ({ component }) => {
   const classes = usetStyles();
-  const { displayName } = component;
-  const name = prettyName || displayName;
+  const { displayName, props } = component;
 
   return (
     <Card className={classes.card} variant="outlined">
       <CardContent>
         <SubHeading className={classes.title}>
-          <Code>{name}</Code>
+          <Code>{displayName}</Code>
         </SubHeading>
         <MDXProvider components={documentationMdxShortcodes}>
           <MDXRenderer>
             {component.description.childMdx.body}
           </MDXRenderer>
         </MDXProvider>
+        <PropTable componentProps={props} />
       </CardContent>
     </Card>
   );
@@ -41,18 +41,13 @@ const ComponentInfo = ({ component, prettyName }) => {
 
 ComponentInfo.propTypes = {
   component: shape({
-    displayName: string,
+    displayName: string.isRequired,
     description: shape({
       childMdx: shape({
-        body: node,
-      }),
-    }),
+        body: node.isRequired,
+      }).isRequired,
+    }).isRequired,
   }).isRequired,
-  prettyName: string,
-};
-
-ComponentInfo.defaultProps = {
-  prettyName: null,
 };
 
 export default ComponentInfo;
