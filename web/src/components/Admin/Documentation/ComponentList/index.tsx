@@ -10,6 +10,9 @@ const query = graphql`
         displayName
         id
         description {
+          childMdx {
+            body
+          }
           text
         }
         props {
@@ -32,14 +35,23 @@ const query = graphql`
 
 export default () => {
   const data = useStaticQuery(query);
-  console.log(data);
   const namesToInclude = componentNames.map((name) => name.componentName);
   const components = data.allComponentMetadata.nodes
     .filter((component) => namesToInclude.includes(component.displayName));
 
+  const findOptionalPrettyName = (componentName) => {
+    const names = componentNames.find((name) => name.componentName === componentName);
+    return names.prettyName || null;
+  };
+
   return (
     <>
-      {components.map((component) => <ComponentInfo component={component} />)}
+      {components.map((component) => (
+        <ComponentInfo
+          component={component}
+          prettyName={findOptionalPrettyName(component.displayName)}
+        />
+      ))}
     </>
   );
 };
