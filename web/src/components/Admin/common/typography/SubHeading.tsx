@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles, Typography } from '@material-ui/core';
-import { node } from 'prop-types';
+import { node, string } from 'prop-types';
 import { Theme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -10,11 +10,12 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const SubHeading = ({ children }) => {
+const SubHeading = ({ children, className }) => {
   const classes = useStyles();
+  const combinedClasses = [classes.heading, className].join(' ');
 
   return (
-    <Typography variant="h2" className={classes.heading}>
+    <Typography variant="h2" className={combinedClasses}>
       {children}
     </Typography>
   );
@@ -22,6 +23,11 @@ const SubHeading = ({ children }) => {
 
 SubHeading.propTypes = {
   children: node.isRequired,
+  className: string,
+};
+
+SubHeading.defaultProps = {
+  className: null,
 };
 
 export default SubHeading;

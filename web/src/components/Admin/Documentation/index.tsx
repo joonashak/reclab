@@ -3,6 +3,7 @@ import { string } from 'prop-types';
 import { Container, Typography } from '@material-ui/core';
 import { useAdminNavbarTitle } from '../AdminNavbar/useAdminNavbar';
 import ComponentList from './ComponentList';
+import Heading from '../common/typography/Heading';
 
 const Documentation = () => {
   useAdminNavbarTitle('Documentation');
@@ -13,7 +14,7 @@ const Documentation = () => {
         Documentation currently covers only custom MDX components
         (and possibly not even all of them)!
       </Typography>
-      <Typography variant="h4">Components</Typography>
+      <Heading>Components</Heading>
       <ComponentList />
     </Container>
   );
