@@ -1,6 +1,8 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
+import { sortBy } from 'lodash';
 import ComponentInfo from './ComponentInfo';
+import componentNames from '../componentNames';
 
 const query = graphql`
   query {
@@ -9,18 +11,23 @@ const query = graphql`
         displayName
         id
         description {
-          text
+          childMdx {
+            body
+          }
         }
         props {
           description {
-            text
+            childMdx {
+              body
+            }
           }
           id
           name
           required
           type {
             name
-            raw
+          }
+          defaultValue {
             value
           }
         }
@@ -31,12 +38,26 @@ const query = graphql`
 
 export default () => {
   const data = useStaticQuery(query);
-  console.log(data);
-  const components = data.allComponentMetadata.nodes;
+  const namesToInclude = componentNames.map((name) => name.componentName);
+  const filteredComponents = data.allComponentMetadata.nodes
+    .filter((component) => namesToInclude.includes(component.displayName));
+
+  // Replace names for those components that have another name mapped in UI.
+  const components = filteredComponents.map(({ displayName, ...rest }) => {
+    const names = componentNames.find((name) => name.componentName === displayName);
+    return { ...rest, displayName: names.prettyName || displayName };
+  });
+
+  const sortedComponents = sortBy(components, 'displayName');
 
   return (
     <>
-      {components.map((component) => <ComponentInfo component={component} />)}
+      {sortedComponents.map((component) => (
+        <ComponentInfo
+          component={component}
+          key={component.id}
+        />
+      ))}
     </>
   );
 };

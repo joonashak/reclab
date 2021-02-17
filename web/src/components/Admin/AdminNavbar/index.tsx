@@ -28,6 +28,9 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
+  appBar: {
+    marginBottom: theme.spacing(2),
+  },
 }));
 
 export default () => {
@@ -37,7 +40,7 @@ export default () => {
   const toggle = () => setOpen((prev) => !prev);
 
   return (
-    <AppBar position="sticky">
+    <AppBar position="sticky" className={classes.appBar}>
       <Toolbar>
         <IconButton
           onClick={toggle}

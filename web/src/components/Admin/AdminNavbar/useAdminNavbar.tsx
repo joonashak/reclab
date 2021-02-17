@@ -2,6 +2,7 @@ import React, {
   useContext, createContext, useState, useEffect,
 } from 'react';
 import { node } from 'prop-types';
+import { Helmet } from 'react-helmet';
 
 const defaultState = {
   title: 'Admin',
@@ -14,6 +15,9 @@ const AdminNavbarProvider = ({ children }) => {
 
   return (
     <AdminNavbarContext.Provider value={[state, setState]}>
+      <Helmet>
+        <title>{state.title}</title>
+      </Helmet>
       {children}
     </AdminNavbarContext.Provider>
   );

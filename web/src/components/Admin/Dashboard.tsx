@@ -1,15 +1,16 @@
 import React from 'react';
 import { string, bool } from 'prop-types';
-import { Helmet } from 'react-helmet';
+import { useAdminNavbarTitle } from './AdminNavbar/useAdminNavbar';
 
-const Dashboard = () => (
-  <>
-    <Helmet>
-      <title>Admin</title>
-    </Helmet>
-    admin
-  </>
-);
+const Dashboard = () => {
+  useAdminNavbarTitle('Admin');
+
+  return (
+    <>
+      admin
+    </>
+  );
+};
 
 Dashboard.propTypes = {
   // eslint-disable-next-line react/no-unused-prop-types
