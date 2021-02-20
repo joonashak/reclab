@@ -1,10 +1,11 @@
 import React from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import { oneOf, string } from 'prop-types';
-import { Typography, useMediaQuery } from '@material-ui/core';
-import FluidImage from './FluidImage';
-import FullscreenImage from './FullscreenImage';
-import ContentPanel from '../../common/ContentPanel';
+import { useMediaQuery } from '@material-ui/core';
+import FluidImage from '../FluidImage';
+import FullscreenImage from '../FullscreenImage';
+import ContentPanel from '../../../common/ContentPanel';
+import InlineImageHeading from './InlineImageHeading';
 
 type StyleProps = {
   position: string,
@@ -73,11 +74,7 @@ const InlineImage = ({
         {mobile
           ? Image
           : <FullscreenImage trigger={Image} src={src} />}
-        {heading && (
-        <div className={classes.headingContainer}>
-          <Typography variant="h3">{heading}</Typography>
-        </div>
-        )}
+        <InlineImageHeading heading={heading} />
       </div>
       <ContentPanel className={classes.spacingPanelLower} />
     </>
