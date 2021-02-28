@@ -51,14 +51,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 export default () => {
-  const {
-    src,
-    position,
-    heading,
-    size,
-    photoBy,
-    editBy,
-  } = useContext(InlineImageProps);
+  const { src, position, size } = useContext(InlineImageProps);
   const classes = useStyles({ position, size });
   const mobile = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'));
   const Image = <FluidImage src={src} className={classes.img} />;
@@ -70,7 +63,7 @@ export default () => {
         {mobile
           ? Image
           : <FullscreenImage trigger={Image} src={src} />}
-        <InlineImageHeading heading={heading} photoBy={photoBy} editBy={editBy} />
+        <InlineImageHeading />
       </div>
       <ContentPanel className={classes.spacingPanelLower} />
     </>

@@ -31,7 +31,7 @@ const InlineImageHeading = () => {
 
   return (heading || editBy || photoBy) && (
   <div className={classes.headingContainer}>
-    <InlineImageCredits photoBy={photoBy} editBy={editBy} />
+    <InlineImageCredits />
     <Typography variant="h3" className={classes.heading}>{heading}</Typography>
   </div>
   );
