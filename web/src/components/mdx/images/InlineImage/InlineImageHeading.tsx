@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-import { string } from 'prop-types';
 import { Typography } from '@material-ui/core';
 import InlineImageCredits from './InlineImageCredits';
+import { InlineImageProps } from '.';
 
 const useStyles = makeStyles((theme: Theme) => ({
   headingContainer: {
@@ -25,27 +25,16 @@ const useStyles = makeStyles((theme: Theme) => ({
 /**
  * Standard image component for use amidst other content.
  */
-const InlineImageHeading = ({ heading, photoBy, editBy }) => {
+const InlineImageHeading = () => {
+  const { heading, editBy, photoBy } = useContext(InlineImageProps);
   const classes = useStyles();
 
-  return heading && (
+  return (heading || editBy || photoBy) && (
   <div className={classes.headingContainer}>
     <InlineImageCredits photoBy={photoBy} editBy={editBy} />
     <Typography variant="h3" className={classes.heading}>{heading}</Typography>
   </div>
   );
-};
-
-InlineImageHeading.propTypes = {
-  heading: string,
-  photoBy: string,
-  editBy: string,
-};
-
-InlineImageHeading.defaultProps = {
-  heading: null,
-  photoBy: null,
-  editBy: null,
 };
 
 export default InlineImageHeading;
