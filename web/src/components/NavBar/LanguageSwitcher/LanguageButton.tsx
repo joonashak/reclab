@@ -60,7 +60,11 @@ const LanguageButton = ({ path }) => {
 };
 
 LanguageButton.propTypes = {
-  path: string.isRequired,
+  path: string,
+};
+
+LanguageButton.defaultProps = {
+  path: null,
 };
 
 export default LanguageButton;
