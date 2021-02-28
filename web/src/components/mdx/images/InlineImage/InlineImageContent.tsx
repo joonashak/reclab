@@ -6,6 +6,7 @@ import FullscreenImage from '../FullscreenImage';
 import ContentPanel from '../../../common/ContentPanel';
 import InlineImageHeading from './InlineImageHeading';
 import { InlineImageProps } from './index';
+import InlineImageCaption from './InlineImageCaption';
 
 type StyleProps = {
   position: string,
@@ -48,13 +49,23 @@ const useStyles = makeStyles((theme: Theme) => ({
   spacingPanelLower: {
     height: theme.spacing(5),
   },
+  imageContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
 }));
 
 export default () => {
   const { src, position, size } = useContext(InlineImageProps);
   const classes = useStyles({ position, size });
   const mobile = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'));
-  const Image = <FluidImage src={src} className={classes.img} />;
+
+  const Image = (
+    <div className={classes.imageContainer}>
+      <FluidImage src={src} className={classes.img} />
+      <InlineImageCaption />
+    </div>
+  );
 
   return (
     <>

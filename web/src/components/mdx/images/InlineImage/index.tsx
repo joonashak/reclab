@@ -9,6 +9,7 @@ const defaultProps = {
   heading: null,
   photoBy: null,
   editBy: null,
+  caption: null,
 };
 
 const defaultState = {
@@ -37,7 +38,11 @@ InlineImage.propTypes = {
    */
   position: oneOf(['left', 'center', 'right']),
   /**
-   * Optional heading text.
+   * Large heading text beside or underneath the image.
+   *
+   * Note that you might want to use `caption` instead to describe the image. This component
+   * has a semantical meaning that is closer to a heading (and can be used in place of typograhic
+   * headings).
    */
   heading: string,
   /**
@@ -52,6 +57,12 @@ InlineImage.propTypes = {
    * Editor's name for displaying credits.
    */
   editBy: string,
+  /**
+   * Image description.
+   *
+   * Cannot be used at the same time with `heading`. Caption is not shown if `heading` is set.
+   */
+  caption: string,
 };
 
 InlineImage.defaultProps = defaultProps;
