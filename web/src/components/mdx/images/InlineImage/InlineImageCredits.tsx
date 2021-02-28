@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core';
 import { Theme } from '@material-ui/core/styles';
-import { string } from 'prop-types';
 import { InlineImageProps } from './index';
 
 type StyleProps = {
@@ -33,8 +32,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const InlineImageCredits = ({ photoBy, editBy }) => {
-  const { position } = useContext(InlineImageProps);
+const InlineImageCredits = () => {
+  const { position, photoBy, editBy } = useContext(InlineImageProps);
   const classes = useStyles({ position });
 
   return (
@@ -51,16 +50,6 @@ const InlineImageCredits = ({ photoBy, editBy }) => {
       )}
     </div>
   );
-};
-
-InlineImageCredits.propTypes = {
-  photoBy: string,
-  editBy: string,
-};
-
-InlineImageCredits.defaultProps = {
-  photoBy: null,
-  editBy: null,
 };
 
 export default InlineImageCredits;
