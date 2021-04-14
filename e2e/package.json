@@ -8,7 +8,7 @@
     "lint:fix": "eslint \"cypress/**/*.{js,jsx,ts,tsx}\" --fix"
   },
   "dependencies": {
-    "cypress": "^6.3.0"
+    "cypress": "^6.2.1"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.14.0",
