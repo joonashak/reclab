@@ -8,6 +8,8 @@ import { MenuModule } from './menu/menu.module';
 import { SettingsModule } from './settings/settings.module';
 import { DeploymentModule } from './deployment/deployment.module';
 
+const sslOptions = { rejectUnauthorized: false }
+
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -15,7 +17,7 @@ import { DeploymentModule } from './deployment/deployment.module';
       url: process.env.DATABASE_URL,
       autoLoadEntities: true,
       synchronize: process.env.NODE_ENV === 'development',
-      ssl: process.env.NODE_ENV === 'production',
+      ssl: process.env.NODE_ENV === 'production' ? sslOptions : false,
       // logging: process.env.NODE_ENV === 'development',
     }),
     UsersModule,
