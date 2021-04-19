@@ -15,6 +15,7 @@ import { DeploymentModule } from './deployment/deployment.module';
       url: process.env.DATABASE_URL,
       autoLoadEntities: true,
       synchronize: process.env.NODE_ENV === 'development',
+      ssl: process.env.NODE_ENV === 'production',
       // logging: process.env.NODE_ENV === 'development',
     }),
     UsersModule,
