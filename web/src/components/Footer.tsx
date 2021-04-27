@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Grid } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import YouTubeIcon from '@material-ui/icons/YouTube';
@@ -8,33 +8,25 @@ import LogoInverted from './common/logo/LogoInverted/index';
 
 const useStyles = makeStyles((theme: Theme) => ({
   container: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     backgroundColor: 'black',
     color: 'white',
     width: '100%',
     maxWidth: 'unset',
-    paddingTop: '1rem',
-  },
-  col: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    marginTop: '1rem',
-    marginBottom: '2rem',
-    [theme.breakpoints.up('md')]: {
-      marginTop: 20,
-      marginBottom: 100,
+    padding: '3rem 5rem',
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column',
+      paddingBottom: '2rem',
+      '& > div': {
+        marginBottom: '1.5rem',
+      },
     },
   },
-  left: {
-    [theme.breakpoints.up('md')]: {
-      alignItems: 'flex-end',
-      paddingRight: 60,
-    },
-  },
-  right: {
-    [theme.breakpoints.up('md')]: {
-      alignItems: 'flex-start',
-      paddingLeft: 60,
+  logoPanel: {
+    [theme.breakpoints.down('sm')]: {
+      order: -1,
     },
   },
   iconButton: {
@@ -44,7 +36,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   logo: {
     maxWidth: 300,
     margin: 0,
-    marginBottom: 20,
   },
   link: {
     color: 'white',
@@ -56,41 +47,39 @@ export default () => {
 
   return (
     <Container className={classes.container}>
-      <Container>
-        <Grid container>
-          <Grid item xs={12} sm={6} className={`${classes.col} ${classes.left}`}>
-            <LogoInverted className={classes.logo} />
-            <div>
-              <a href="mailto:hello@recoverlaboratory.com" className={classes.link}>hello@recoverlaboratory.com</a>
-            </div>
-          </Grid>
-          <Grid item xs={12} sm={6} className={`${classes.col} ${classes.right}`}>
-            <div>
-              <a
-                href="https://www.facebook.com/recoverlaboratory"
-                className={classes.iconButton}
-                rel="noopener noreferrer"
-              >
-                <FacebookIcon />
-              </a>
-              <a
-                href="https://www.instagram.com/recoverlaboratory/"
-                className={classes.iconButton}
-                rel="noopener noreferrer"
-              >
-                <InstagramIcon />
-              </a>
-              <a
-                href="https://www.youtube.com/channel/UCcJLWrHP4H3scDHOeCOv2XA/videos"
-                className={classes.iconButton}
-                rel="noopener noreferrer"
-              >
-                <YouTubeIcon />
-              </a>
-            </div>
-          </Grid>
-        </Grid>
-      </Container>
+      <div>
+        <div>
+          <a
+            href="https://www.facebook.com/recoverlaboratory"
+            className={classes.iconButton}
+            rel="noopener noreferrer"
+          >
+            <FacebookIcon />
+          </a>
+          <a
+            href="https://www.instagram.com/recoverlaboratory/"
+            className={classes.iconButton}
+            rel="noopener noreferrer"
+          >
+            <InstagramIcon />
+          </a>
+          <a
+            href="https://www.youtube.com/channel/UCcJLWrHP4H3scDHOeCOv2XA/videos"
+            className={classes.iconButton}
+            rel="noopener noreferrer"
+          >
+            <YouTubeIcon />
+          </a>
+        </div>
+      </div>
+      <div className={classes.logoPanel}>
+        <LogoInverted className={classes.logo} />
+      </div>
+      <div>
+        <div>
+          <a href="mailto:hello@recoverlaboratory.com" className={classes.link}>hello@recoverlaboratory.com</a>
+        </div>
+      </div>
     </Container>
   );
 };
