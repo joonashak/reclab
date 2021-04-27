@@ -8,12 +8,14 @@
       "frontpage": {
         "tagline": "Here the freedom is yours.",
         "showButton": {
-          "subtitle": "For visitors of",
-          "title": "Subcase 2021"
+          "subtitle": "Premiering In 2022",
+          "title": "One Hundred Million Percent",
+          "link": "/en/one-hundred-million-percent"
         },
         "storeButton": {
-          "subtitle": "Support Us",
-          "title": "Visit Store"
+          "subtitle": "Read More About",
+          "title": "Our Labyrinths Under The Ground",
+          "link": "/en/past-productions/labyrinths"
         },
         "introduction": {
           "p1": "Recover Laboratory is a Finnish multi-art company led by artists Miradonna Sirkka and Sofi Häkkinen, and experience designer Inna Huttunen. We create surreal art experiences based on human contact, honesty and freedom, asking you to stop for a while and experience art at your own pace and your own way.",
@@ -34,12 +36,14 @@
       "frontpage": {
         "tagline": "Täällä vapaus on sinun.",
         "showButton": {
-          "subtitle": "For visitors of",
-          "title": "Subcase 2021"
+          "subtitle": "Osta Liput",
+          "title": "Satamiljoonaa prosenttia – yökävely",
+          "link": "https://www.tiketti.fi/satamiljoonaa-prosenttia-yokavely-suvilahti-helsinki-lippuja/74185"
         },
         "storeButton": {
-          "subtitle": "Tue Taidettamme",
-          "title": "Recover-kaupassa"
+          "subtitle": "Lue lisää",
+          "title": "Maanalaisista labyrinteistamme",
+          "link": "/fi/aiemmat-tuotannot/labyrintit"
         },
         "introduction": {
           "p1": "Recover Laboratory on helsinkiläinen monitaideryhmä, jota luotsaavat taiteilijat Miradonna Sirkka ja Sofi Häkkinen sekä kokemussuunnittelija Inna Huttunen. Surrealismia henkivät teoksemme rakentuvat ihmisten välisen kontaktin, kohtaamisten, rehellisyyden ja vapauden ympärille. Pyydämme katsojaa pysähtymään hetkeksi, ja kokemaan taiteen rauhassa omalla tavallaan.",

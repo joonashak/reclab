@@ -1,6 +1,6 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import { makeStyles, Theme } from '@material-ui/core/styles';
+import { string } from 'prop-types';
 import HugeActionButton from '../../controls/HugeActionButton';
 import ContentPanel from '../../common/ContentPanel/index';
 
@@ -23,30 +23,26 @@ const useStyles = makeStyles((theme: Theme) => ({
   contentPanel: {
     display: 'flex',
     justifyContent: 'space-around',
-    [theme.breakpoints.down('md')]: {
-      flexDirection: 'column',
-    },
   },
 }));
 
-export default () => {
+const ActionButton = ({ to, title }) => {
   const classes = useStyles();
-  const { t } = useTranslation();
 
   return (
     <ContentPanel contentPanelClassName={classes.contentPanel}>
       <HugeActionButton
-        to={t('frontpage.showButton.link')}
-        subtitle={t('frontpage.showButton.subtitle')}
-        title={t('frontpage.showButton.title')}
-        iconSrc={palliIcon}
-      />
-      <HugeActionButton
-        to={t('frontpage.storeButton.link')}
-        subtitle={t('frontpage.storeButton.subtitle')}
-        title={t('frontpage.storeButton.title')}
+        to={to}
+        title={title}
         iconSrc={palliIcon}
       />
     </ContentPanel>
   );
 };
+
+ActionButton.propTypes = {
+  to: string.isRequired,
+  title: string.isRequired,
+};
+
+export default ActionButton;
