@@ -10,6 +10,7 @@ import Paragraph from './Paragraph';
 import Link from './Link';
 import InlineImage from './images/InlineImage';
 import FrontpageActionButtons from './FrontpageActionButtons';
+import ActionButton from './ActionButton';
 
 // Shortcodes for use with <MDXProvider>.
 export default {
@@ -29,4 +30,5 @@ export default {
   InfoTable,
   Gallery,
   FrontpageActionButtons,
+  ActionButton,
 };

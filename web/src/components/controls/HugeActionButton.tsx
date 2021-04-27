@@ -21,11 +21,11 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     fontSize: theme.typography.h4.fontSize,
     maxWidth: 250,
     lineHeight: '2rem',
-    marginTop: '0.5rem',
   },
   subtitle: {
     fontSize: theme.typography.h6.fontSize,
     lineHeight: '2rem',
+    marginBottom: '0.5rem',
   },
   mainIcon: {
     width: 60,
@@ -65,7 +65,7 @@ const HugeActionButton = ({
         <img src={iconSrc} className={classes.mainIcon} alt="Icon" />
       </div>
       <div className={classes.label}>
-        <span className={classes.subtitle}>{subtitle}</span>
+        {subtitle && (<span className={classes.subtitle}>{subtitle}</span>)}
         <span className={classes.title}>{title}</span>
       </div>
       <div className={classes.iconDiv}>
