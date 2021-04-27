@@ -19,7 +19,9 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
   },
   title: {
     fontSize: theme.typography.h4.fontSize,
-    lineHeight: '3rem',
+    maxWidth: 250,
+    lineHeight: '2rem',
+    marginTop: '0.5rem',
   },
   subtitle: {
     fontSize: theme.typography.h6.fontSize,

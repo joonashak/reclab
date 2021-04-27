@@ -5,7 +5,6 @@ import HugeActionButton from '../../controls/HugeActionButton';
 import ContentPanel from '../../common/ContentPanel/index';
 
 const palliIcon = require('./palli_inv.png');
-const maskIcon = require('./mask_stay_safe.png');
 
 const useStyles = makeStyles((theme: Theme) => ({
   actionButtons: {
@@ -37,16 +36,16 @@ export default () => {
   return (
     <ContentPanel contentPanelClassName={classes.contentPanel}>
       <HugeActionButton
-        to="/en/subcase-2021"
+        to={t('frontpage.showButton.link')}
         subtitle={t('frontpage.showButton.subtitle')}
         title={t('frontpage.showButton.title')}
         iconSrc={palliIcon}
       />
       <HugeActionButton
-        to="https://holvi.com/shop/recover/"
+        to={t('frontpage.storeButton.link')}
         subtitle={t('frontpage.storeButton.subtitle')}
         title={t('frontpage.storeButton.title')}
-        iconSrc={maskIcon}
+        iconSrc={palliIcon}
       />
     </ContentPanel>
   );
