@@ -1,19 +1,17 @@
 import React from 'react';
 import { shape, string } from 'prop-types';
 import {
-  AppBar,
-  makeStyles,
-  Toolbar,
-  useMediaQuery,
+  AppBar, makeStyles, Toolbar, useMediaQuery,
 } from '@material-ui/core';
 import { Theme } from '@material-ui/core/styles';
 import Menu from './Menu';
-import LanguageSwitcher from './LanguageSwitcher/index';
-import LogoPartialTop from '../common/logo/LogoPartialTop/index';
+import LanguageSwitcher from './LanguageSwitcher';
+import LogoPartialTop from '../common/logo/LogoPartialTop';
 import ContentPanel from '../common/ContentPanel';
-import LogoPartialBottom from '../common/logo/LogoPartialBottom/index';
+import LogoPartialBottom from '../common/logo/LogoPartialBottom';
 import ContentPanelSharedLayout from '../common/ContentPanel/ContentPanelSharedLayout';
-import LogoInverted from '../common/logo/LogoInverted/index';
+import LogoInverted from '../common/logo/LogoInverted';
+import LogoLinkWrapper from '../common/logo/LogoLinkWrapper';
 
 const useStyles = makeStyles((theme: Theme) => ({
   appBar: {
@@ -27,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     paddingLeft: 0,
     paddingRight: 0,
   },
-  logo: {
+  logoTop: {
     maxWidth: 250,
     margin: 0,
     alignSelf: 'flex-end',
@@ -40,6 +38,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   mobileLogo: {
     height: 50,
     marginLeft: 10,
+  },
+  logoWrapper: {
+    display: 'flex',
   },
   contentPanel: {
     display: 'flex',
@@ -55,8 +56,24 @@ const useStyles = makeStyles((theme: Theme) => ({
 const NavBar = ({ page }) => {
   const classes = useStyles();
   const mobile = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'));
-  const TopLogo = <LogoPartialTop className={classes.logo} />;
-  const BottomLogo = <LogoPartialBottom className={classes.logoBottom} />;
+
+  const TopLogo = (
+    <LogoLinkWrapper className={classes.logoWrapper}>
+      <LogoPartialTop className={classes.logoTop} />
+    </LogoLinkWrapper>
+  );
+
+  const BottomLogo = (
+    <LogoLinkWrapper>
+      <LogoPartialBottom className={classes.logoBottom} />
+    </LogoLinkWrapper>
+  );
+
+  const MobileLogo = (
+    <LogoLinkWrapper>
+      <LogoInverted className={classes.mobileLogo} />
+    </LogoLinkWrapper>
+  );
 
   return (
     <AppBar position="sticky" elevation={0} className={classes.appBar}>
@@ -65,7 +82,7 @@ const NavBar = ({ page }) => {
           sidePanelContent={TopLogo}
           contentPanelClassName={classes.contentPanel}
         >
-          {mobile && <LogoInverted className={classes.mobileLogo} />}
+          {mobile && MobileLogo}
           <div>
             <LanguageSwitcher page={page} />
             <Menu language={page.language} />
